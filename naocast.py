@@ -18,7 +18,7 @@ def get_eula(url: str):
         response.raise_for_status()
         txt_content = response.text\
         .replace("Online Interactions Not Rated by PEGI", "Online Interactions Not Rated by the ESRB, PEGI or CERO")\
-        .replace("`", "'") # symbol ` doesn't render properly with our font >n<
+        .replace("`", "'") # symbol ` doesn't render properly with our font :(
     except requests.RequestException:
         txt_content = "Could not load file content."
 

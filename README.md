@@ -1,3 +1,5 @@
 ## AGRF Site v2 - Naocast
 To run:
-`python agrf.py` -> visit https://localhost:5000/
+- `tailwindcss -i ./static/css/input.css -o ./static/css/output.css` (or add `--watch` for continuous compiling)
+- `python naocast.py` to run web server
+- Open browser at `localhost:5000`
