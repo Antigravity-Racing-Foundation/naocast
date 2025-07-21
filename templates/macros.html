@@ -1,0 +1,13 @@
+{%- macro corners() -%}
+  <img src="{{ url_for('static', filename='images/corner_tl.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+  <img src="{{ url_for('static', filename='images/corner_tr.svg') }}" class="absolute select-none top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+  <img src="{{ url_for('static', filename='images/corner_bl.svg') }}" class="absolute select-none bottom-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+  <img src="{{ url_for('static', filename='images/corner_br.svg') }}" class="absolute select-none bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+{%- endmacro -%}
+
+{%- macro box_title(box_title) -%}
+  <div class="flex justify-center">
+    <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mr-1 mb-1 select-none"/>
+    <span class="text-sm mb-1">{{ box_title }}</span>
+  </div>
+{%- endmacro -%}

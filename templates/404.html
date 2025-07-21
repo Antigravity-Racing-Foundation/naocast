@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Oopise! >_<{% endblock %}
+{% block label %}Invalid endpoint / Bad request{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center mt-[6%] mb-[3%] xl:mb-[1%]">
+  <div class="items-start flex flex-col mx-4">
+    {{ ui.box_title('Error Flyout') }}
+    <div class="relative px-14 py-14 bg-white flex flex-col sm:flex-row items-center justify-center">
+      {{ ui.corners() }}
+
+      <img src="{{ url_for('static', filename='images/Nep?!.webp') }}" alt="Nep?!" class="w-56 mr-0 mb-10 sm:mb-0 sm:mr-10 select-none"/>
+      <div class="flex flex-col justify-start">
+        <h2 class="text-3xl text-[rgba(138,192,202,1)] mb-10">what are you doing here??</h2>
+        <span class="text-2xl">there's nothing here... are you lost?</span>
+        <a href="{{ url_for('home') }}" class="text-[rgba(138,192,202,1)] hover:underline focus:underline text-2xl sm:text-lg">[Go home]</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

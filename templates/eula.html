@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}AGRF License{% endblock %}
+{% block label %}Subdirectory view / End User License Agreement{% endblock %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center mt-[2%] mb-[3%] gap-y-8">
+
+  <!-- TODO add current EULA name to picker -->
+
+  <!-- EULA Picker -->
+  <div class="flex flex-col items-start w-[95%]">
+    {{ ui.box_title('Option Picker') }}
+    <div class="relative px-6 py-4 w-full bg-[rgba(222,222,222,1)] flex items-center justify-between">
+      {{ ui.corners() }}
+
+      <div class="text-center">
+        <span class="text-lg hidden lg:block">View EULA for:</span>
+      </div>
+      {% set buttons =
+      {"WipEout HD": "wipeout/hd",
+      "WipEout Pulse": "wipeout/pulse",
+      "WipEout 2048": "wipeout/2048",
+      "Arctic Edge": "motorstorm/ae"} %}
+
+      <div class="gap-x-1 select-none">
+
+        {% for label, endpoint in buttons.items() %}
+        <a href="{{ url_for('eula', path=endpoint) }}" class="text-[rgba(113,62,255,1)] hover:underline focus:underline text-lg">{{ label }}</a>
+
+        {% if not loop.last %}
+        <span class="text-[rgba(110,110,110,1)] text-xl">//</span>
+        {% endif %}
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- EULA View -->
+  <div class="flex flex-col items-start w-[95%]">
+    {{ ui.box_title('End User License Agreement') }}
+    <div class="relative px-6 py-6 w-full bg-white flex items-center justify-start">
+      {{ ui.corners() }}
+
+      <pre class="text-[rgba(110,110,110,1)] text-base font-helvetica whitespace-pre-wrap leading-tight">{{ eula }}</pre>
+    </div>
+  </div>
+</div>
+{% endblock %}

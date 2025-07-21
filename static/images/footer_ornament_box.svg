@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="174.39557"
+   height="46.369625"
+   viewBox="0 0 46.142161 12.26863"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="footer_ornament_box.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#d82222"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="2.6573834"
+     inkscape:cx="15.993176"
+     inkscape:cy="22.014136"
+     inkscape:window-width="1900"
+     inkscape:window-height="995"
+     inkscape:window-x="10"
+     inkscape:window-y="75"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-360.29087,-86.48602)">
+    <path
+       id="use259"
+       style="fill:#646464;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:0;paint-order:stroke fill markers"
+       d="M 360.29087,89.47602 V 88.92 87.04891 h 0.78633 v 1.08475 l 1.64765,-1.64764 0.55602,0.55603 -1.64765,1.64763 h 1.08476 v 0.78634 h -1.64078 z"
+       sodipodi:nodetypes="ccccccccccccc" />
+    <path
+       id="use260"
+       style="fill:#646464;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
+       d="m 364.62613,86.79409 v 1.98579 h 0.59985 v -1.38594 h 1.38594 v -0.59985 z" />
+    <path
+       id="use261"
+       style="fill:#646464;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
+       d="m 406.43303,86.7941 v 1.98579 h -0.5998 v -1.38594 h -1.386 V 86.7941 Z" />
+    <path
+       id="use262"
+       style="fill:#646464;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
+       d="m 364.62613,98.75465 v -1.98579 h 0.59985 v 1.38594 h 1.38594 v 0.59985 z" />
+    <path
+       id="use263"
+       style="fill:#646464;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
+       d="m 406.43303,98.75464 v -1.98579 h -0.5998 v 1.38594 h -1.386 v 0.59985 z" />
+  </g>
+</svg>

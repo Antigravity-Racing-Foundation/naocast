@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}AGRF{% endblock %}
+{% block label %}Entry point / Welcome to AGRF!{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center mt-[10%] mb-[1%]">
+    <div class="items-start flex flex-col">
+        {{ ui.box_title('Info Flyout') }}
+        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
+            {{ ui.corners() }}
+
+            <div class="text-center">
+                <h2 class="text-lg">🚧 Under construction 🚧</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

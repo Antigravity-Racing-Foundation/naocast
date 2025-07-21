@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="9.9999876"
+   height="9.999999"
+   viewBox="0 0 2.6458301 2.6458331"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="corner_tl.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#d82222"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1.8790538"
+     inkscape:cx="60.934922"
+     inkscape:cy="-15.167208"
+     inkscape:window-width="1900"
+     inkscape:window-height="995"
+     inkscape:window-x="10"
+     inkscape:window-y="75"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-388.14375,-10.583332)">
+    <path
+       id="rect1-9-8-36"
+       style="fill:#646464;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
+       d="m 388.14375,10.583332 v 2.645833 h 0.79923 V 11.38256 h 1.8466 v -0.799228 z" />
+  </g>
+</svg>
