@@ -4,14 +4,37 @@
 {% block label %}Entry point / Welcome to AGRF!{% endblock %}
 
 {% block content %}
-<div class="flex items-center justify-center mt-[10%] mb-[1%]">
-    <div class="items-start flex flex-col">
-        {{ ui.box_title('Info Flyout') }}
-        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
-            {{ ui.corners() }}
+<div class="flex items-center justify-center mt-[2%] mb-[3%]">
 
-            <div class="text-center">
-                <h2 class="text-lg">🚧 Under construction 🚧</h2>
+    <!-- intro flyout -->
+    <div class="items-start flex flex-col w-[90%]">
+        {{ ui.box_title('Introduction Flyout') }}
+        <div class="relative pt-5 pb-5 px-10 w-[100%] bg-[rgba(246,246,246,1)] flex items-start justify-between">
+            {{ ui.corners() }}
+            <!-- text -->
+            <!-- TODO there must be a smarter way to handle width change based on zoom -->
+            <div class="flex flex-col py-5 w-[95%] lg:w-[55%]">
+                <d class="text-xl text-left pb-2"><img src="{{ url_for('static', filename='images/text_ornament_arrow.svg') }}" alt="" class="h-5 w-5 inline-block mb-1 mr-1"/>Welcome to the official Antigravity Racing Foundation Website!</d>
+                <div class="flex flex-row items-start"> <!-- this is fugly but it works /shrug -->
+                    <div class="text-lg text-left whitespace-pre-wrap leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1 inline-block"/>Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most of WipEout 2048's online features. We also support MotorStorm: Arctic Edge!<br>
+Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, everything works!<br>
+We hold several weekly events on our WipEout Discord server, including:</div>
+                </div> <!-- TODO revisit this, there must be a better way (this is ugly and scales like ass) -->
+                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Weekly Lobby, a time to simply play with others, on Saturday at 19:00 UTC;</p></div>
+                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Mode Shuffle, an appreciation of often neglected ways to enjoy the game every Sunday at 19:00 UTC;</p></div>
+                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout Pulse Portable Rush, its version of Weekly Lobby, held every Thursday at 19:00 UTC.</p></div>
+            </div>
+            <!-- teatime image -->
+            <div class="flex-col items-start pb-5 pl-5 hidden lg:flex">
+                {{ ui.box_title('Image by @s.erein12') }}
+                <div class="flex relative">
+                    <img src="{{ url_for('static', filename='images/2048_teatime.webp') }}" alt="" class="max-h-[26rem] w-auto"/>
+                        <!-- not using macro since right corners need to be colored differently here -->
+                        <img src="{{ url_for('static', filename='images/corner_tl.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+                        <img src="{{ url_for('static', filename='images/corner_tr_lightgrey.svg') }}" class="absolute select-none top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+                        <img src="{{ url_for('static', filename='images/corner_bl.svg') }}" class="absolute select-none bottom-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+                        <img src="{{ url_for('static', filename='images/corner_br_lightgrey.svg') }}" class="absolute select-none bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+                </div>
             </div>
         </div>
     </div>
