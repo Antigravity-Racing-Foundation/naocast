@@ -7,15 +7,14 @@
 {% endblock %}
 
 {% block content %}
+<script src="/static/js/leaderboard_getter_4000.js"></script>
 <div class="flex items-center justify-center mt-[10%] mb-[1%]">
     <div class="items-start flex flex-col">
         {{ ui.box_title('Info Flyout') }}
         <div class="relative px-20 h-52 bg-white flex items-center justify-center">
             {{ ui.corners() }}
 
-            <div class="text-center">
-                <h2 class="text-lg">🚧 Under construction 🚧</h2>
-            </div>
+            <div id="board" class="text-center"></div>
         </div>
     </div>
 </div>

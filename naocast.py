@@ -38,7 +38,7 @@ def leaderboards():
 
 @app.route("/status")
 def status():
-    return render_template("stub.html")
+    return render_template("status.html")
 
 @app.route("/eula", defaults={"path": ""})
 @app.route("/eula/<path:path>")

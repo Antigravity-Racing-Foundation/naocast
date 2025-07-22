@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Thallium Status{% endblock %}
+{% block label %}API frontend / Server status{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<script src="/static/js/api_spammer_3000.js"></script>
+<div class="flex items-center justify-center mt-[10%] mb-[1%]">
+    <div class="items-start flex flex-col">
+        {{ ui.box_title('Who is online?') }}
+        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
+            {{ ui.corners() }}
+
+            <div id="players"></div>
+        </div>
+    </div>
+    <div class="items-start flex flex-col">
+        {{ ui.box_title('What\'s going on?') }}
+        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
+            {{ ui.corners() }}
+
+            <div id="lobbies"></div>
+        </div>
+    </div>
+    <div class="items-start flex flex-col">
+        {{ ui.box_title('Waddup?') }}
+        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
+            {{ ui.corners() }}
+
+            <div id="stats"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
