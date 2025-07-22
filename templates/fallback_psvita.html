@@ -14,6 +14,19 @@
             background: #f0f0f0;
         }
 
+        #btn-hitbox {
+            position: absolute;
+            top: 322px;     /* Y position */
+            left: 180px;    /* X position */
+            width: 344px;   /* Width */
+            height: 52px;   /* Height */
+            background-color: transparent;
+            color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
         .svg-container {
             width: 100%;
             height: 100%;
@@ -32,6 +45,9 @@
 <body>
     <div class="svg-container">
         <img src="{{ url_for('static', filename='images/fallback_psvita.svg') }}" alt="Sorry! This website can't be rendered on a PS Vita."/>
+            <form action="/accept-legacy-redirect" method="POST">
+                <button id="btn-hitbox" type="submit"></button>
+            </form>
     </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, request, redirect
+from flask import Flask, make_response, render_template, abort, request, redirect
 import requests
 
 app = Flask(__name__)
@@ -21,8 +21,11 @@ def disallow_ps_vita():
     if request.endpoint == 'static':
         return
 
-    if request.path == '/sorry_vita_unsupported':
+    if request.path in ['/sorry_vita_unsupported', '/accept-legacy-redirect']:
         return
+
+    if request.cookies.get('redirect_to_legacy') == '1':
+        return redirect('https://agracingfoundation.org/', code=301)
 
     ua = request.headers.get('User-Agent', '')
     if 'PlayStation Vita' in ua or 'Silk/' in ua:
@@ -48,6 +51,12 @@ def home():
 @app.route("/sorry_vita_unsupported")
 def fallback_psvita():
     return render_template("fallback_psvita.html")
+
+@app.route('/accept-legacy-redirect', methods=['POST'])
+def accept_legacy_redirect():
+    response = make_response(redirect('https://agracingfoundation.org/', code=301))
+    response.set_cookie('redirect_to_legacy', '1', max_age=60*60*24*31)
+    return response
 
 @app.route("/news")
 def news():
