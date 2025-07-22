@@ -113,9 +113,22 @@ const test_boards = [
     1800014
 ];
 
+
+//globals
+//currently loaded board Stats
 var tot_pages = 0;
+var current_page = 1;
+var board_row = 0;
 var is_first = false;
 var is_last = false;
+var leaderboard_size = 0;
+var total_entries = 0;
+
+//currently loaded board config
+var speedClass = 0;
+var gameMode = 0;
+var trackId = 0;
+
 
 function timeConverter(time) {
     milliseconds = time % 100; // get the last two digits (00 of 100)
@@ -169,8 +182,15 @@ function headerFromMode(mode) {
     return ret;
 }
 
-function fetchBoard(id, pageSize, row) {
-    fetch('https://svo.agracingfoundation.org/wox_ws/rest/lb/GetPage?leaderboardId=' + id + '&pageSize=' + pageSize + '&row=' + row).then(response => {
+/**
+ * @param {*} id leaderboard id, 7 digits long consisting of '1' + gameMode + speedClass + trackId (two digits) + rankingType (03 - SL; 04 - SR,TT,MP_RACE; 08 - Deto; 09 - Zone; 14 - MP_RANKING)
+ * @param {*} pageSize how many leaderboard entries to request from server, server caps this value at 50
+ * @param {*} row entry offset, set this to 'desired_page * pageSize'
+ * @param {*} player player username, if present on requested leaderboard a MyStats tag is included in the response
+ * @param {*} go_to overwrites the 'row' param, leave empty if requesting a specific page; GOTO_ME - goes to whatever page requested 'player' is on, if player doesn't exist goes to page 1 instead; GOTO_TOP - returns first page of leaderboard; GOTO_BOTTOM - returns last page of leaderboard;
+ */
+function fetchBoard(id, pageSize, row, player, go_to) {
+    fetch('https://svo.agracingfoundation.org/wox_ws/rest/lb/GetPage?leaderboardId=' + id + '&pageSize=' + pageSize + '&row=' + row + ((player != "") ? '&accountId=' + player : '') + ((go_to != "") ? '&goTo=' + go_to : '')).then(response => {
         if (!response.ok) {
             throw new Error('API error');
         }
@@ -181,17 +201,41 @@ function fetchBoard(id, pageSize, row) {
 
         var output = "";
 
-        var mode = xmlParsed.getElementsByTagName("lb")[0].attributes.gm.nodeValue;
+        gameMode = xmlParsed.getElementsByTagName("lb")[0].attributes.gm.nodeValue;
+        if(xmlParsed.getElementsByTagName("lb")[0].attributes.sc) {
+            speedClass = xmlParsed.getElementsByTagName("lb")[0].attributes.sc.nodeValue;
+        } else {
+            speedClass = -1;
+        }
+        if(xmlParsed.getElementsByTagName("lb")[0].attributes.tr) {
+            trackId = xmlParsed.getElementsByTagName("lb")[0].attributes.tr.nodeValue;
+        } else {
+            trackId = -1;
+        }
         var x = xmlParsed.getElementsByTagName("Stats")[0];
 
+        var my_stats_id = "";
+        var my_stats_exists = false;
+
+        //if MyStats is present write down the player's uuid
+        if(xmlParsed.getElementsByTagName("MyStats")[0]) {
+            my_stats_exists = true;
+            my_stats_id = xmlParsed.getElementsByTagName("MyStats")[0].attributes.id.nodeValue;
+        }
+
         tot_pages = Math.ceil(x.attributes.leaderboardSize.nodeValue/x.attributes.size.nodeValue);
+        current_page = x.attributes.page.nodeValue;
+        board_row = x.attributes.row.nodeValue;
         is_first = x.attributes.isFirst.nodeValue;
         is_last = x.attributes.isLast.nodeValue;
+
+        leaderboard_size = x.attributes.leaderboardSize.nodeValue;
+        total_entries = x.attributes.totalEntries.nodeValue;
 
         if(x.length != 0) {
             output += '<table>';
 
-            output += '<tr>' + headerFromMode(mode) + '</tr>';
+            output += '<tr>' + headerFromMode(gameMode) + '</tr>';
 
             output += '<tr></tr>'; //spacer
 
@@ -200,21 +244,21 @@ function fetchBoard(id, pageSize, row) {
                     output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                     output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                     output += "<td>---</td>";
-                    if(mode == 7 || mode == 8 || mode == 3) {
+                    if(gameMode == 7 || gameMode == 8 || gameMode == 3) {
                         output += "<td>---</td>";
                     } else {
                         output += "<td>--:--.--</td>";
                     }
-                    if(mode == 5) {
+                    if(gameMode == 5) {
                         output += "<td>--:--.--</td>";
                     } else {
                         output += "<td>---</td>";
                     }
                 } else {
-                    switch(mode) {
+                    switch(gameMode) {
                         case "0":
                         case "1":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
                             output += "<td>" + timeConverter(x.childNodes[i].attributes.raceTime.nodeValue) + "</td>";
@@ -222,7 +266,7 @@ function fetchBoard(id, pageSize, row) {
                             break;
 
                         case "5":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
                             output += "<td>" + timeConverter(x.childNodes[i].attributes.raceTime.nodeValue) + "</td>";
@@ -230,7 +274,7 @@ function fetchBoard(id, pageSize, row) {
                             break;
 
                         case "2":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
                             output += "<td>" + timeConverter(x.childNodes[i].attributes.lapTime.nodeValue) + "</td>";
@@ -238,7 +282,7 @@ function fetchBoard(id, pageSize, row) {
                             break;
 
                         case "3":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.zone.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.score.nodeValue + "</td>";
@@ -246,7 +290,7 @@ function fetchBoard(id, pageSize, row) {
                             break;
 
                         case "7":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.stage.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.score.nodeValue + "</td>";
@@ -254,7 +298,7 @@ function fetchBoard(id, pageSize, row) {
                             break;
 
                         case "8":
-                            output += "<tr><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
                             output += "<td>" + x.childNodes[i].attributes.rank.nodeValue + "</td>";
                             output += "<td>" + rankGetProgress(x.childNodes[i].attributes.rankedScore.nodeValue, ranked_list[x.childNodes[i].attributes.rank.nodeValue-1][1], ranked_list[x.childNodes[i].attributes.rank.nodeValue-1][2]) + "%</td>";
@@ -275,4 +319,4 @@ function fetchBoard(id, pageSize, row) {
 //pick a random board from list
 var id = test_boards[Math.floor(Math.random() * test_boards.length)];
 
-fetchBoard(id, 10, 0);
+fetchBoard(id, 10, 0, "", "GOTO_ME");
