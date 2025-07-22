@@ -3,11 +3,16 @@ import requests
 
 app = Flask(__name__)
 
+# you're free to dunk on me (bonk) for how ugly ts is
 EULA_URLS = {
     "wipeout/hd":     "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",
+    "hd":     "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",
     "wipeout/pulse":  "https://svo.agracingfoundation.org/external/assets/eula/Pulse/eula_full.txt",
+    "pulse":  "https://svo.agracingfoundation.org/external/assets/eula/Pulse/eula_full.txt",
     "wipeout/2048":   "https://svo.agracingfoundation.org/external/assets/eula/2048/Global/eula_PEGI.txt",
+    "2048":   "https://svo.agracingfoundation.org/external/assets/eula/2048/Global/eula_PEGI.txt",
     "motorstorm/ae":  "https://svo.agracingfoundation.org/external/assets/eula/AE/Global/eula_PEGI.txt",
+    "msae":  "https://svo.agracingfoundation.org/external/assets/eula/AE/Global/eula_PEGI.txt",
     "":               "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",  # default
 }
 
@@ -40,14 +45,17 @@ def leaderboards():
 def status():
     return render_template("status.html")
 
-@app.route("/eula", defaults={"path": ""})
-@app.route("/eula/<path:path>")
 def eula(path):
     if path in EULA_URLS:
         eula_text = get_eula(EULA_URLS[path])
         return render_template("eula.html", eula=eula_text)
     else:
         abort(404)
+
+app.add_url_rule("/eula", defaults={"path": ""}, view_func=eula)
+app.add_url_rule("/eulas/", defaults={"path": ""}, view_func=eula)
+app.add_url_rule("/eula/<path:path>", view_func=eula)
+app.add_url_rule("/eulas/<path:path>", view_func=eula)
 
 @app.errorhandler(404)
 def page_not_found(e):
