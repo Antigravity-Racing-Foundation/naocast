@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request
 import requests
 
 app = Flask(__name__)
@@ -15,6 +15,15 @@ EULA_URLS = {
     "msae":  "https://svo.agracingfoundation.org/external/assets/eula/AE/Global/eula_PEGI.txt",
     "":               "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",  # default
 }
+
+@app.before_request
+def disallow_ps_vita():
+    if request.endpoint == 'static':
+        return
+
+    ua = request.headers.get('User-Agent', '')
+    if 'PlayStation Vita' in ua or 'Silk/' in ua:
+        return render_template('fallback_psvita.html'), 403
 
 def get_eula(url: str):
     try:
