@@ -13,16 +13,16 @@
             {{ ui.corners() }}
             <!-- text -->
             <!-- TODO there must be a smarter way to handle width change based on zoom -->
-            <div class="flex flex-col py-5 w-[95%] lg:w-[55%]">
+            <div class="flex flex-col py-5 w-[95%] lg:w-[70%]">
                 <d class="text-xl text-left pb-2"><img src="{{ url_for('static', filename='images/text_ornament_arrow.svg') }}" alt="" class="h-5 w-5 inline-block mb-1 mr-1"/>Welcome to the official Antigravity Racing Foundation Website!</d>
                 <div class="flex flex-row items-start"> <!-- this is fugly but it works /shrug -->
                     <div class="text-lg text-left whitespace-pre-wrap leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1 inline-block"/>Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most of WipEout 2048's online features. We also support MotorStorm: Arctic Edge!<br>
-Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, everything works!<br>
+Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <b><i>everything works!</i></b><br>
 We hold several weekly events on our WipEout Discord server, including:</div>
                 </div> <!-- TODO revisit this, there must be a better way (this is ugly and scales like ass) -->
-                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Weekly Lobby, a time to simply play with others, on Saturday at 19:00 UTC;</p></div>
-                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Mode Shuffle, an appreciation of often neglected ways to enjoy the game every Sunday at 19:00 UTC;</p></div>
-                <div class="flex flex-row text-lg pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout Pulse Portable Rush, its version of Weekly Lobby, held every Thursday at 19:00 UTC.</p></div>
+                <div class="flex flex-row text-lg justify-start pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Weekly Lobby, a time to simply play with others, on Saturday at 19:00 UTC;</p></div>
+                <div class="flex flex-row text-lg justify-start pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout HD Mode Shuffle, an appreciation of often neglected ways to enjoy the game every Sunday at 19:00 UTC;</p></div>
+                <div class="flex flex-row text-lg justify-start pl-0.5 leading-tight"><img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mb-0.5 mr-1"/><p><br>WipEout Pulse Portable Rush, its version of Weekly Lobby, held every Thursday at 19:00 UTC.</p></div>
             </div>
             <!-- teatime image -->
             <div class="flex-col items-start pb-5 pl-5 hidden lg:flex">

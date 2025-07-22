@@ -28,8 +28,8 @@ def get_eula(url: str):
 def home():
     return render_template("home.html")
 
-@app.route("/thallium")
-def thallium():
+@app.route("/news")
+def news():
     return render_template("stub.html")
 
 @app.route("/leaderboards")
