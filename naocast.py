@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, request
+from flask import Flask, render_template, abort, request, redirect
 import requests
 
 app = Flask(__name__)
@@ -21,9 +21,12 @@ def disallow_ps_vita():
     if request.endpoint == 'static':
         return
 
+    if request.path == '/sorry_vita_unsupported':
+        return
+
     ua = request.headers.get('User-Agent', '')
     if 'PlayStation Vita' in ua or 'Silk/' in ua:
-        return render_template('fallback_psvita.html'), 403
+        return redirect('/sorry_vita_unsupported', code=301)
 
 def get_eula(url: str):
     try:
@@ -41,6 +44,10 @@ def get_eula(url: str):
 @app.route("/")
 def home():
     return render_template("home.html")
+
+@app.route("/sorry_vita_unsupported")
+def fallback_psvita():
+    return render_template("fallback_psvita.html")
 
 @app.route("/news")
 def news():
