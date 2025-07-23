@@ -6,8 +6,8 @@
 {%- endmacro -%}
 
 {%- macro box_title(box_title) -%}
-  <div class="flex justify-center">
-    <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" class="w-2 mr-1 mb-1 select-none"/>
-    <span class="text-sm mb-1">{{ box_title }}</span>
-  </div>
+  <h2 class="flex mb-1 text-sm">
+    <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
+    {{ box_title }}
+  </h2>
 {%- endmacro -%}

@@ -1,4 +1,5 @@
-from flask import Flask, make_response, render_template, abort, request, redirect
+from flask import Flask, make_response, render_template, abort, request, redirect, url_for
+from functools import lru_cache
 import requests
 
 app = Flask(__name__)
@@ -16,6 +17,12 @@ EULA_URLS = {
     "":               "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",  # default
 }
 
+UA_REDIRECTS = {
+    "PlayStation Vita": "fallback_psvita",
+    "PLAYSTATION 3": "/fallback_ps3",
+    "PlayStation Portable": "fallback_psp",
+}
+
 @app.before_request
 def disallow_ps_vita():
     if request.endpoint == 'static':
@@ -25,18 +32,16 @@ def disallow_ps_vita():
         return
 
     if request.cookies.get('redirect_to_legacy') == '1':
+        # FIXME change to legacy.agrf.org when going live
         return redirect('https://agracingfoundation.org/', code=301)
 
     ua = request.headers.get('User-Agent', '')
-    if 'PlayStation Vita' in ua:
-        return redirect('/sorry_psvita_unsupported', code=301)
 
-    if 'PLAYSTATION 3' in ua:
-        return redirect('/sorry_ps3_unsupported', code=301)
+    for agent, endpoint in UA_REDIRECTS.items():
+        if agent in ua:
+            return redirect(url_for(endpoint), code=301)
 
-    if 'PlayStation Portable' in ua:
-        return redirect('/sorry_psp_unsupported', code=301)
-
+@lru_cache(maxsize=16)
 def get_eula(url: str):
     try:
         response = requests.get(url)

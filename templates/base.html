@@ -25,12 +25,14 @@
   {% block head %}{% endblock %}
 
 </head>
+
+<!-- TODO review all of this -->
+
 <body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,_rgba(100,100,100,0.2),_transparent)] bg-no-repeat bg-cover flex flex-col min-h-screen font-helvetica">
 
     {% import "macros.html" as ui %}
 
-    <!-- Floating Top Bar -->
-    <div class="mx-4 mt-4 px-4 py-4 h-20 flex relative justify-between select-none">
+    <header class="mx-4 mt-4 px-4 py-4 h-20 flex relative justify-between select-none">
         {{ ui.corners() }}
 
         <!-- Ornaments -->
@@ -42,7 +44,7 @@
           <img src="{{ url_for('static', filename='images/bar_ornament_ship.svg') }}" alt="" class="h-12 w-20 ml-3 hidden md:block"/>
           <img src="{{ url_for('static', filename='images/bar_ornament_angle.svg') }}" alt="" class="w-28 ml-4 hidden 2xl:block"/>
           <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="ml-3 hidden 2xl:block"/>
-          <span class="text-[rgba(100,100,100,1)] text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</span>
+          <h1 class="text-[rgba(100,100,100,1)] text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
         </div>
         <div class="gap-x-6 flex items-center">
 
@@ -66,15 +68,14 @@
             <img src="{{ url_for('static', filename='images/bar_ornament_kana.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
             <img src="{{ url_for('static', filename='images/bar_ornament_dots.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
         </div>
-    </div>
+      </header>
 
     <!-- Page content embed here -->
     <main class="flex-grow text-[rgba(100,100,100,1)]">
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <div class="pb-6 px-6">
+    <footer class="pb-4 px-4 lg:pb-6 lg:px-6">
         <div class="flex justify-between items-end pb-1.5 select-none">
             <div class="flex gap-y-2 flex-col items-start">
                 <img src="{{ url_for('static', filename='images/footer_ornament_barcode.svg') }}" alt="" class="w-22 hidden md:block"/>
@@ -95,7 +96,7 @@
                 <span class="text-[rgba(222,222,222,1)] text-xs max-w-[90%] md:max-w-[50%] leading-none">Copyleft 2025 No rights reserved. AGRF is not affiliated with Sony Computer Entertainment or SCE Studio Liverpool. Thallium and Beat are AGRF efforts. Transcendence 2024 is a syst_ins effort. Leaderboard information and Session Monitoring are powered by Thallium API. All trademarks belong to their respective owners. See our EULA for more information.</span>
             </div>
         </div>
-    </div>
+      </footer>
 
 </body>
 </html>
