@@ -21,15 +21,21 @@ def disallow_ps_vita():
     if request.endpoint == 'static':
         return
 
-    if request.path in ['/sorry_vita_unsupported', '/accept-legacy-redirect']:
+    if request.path in ['/sorry_psvita_unsupported', '/sorry_ps3_unsupported', '/sorry_psp_unsupported', '/accept-legacy-redirect']:
         return
 
     if request.cookies.get('redirect_to_legacy') == '1':
         return redirect('https://agracingfoundation.org/', code=301)
 
     ua = request.headers.get('User-Agent', '')
-    if 'PlayStation Vita' in ua or 'Silk/' in ua:
-        return redirect('/sorry_vita_unsupported', code=301)
+    if 'PlayStation Vita' in ua:
+        return redirect('/sorry_psvita_unsupported', code=301)
+
+    if 'PLAYSTATION 3' in ua:
+        return redirect('/sorry_ps3_unsupported', code=301)
+
+    if 'PlayStation Portable' in ua:
+        return redirect('/sorry_psp_unsupported', code=301)
 
 def get_eula(url: str):
     try:
@@ -48,9 +54,17 @@ def get_eula(url: str):
 def home():
     return render_template("home.html")
 
-@app.route("/sorry_vita_unsupported")
+@app.route("/sorry_psvita_unsupported")
 def fallback_psvita():
     return render_template("fallback_psvita.html")
+
+@app.route("/sorry_ps3_unsupported")
+def fallback_ps3():
+    return render_template("fallback_ps3.html")
+
+@app.route("/sorry_psp_unsupported")
+def fallback_psp():
+    return render_template("fallback_psp.html")
 
 @app.route('/accept-legacy-redirect', methods=['POST'])
 def accept_legacy_redirect():
