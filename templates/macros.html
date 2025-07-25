@@ -13,10 +13,10 @@
 {%- endmacro -%}
 
 {%- macro highlight(content, accent_color='0,0,0') -%}
-<pre class="border border-t-sm font-helvetica inline-block px-1 rounded-md"
-      style="background-color: rgba({{ accent_color }}, 0.2)">
+<span class="border border-t-sm font-helvetica inline-block px-1 rounded-md"
+      style="background-color: rgba({{ accent_color }}, 0.2); user-select: text;">
 {{ content|safe }}
-</pre>
+</span>
 {%- endmacro -%}
 
 {%- macro guide_article(box_title, guide_title, accent_color, caller=None) -%}

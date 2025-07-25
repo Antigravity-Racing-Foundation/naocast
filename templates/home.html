@@ -76,7 +76,7 @@
     <!-- div for left side guides -->
     <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
 
-        <!-- PS3 -->
+        <a name="PS3"></a>
         {% call ui.guide_article(
             box_title='PLAYSTATION® 3 Setup Guide',
             guide_title='Thallium setup for PS3',
@@ -84,22 +84,24 @@
 
                 This process won't take longer than a minute.<br><br>
 
-                - Go to the Settings tab in the XMB<br>
-                - Go down to Network Settings<br>
-                - Pick Internet Connection Settings<br>
-                - Confirm to start configuring<br>
-                - On the Select a setting method screen, pick Custom<br>
-                - Continue the setup according to your preference, picking the default options whenever you are unsure until you reach the DNS Setting screen<br>
-                - Select Manual<br>
-                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '113,62,255') }}<br>
-                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '113,62,255') }}<br>
-                - Continue the setup as before and save your settings<br>
-                - Testing connection is optional<br>
-                - You should be done<br>
+                <ul class="list-inside list-disc">
+                    <li>Go to the Settings tab in the XMB</li>
+                    <li>Go down to Network Settings</li>
+                    <li>Pick Internet Connection Settings</li>
+                    <li>Confirm to start configuring</li>
+                    <li>On the Select a setting method screen, pick Custom</li>
+                    <li>Continue the setup according to your preference, picking the default options whenever you are unsure until you reach the DNS Setting screen</li>
+                    <li>Select Manual</li>
+                    <li>Set Primary DNS to {{ ui.highlight('147.135.213.57', '113,62,255') }}</li>
+                    <li>and the Secondary DNS to {{ ui.highlight('1.1.1.1', '113,62,255') }}</li>
+                    <li>Continue the setup as before and save your settings</li>
+                    <li>Testing connection is optional</li>
+                    <li>You should be done</li>
+                </ul>
 
         {% endcall %}
 
-        <!-- PSP -->
+        <a name="PSP"></a>
         {% call ui.guide_article(
             box_title='PlayStation®Portable Setup Guide',
             guide_title='Thallium+Beat setup for PSP',
@@ -109,23 +111,25 @@
 
                 You must be on firmware version 6.61 and signed into PlayStation Network on your PSP to play online.<br><br>
 
-                Once you can connect to a Wi-Fi network,<br>
-                - Go to the Settings tab in the XMB<br>
-                - Pick Infrastructure Mode<br>
-                - Select a connection to edit or make a new one<br>
-                - Continue the network setup until you reach DNS Settings<br>
-                - Pick Manual<br>
-                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '33,147,152') }}<br>
-                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '33,147,152') }}<br>
-                - Continue the setup according to your liking<br>
-                - Testing connection is optional<br>
-                - You should be done<br><br>
+                Once you can connect to a Wi-Fi network,
+                <ul class="list-inside list-disc">
+                    <li>Go to the Settings tab in the XMB</li>
+                    <li>Pick Infrastructure Mode</li>
+                    <li>Select a connection to edit or make a new one</li>
+                    <li>Continue the network setup until you reach DNS Settings</li>
+                    <li>Pick Manual</li>
+                    <li>Set Primary DNS to {{ ui.highlight('147.135.213.57', '33,147,152') }}</li>
+                    <li>and the Secondary DNS to {{ ui.highlight('1.1.1.1', '33,147,152') }}</li>
+                    <li>Continue the setup according to your liking</li>
+                    <li>Testing connection is optional</li>
+                    <li>You should be done</li><br>
+                </ul>
 
                 For ease of use, when you are in-game, go to Multiplayer -> Online Account and enable Auto-Login
 
         {% endcall %}
 
-        <!-- PS Vita -->
+        <a name="PSVita"></a>
         {% call ui.guide_article(
             box_title='PlayStation® Vita Setup Guide',
             guide_title='Thallium+Beat setup for PS Vita',
@@ -133,18 +137,20 @@
 
                 To connect to Thallium/Beat using a Vita:<br><br>
 
-                - Go to Settings<br>
-                - Select Network<br>
-                - Select Wi-Fi Settings<br>
-                - Pick your desired network<br>
-                - Pick Advanced Settings<br>
-                - Set DNS Settings to Manual<br>
-                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '32,52,113') }}<br>
-                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '32,52,113') }}<br>
-                - Click OK<br>
-                - Quit Settings<br>
-                - You should be done<br>
-                - Note that the Online Pass is required to play 2048 online<br><br>
+                <ul class="list-inside list-disc">
+                    <li>Go to Settings</li>
+                    <li>Select Network</li>
+                    <li>Select Wi-Fi Settings</li>
+                    <li>Pick your desired network</li>
+                    <li>Pick Advanced Settings</li>
+                    <li>Set DNS Settings to Manual</li>
+                    <li>Set Primary DNS to {{ ui.highlight('147.135.213.57', '32,52,113') }}</li>
+                    <li>and the Secondary DNS to {{ ui.highlight('1.1.1.1', '32,52,113') }}</li>
+                    <li>Click OK</li>
+                    <li>Quit Settings</li>
+                    <li>You should be done</li>
+                    <li>Note that the Online Pass is required to play 2048 online</li><br>
+                </ul>
 
                 You should be able to access Beat through Adrenaline now; if not, follow the PSP system setup guide through Adrenaline's XMB
 
@@ -155,7 +161,7 @@
     <!-- div for right side guides -->
     <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
 
-        <!-- RPCS3 -->
+        <a name="RPCS3"></a>
         {% call ui.guide_article(
             box_title='RPCS3 Setup Guide',
             guide_title='Thallium setup for RPCS3',
@@ -171,7 +177,7 @@
 
         {% endcall %}
 
-        <!-- PPSSPP -->
+        <a name="PPSSPP"></a>
         {% call ui.guide_article(
             box_title='PPSSPP Setup Guide',
             guide_title='Thallium+Beat setup for PPSSPP',
@@ -179,9 +185,11 @@
 
                 PPSSPP versions 1.19 and above connect to WipEout Pulse and MotorStorm Arctic Edge online automatically!<br><br>
 
-                - Check Settings -> Networking -> (Networking category) -> Enable networking/WLAN<br>
-                - Confirm your username in Settings -> Networking -> (Infrastructure category) -> Username<br>
-                - You should be done<br><br>
+                <ul class="list-inside list-disc">
+                    <li>Check Settings -> Networking -> (Networking category) -> Enable networking/WLAN</li>
+                    <li>Confirm your username in Settings -> Networking -> (Infrastructure category) -> Username</li>
+                    <li>You should be done</li><br>
+                </ul>
 
                 If you're having trouble connecting, try disabling Settings -> Networking ->
                 (Infrastructure category) -> Autoconfigure and setting the
@@ -190,33 +198,37 @@
 
         {% endcall %}
 
-        <!-- Pulse skins  -->
+        <a name="Skins"></a>
         {% call ui.guide_article(
             box_title='WipEout Pulse Custom Skin Guide',
             guide_title='Making a WipEout Pulse custom skin',
             accent_color='33,147,152') %}
 
-                Beat supports the WipEout Pulse custom ship skins feature. With it, you can create a custom ship skin and bring it online!<br>
-                To create a custom WipEout Pulse ship skin:<br><br>
-                - Download Thomas Perl's (aka thp) shipedit utility to create your skin, available for
+            Beat supports the WipEout Pulse custom ship skins feature. With it, you can create a custom ship skin and bring it online!<br>
+            To create a custom WipEout Pulse ship skin:<br><br>
+
+            <ul class="list-inside list-disc">
+                <li>Download Thomas Perl's (aka thp) shipedit utility to create your skin, available for
                 <a href="https://agracingfoundation.org/content/shipedit-distro/ship-editor-linux.7z" class="hover:underline" style="color: rgba(33,147,152,1)">Linux</a>
                 and
                 <a href="https://agracingfoundation.org/content/shipedit-distro/ship-editor-win.7z" class="hover:underline" style="color: rgba(33,147,152,1)">Windows</a>
-                <br>
-                - Export your custom skin<br>
-                - Send @ChaCheeChoo on Discord the following information in DM's:<br><br>
-                <p class="ml-5">
-                - The "16034453" file in the exported skin's folder;<br>
-                - Your PSN/PPSSPP Username;<br>
-                - The slot that you want to use (0-4);<br>
-                - The name of your custom skin;<br>
-                - Whether or not you would like the skin to be potentially publicly available to other players in the futureNote that your skin may take a while to be patched, or we could refuse to patch it<br><br>
-                </p>
-                - You will be given a patched skin - unpack the archive and put the UCES00465DTEAMSKIN000X folder in [PSP storage root]/PSP/SAVEDATA/<br>
-                - Check that the [Multiplayer...] -> [Online Account] -> [Ship Skins] option is on<br>
-                - You should be done<br><br>
-
+                </li>
+                <li>Export your custom skin</li>
+                <li>Send @chacheechoo the following information in Discord DM's:
+                    <ul class="list-inside list-[circle] ml-10">
+                        <li>The "16034453" file in the exported skin's folder;</li>
+                        <li>Your PSN/PPSSPP Username;</li>
+                        <li>The slot that you want to use (0-4);</li>
+                        <li>The name of your custom skin;</li>
+                        <li>Whether or not you would like the skin to be potentially publicly available to other players in the future</li>
+                        <li>Note that your skin may take a while to be patched, or we could refuse to patch it</li>
+                    </ul>
+                </li>
+                <li>You will be given a patched skin - unpack the archive and put the UCES00465DTEAMSKIN000X folder in [PSP storage root]/PSP/SAVEDATA/</li>
+                <li>Check that the [Multiplayer...] -> [Online Account] -> [Ship Skins] option is on</li>
+                <li>You should be done</li><br>
                 We are not responsible for any issues that may arise when using custom skins on any platform
+            </ul>
 
         {% endcall %}
 
