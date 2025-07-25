@@ -253,7 +253,8 @@ function fetchPlayers() {
         var x = xmlParsed.getElementsByTagName("Player");
 
         if(x.length != 0) {
-            output += '<div id="playersTotalCount"><h2>Players Online: ' + x[0].parentNode.attributes.totalEntries.nodeValue + '</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="playersListing">';
+            document.getElementById("playersTitle").innerHTML = 'Players Online: ' + x[0].parentNode.attributes.totalEntries.nodeValue; 
+            output += '<div id="playersListing" style="padding-left: 5px;">';
             for (i = 0; i < x.length; i++) {
                 output += '<div id="playersEntry">'
 
@@ -278,12 +279,14 @@ function fetchPlayers() {
             output += '</div>';
             document.getElementById("players").innerHTML = output; 
         } else {
-            document.getElementById("players").innerHTML = '<div id="playersTotalCount"><h2>Players Online: 0</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="playersListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">No one\'s online right now</h2></div>'; 
+            document.getElementById("playersTitle").innerHTML = 'Players Online: 0'; 
+            document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>No one\'s online right now</h2></div>'; 
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
 
-        document.getElementById("players").innerHTML = '<div id="playersTotalCount"><h2>Players Online: Unknown</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="playersListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">Waiting on API...</h2></div>'; 
+        document.getElementById("playersTitle").innerHTML = 'Players Online: Unknown'; 
+        document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
     });
 }
 
@@ -307,7 +310,8 @@ function fetchLobbies() {
         var x = xmlParsed.getElementsByTagName("Lobby");
 
         if(x.length != 0) {
-            output += '<div id="lobbiesTotalCount"><h2>Ongoing Lobbies: ' + x[0].parentNode.attributes.totalEntries.nodeValue + '</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="lobbiesListing">';
+            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: ' + x[0].parentNode.attributes.totalEntries.nodeValue; 
+            output += '<div id="lobbiesListing" style="padding-left: 5px;">';
             for (i = 0; i < x.length; i++) {
                 //print what game user is playing according to AppId
                 nowPlaying = getGameName(x[i].attributes.AppId.nodeValue, '+PS3');
@@ -388,12 +392,14 @@ function fetchLobbies() {
             output += '</div>';
             document.getElementById("lobbies").innerHTML = output; 
         } else {
-            document.getElementById("lobbies").innerHTML = '<div id="lobbiesTotalCount"><h2>Ongoing Lobbies: 0</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="lobbiesListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">No lobbies</h2></div>'; 
+            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: 0'; 
+            document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>No lobbies</h2></div>'; 
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
 
-        document.getElementById("lobbies").innerHTML = '<div id="lobbiesTotalCount"><h2>Ongoing Lobbies: Unknown</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="lobbiesListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">Waiting on API...</h2></div>'; 
+        document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: Unknown'; 
+        document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
     });
 }
 
@@ -422,33 +428,30 @@ function fetchStats() {
         var peak_players = x.getElementsByTagName('PeakPlayerCount')[0].textContent;
 
         if(x.length != 0) {
-            output += '<div id="statsTitle"><h2>Global Server Stats</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="statsListing">';
+            output += '<div id="statsListing" style="padding-left: 5px;">';
 
-            output += '<h3>Peak Players Online: ' + peak_players + '</h3>';
-            output += '<div id="spacer"></div>';
-            output += '<h3>Logins (past 24 hours): ' + logins_day + '</h3>';
-            output += '<div id="spacer"></div>';
-            output += '<h3>Logins (past week): ' + logins_week + '</h3>';
-            output += '<div id="spacer"></div>';
+            output += '<h3 style="margin-bottom: 8px;">Peak Players Online: ' + peak_players + '</h3>';
+            output += '<h3 style="margin-bottom: 8px;">Logins (past 24 hours): ' + logins_day + '</h3>';
+            output += '<h3 style="margin-bottom: 8px;">Logins (past week): ' + logins_week + '</h3>';
             output += '<h3>Accounts Registered: ' + total_accounts + '</h3>';
-            output += '<ul style="margin: 0px;">';
+            output += '<ul class="list-inside list-disc">';
             output += '<li>WipEout HD: ' + reg_hd + '</li>';
             output += '<li>WipEout 2048: ' + reg_2048 + '</li>';
             output += '<li>WipEout Pulse: ' + reg_pulse + '</li>';
             output += '<li>MotorStorm Arctic Edge: ' + reg_msae + '</li>';
             output += '</ul>';
-            output += '<div id="spacer"></div>';
 
-            output += '</div>';
+            output += '</div><br>';
             document.getElementById("stats").innerHTML = output; 
         } else {
-            document.getElementById("stats").innerHTML = '<div id="statsTitle"><h2>Global Server Stats</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="statsListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">An API Error has occured.</h2></div>'; 
+            document.getElementById("stats").innerHTML = '<div id="statsListing" style="padding-left: 5px;"><h2>An API Error has occured.</h2></div>'; 
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
         
-        document.getElementById("stats").innerHTML = '<div id="statsTitle"><h2>Global Server Stats</h2></div><div id="separator_dark" style="width: 100%; margin-top: 8px; margin-bottom: 12px"></div><div id="statsListing"><h2 style="margin-bottom: 21px; margin-top: 20px;">Waiting on API...</h2></div>'; 
+        document.getElementById("stats").innerHTML = '<div id="statsListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
     });
+    document.getElementById("statsTitle").innerHTML = "Global Server Stats"; 
 }
 
 fetchPlayers();
