@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}AGRF{% endblock %}
+{% block title %}Welcome to AGRF!{% endblock %}
 {% block label %}Entry point / Welcome to AGRF!{% endblock %}
 
 {% block content %}
-<section class="items-start flex flex-col w-screen px-6 py-4 lg:px-28 lg:py-12">
+<section class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('Introduction Flyout') }}
     <!-- section's inner container -->
     <div class="relative pt-2 pb-8 px-8 w-full bg-[rgba(246,246,246,1)] flex items-start justify-between">
         {{ ui.corners() }}
         <!-- additional padding in the article because we want the image to be above the text slightly -->
         <article class="pt-6 space-y-3">
-            <h3 class="text-lg md:text-lg leading-tight">
+            <h3 class="text-lg md:text-xl leading-tight">
                 <img src="{{ url_for('static', filename='images/text_ornament_arrow.svg') }}" alt=""
-                    class="h-5 w-5 inline-block align-text-bottom"/>
+                    class="h-5 w-5 inline-block align-text-bottom select-none"/>
                 Welcome to the official Antigravity Racing Foundation Website!
             </h3>
 
@@ -22,7 +22,8 @@
                     class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
                 Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
                 of WipEout 2048's online features. We also support MotorStorm: Arctic Edge!<br><br>
-                Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <b><i>everything works!</i></b><br><br>
+                Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <i><b>everything works!</b></i>
+                <br><br>
                 We hold several weekly events on our WipEout Discord server, including:
             </h3>
 
@@ -54,6 +55,171 @@
                 <img src="{{ url_for('static', filename='images/corner_br_lightgrey.svg') }}" class="absolute select-none bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
             </div>
         </figure>
+    </div>
+</section>
+
+<div class="mx-6 lg:mx-10 text-center">
+    <h2 class="text-base md:text-lg">
+        <!-- there's totally more elegant way to do this but i'm currently lazy  -->
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="ml-3 mt-1 inline-block align-text-top select-none"/>
+        CONFIG INSTRUCTIONS FOLLOW
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_blue.svg') }}" alt="" class="mr-3 mt-1 inline-block align-text-top select-none"/>
+    </h2>
+    <hr class="w-full border-t-6 border-[rgba(222,222,222,1)]" />
+</div>
+
+<img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-30 left-4 hidden lg:block select-none"/>
+<img src="{{ url_for('static', filename='images/body_ornament_blue_lines.svg') }}" alt="" class="w-7 absolute top-30 right-10 hidden lg:block select-none"/>
+
+<section class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 py-10 px-6 lg:px-28">
+
+    <!-- div for left side guides -->
+    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+
+        <!-- PS3 -->
+        {% call ui.guide_article(
+            box_title='PLAYSTATION® 3 Setup Guide',
+            guide_title='Thallium setup for PS3',
+            accent_color='113,62,255') %}
+
+                This process won't take longer than a minute.<br><br>
+
+                - Go to the Settings tab in the XMB<br>
+                - Go down to Network Settings<br>
+                - Pick Internet Connection Settings<br>
+                - Confirm to start configuring<br>
+                - On the Select a setting method screen, pick Custom<br>
+                - Continue the setup according to your preference, picking the default options whenever you are unsure until you reach the DNS Setting screen<br>
+                - Select Manual<br>
+                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '113,62,255') }}<br>
+                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '113,62,255') }}<br>
+                - Continue the setup as before and save your settings<br>
+                - Testing connection is optional<br>
+                - You should be done<br>
+
+        {% endcall %}
+
+        <!-- PSP -->
+        {% call ui.guide_article(
+            box_title='PlayStation®Portable Setup Guide',
+            guide_title='Thallium+Beat setup for PSP',
+            accent_color='33,147,152') %}
+
+                To connect your PSP to your Wi-Fi network, you can either install the wpa2psp plugin, install/update ARK-4 CFW (which will include wpa2psp), or figure it out yourself.<br><br>
+
+                You must be on firmware version 6.61 and signed into PlayStation Network on your PSP to play online.<br><br>
+
+                Once you can connect to a Wi-Fi network,<br>
+                - Go to the Settings tab in the XMB<br>
+                - Pick Infrastructure Mode<br>
+                - Select a connection to edit or make a new one<br>
+                - Continue the network setup until you reach DNS Settings<br>
+                - Pick Manual<br>
+                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '33,147,152') }}<br>
+                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '33,147,152') }}<br>
+                - Continue the setup according to your liking<br>
+                - Testing connection is optional<br>
+                - You should be done<br><br>
+
+                For ease of use, when you are in-game, go to Multiplayer -> Online Account and enable Auto-Login
+
+        {% endcall %}
+
+        <!-- PS Vita -->
+        {% call ui.guide_article(
+            box_title='PlayStation® Vita Setup Guide',
+            guide_title='Thallium+Beat setup for PS Vita',
+            accent_color='32,52,113') %}
+
+                To connect to Thallium/Beat using a Vita:<br><br>
+
+                - Go to Settings<br>
+                - Select Network<br>
+                - Select Wi-Fi Settings<br>
+                - Pick your desired network<br>
+                - Pick Advanced Settings<br>
+                - Set DNS Settings to Manual<br>
+                - Set Primary DNS to {{ ui.highlight('147.135.213.57', '32,52,113') }}<br>
+                - and the Secondary DNS to {{ ui.highlight('1.1.1.1', '32,52,113') }}<br>
+                - Click OK<br>
+                - Quit Settings<br>
+                - You should be done<br>
+                - Note that the Online Pass is required to play 2048 online<br><br>
+
+                You should be able to access Beat through Adrenaline now; if not, follow the PSP system setup guide through Adrenaline's XMB
+
+        {% endcall %}
+
+    </div>
+
+    <!-- div for right side guides -->
+    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+
+        <!-- RPCS3 -->
+        {% call ui.guide_article(
+            box_title='RPCS3 Setup Guide',
+            guide_title='Thallium setup for RPCS3',
+            accent_color='172,7,23') %}
+
+                To configure RPCS3 to use our Thallium backend, follow
+                <a href="https://wiki.rpcs3.net/index.php?title=Help:Netplay#Global_configuration" class="hover:underline" style="color: rgba(172,7,23,1)">[This guide]</a><br><br>
+
+                The IP/Host Switches you need is this string:<br><br>
+
+                <!-- not calling the highlight macro here because this highlight isn't an inline -->
+                <pre class="border border-t-sm border-[rgba(100,100,100,0.5)] bg-[rgba(172,7,23,0.2)] font-helvetica px-1 rounded-md whitespace-pre-wrap break-words">wipeout2048.muis.online.scee.com=147.135.213.57&&wipeout2048.online.scee.com=147.135.213.57</pre>
+
+        {% endcall %}
+
+        <!-- PPSSPP -->
+        {% call ui.guide_article(
+            box_title='PPSSPP Setup Guide',
+            guide_title='Thallium+Beat setup for PPSSPP',
+            accent_color='142,193,208') %}
+
+                PPSSPP versions 1.19 and above connect to WipEout Pulse and MotorStorm Arctic Edge online automatically!<br><br>
+
+                - Check Settings -> Networking -> (Networking category) -> Enable networking/WLAN<br>
+                - Confirm your username in Settings -> Networking -> (Infrastructure category) -> Username<br>
+                - You should be done<br><br>
+
+                If you're having trouble connecting, try disabling Settings -> Networking ->
+                (Infrastructure category) -> Autoconfigure and setting the
+                DNS server value to
+                {{ ui.highlight('147.135.213.57', '142,193,208') }}
+
+        {% endcall %}
+
+        <!-- Pulse skins  -->
+        {% call ui.guide_article(
+            box_title='WipEout Pulse Custom Skin Guide',
+            guide_title='Making a WipEout Pulse custom skin',
+            accent_color='33,147,152') %}
+
+                Beat supports the WipEout Pulse custom ship skins feature. With it, you can create a custom ship skin and bring it online!<br>
+                To create a custom WipEout Pulse ship skin:<br><br>
+                - Download Thomas Perl's (aka thp) shipedit utility to create your skin, available for
+                <a href="https://agracingfoundation.org/content/shipedit-distro/ship-editor-linux.7z" class="hover:underline" style="color: rgba(33,147,152,1)">Linux</a>
+                and
+                <a href="https://agracingfoundation.org/content/shipedit-distro/ship-editor-win.7z" class="hover:underline" style="color: rgba(33,147,152,1)">Windows</a>
+                <br>
+                - Export your custom skin<br>
+                - Send @ChaCheeChoo on Discord the following information in DM's:<br><br>
+                <p class="ml-5">
+                - The "16034453" file in the exported skin's folder;<br>
+                - Your PSN/PPSSPP Username;<br>
+                - The slot that you want to use (0-4);<br>
+                - The name of your custom skin;<br>
+                - Whether or not you would like the skin to be potentially publicly available to other players in the futureNote that your skin may take a while to be patched, or we could refuse to patch it<br><br>
+                </p>
+                - You will be given a patched skin - unpack the archive and put the UCES00465DTEAMSKIN000X folder in [PSP storage root]/PSP/SAVEDATA/<br>
+                - Check that the [Multiplayer...] -> [Online Account] -> [Ship Skins] option is on<br>
+                - You should be done<br><br>
+
+                We are not responsible for any issues that may arise when using custom skins on any platform
+
+        {% endcall %}
+
     </div>
 </section>
 {% endblock %}
