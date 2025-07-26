@@ -4,19 +4,18 @@
 {% block label %}Invalid endpoint / Bad request{% endblock %}
 
 {% block content %}
-<div class="flex flex-col items-center justify-center mt-[6%] mb-[3%] xl:mb-[1%]">
-  <div class="items-start flex flex-col mx-4">
+<section class="flex justify-center items-center mt-8 mb-8 2xl:mt-26 2xl:mb-10 mx-6">
+  <div class="flex flex-col items-start">
     {{ ui.box_title('Error Flyout') }}
-    <div class="relative px-14 py-14 bg-white flex flex-col sm:flex-row items-center justify-center">
+    <div class="relative flex flex-col sm:flex-row gap-y-6 gap-x-10 px-14 py-14 items-center bg-[rgba(246,246,246,1)]">
       {{ ui.corners() }}
-
-      <img src="{{ url_for('static', filename='images/Nep?!.webp') }}" alt="Nep?!" class="w-56 mr-0 mb-10 sm:mb-0 sm:mr-10 select-none"/>
-      <div class="flex flex-col justify-start">
+      <img src="{{ url_for('static', filename='images/Nep?!.webp') }}" alt="" class="w-56 select-none"/>
+      <article class="flex flex-col justify-start">
         <h2 class="text-3xl text-[rgba(138,192,202,1)] mb-10">what are you doing here??</h2>
         <span class="text-2xl">there's nothing here... are you lost?</span>
         <a href="{{ url_for('home') }}" class="text-[rgba(138,192,202,1)] hover:underline focus:underline text-2xl sm:text-lg">[Go home]</a>
-      </div>
+      </article>
     </div>
   </div>
-</div>
+</section>
 {% endblock %}

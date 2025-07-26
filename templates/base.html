@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}AGRF{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
-  <style>
-    @font-face {
-      font-family: 'Helvetica';
-      src: url("{{ url_for('static', filename='fonts/HelveticaNowMicro_Bold.otf') }}") format('opentype');
-      font-weight: normal;
-      font-style: Regular;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}AGRF{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <style>
+        @font-face {
+            font-family: 'Helvetica';
+            src: url("{{ url_for('static', filename='fonts/HelveticaNowMicro_Bold.otf') }}") format('opentype');
+            font-weight: normal;
+            font-style: Regular;
+        }
 
-    .font-helvetica {
-      font-family: 'Helvetica', sans-serif;
-    }
-  </style>
+        .font-helvetica {
+            font-family: 'Helvetica', sans-serif;
+        }
+    </style>
 
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
 
-  {% block head %}{% endblock %}
+    {% block head %}{% endblock %}
 
 </head>
-
-<!-- TODO review all of this -->
 
 <body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,_rgba(100,100,100,0.2),_transparent)] bg-no-repeat bg-cover flex flex-col min-h-screen font-helvetica">
 
@@ -35,18 +33,17 @@
     <header class="mx-4 mt-4 px-4 py-4 h-20 flex relative justify-between select-none">
         {{ ui.corners() }}
 
-        <!-- Ornaments -->
         <div class="flex items-center">
-          <a href="{{ url_for('home') }}" title="AGRF Home">
-            <img src="{{ url_for('static', filename='images/agrf.svg') }}" alt="AGRF Logo" class="h-12 w-12"/>
-          </a>
-          <img src="{{ url_for('static', filename='images/bar_ornament_logos.svg') }}" alt="" class="h-12 w-24 ml-3 hidden md:block"/>
-          <img src="{{ url_for('static', filename='images/bar_ornament_ship.svg') }}" alt="" class="h-12 w-20 ml-3 hidden md:block"/>
-          <img src="{{ url_for('static', filename='images/bar_ornament_angle.svg') }}" alt="" class="w-28 ml-4 hidden 2xl:block"/>
-          <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="ml-3 hidden 2xl:block"/>
-          <h1 class="text-[rgba(100,100,100,1)] text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
+            <a href="{{ url_for('home') }}" title="AGRF Home">
+                <img src="{{ url_for('static', filename='images/agrf.svg') }}" alt="AGRF Logo" class="h-12 w-12"/>
+            </a>
+            <img src="{{ url_for('static', filename='images/bar_ornament_logos.svg') }}" alt="" class="h-12 w-24 ml-3 hidden md:block" role="presentation"/>
+            <img src="{{ url_for('static', filename='images/bar_ornament_ship.svg') }}" alt="" class="h-12 w-20 ml-3 hidden md:block" role="presentation"/>
+            <img src="{{ url_for('static', filename='images/bar_ornament_angle.svg') }}" alt="" class="w-28 ml-4 hidden 2xl:block" role="presentation"/>
+            <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="ml-3 hidden 2xl:block" role="presentation"/>
+            <h1 class="text-[rgba(100,100,100,1)] text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
         </div>
-        <div class="gap-x-6 flex items-center">
+        <nav class="gap-x-6 flex items-center">
 
             {% set buttons =
             {"News": "news",
@@ -54,29 +51,30 @@
             "Status": "status",
             "EULA": "eula"} %}
 
-            <div class="gap-x-1 flex items-center">
+            <ul class="gap-x-1 flex items-center">
 
                 {% for label, endpoint in buttons.items() %}
-                <a href="{{ url_for(endpoint) }}" class="text-[rgba(113,62,255,1)] hover:underline focus:underline text-sm sm:text-lg">{{ label }}</a>
 
-                {% if not loop.last %}
-                <span class="text-[rgba(110,110,110,1)] text-base sm:text-xl before:content-['·'] sm:before:content-['//']"></span>
-                {% endif %}
+                <li>
+                    <a href="{{ url_for(endpoint) }}" class="text-[rgba(113,62,255,1)] hover:underline focus:underline text-sm sm:text-lg">{{ label }}</a>
+                    {% if not loop.last %}
+                    <span class="text-[rgba(110,110,110,1)] text-base sm:text-xl before:content-['·'] sm:before:content-['//']"></span>
+                    {% endif %}
+                </li>
 
             {% endfor %}
-            </div>
+            </ul>
             <img src="{{ url_for('static', filename='images/bar_ornament_kana.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
             <img src="{{ url_for('static', filename='images/bar_ornament_dots.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
-        </div>
-      </header>
+        </nav>
+    </header>
 
-    <!-- Page content embed here -->
     <main class="flex-grow relative text-[rgba(100,100,100,1)]">
         {% block content %}{% endblock %}
     </main>
 
     <footer class="pb-4 px-4 lg:pb-6 lg:px-6">
-        <div class="flex justify-between items-end pb-1.5 select-none">
+        <div class="flex justify-between items-end pb-1.5 select-none" role="presentation">
             <div class="flex gap-y-2 flex-col items-start">
                 <img src="{{ url_for('static', filename='images/footer_ornament_barcode.svg') }}" alt="" class="w-22 hidden md:block"/>
                 <img src="{{ url_for('static', filename='images/footer_ornament_watermark_bonk.svg') }}" alt="" class="w-60 hidden sm:block"/>
@@ -89,14 +87,12 @@
                 </div>
             </div>
         </div>
-        <div class="bg-[rgba(110,110,110,1)] py-[0.200rem] w-[100%]"></div>
-        <div class="bg-[rgba(252,252,252,0.8)] py-3 w-[100%] flex relative justify-center">
-            <div class="flex gap-x-5 justify-center">
-                <img src="{{ url_for('static', filename='images/footer_ornament_logos.svg') }}" alt="" class="w-56 hidden md:block select-none"/>
-                <span class="text-[rgba(222,222,222,1)] text-xs max-w-[90%] md:max-w-[50%] leading-none">Copyleft 2025 No rights reserved. AGRF is not affiliated with Sony Computer Entertainment or SCE Studio Liverpool. Thallium and Beat are AGRF efforts. Transcendence is a syst_ins effort. Leaderboard information and Server status are powered by Thallium API. All trademarks belong to their respective owners. "PlayStation", "WipEout" and "MotorStorm" are registered trademarks of Sony Computer Entertainment Inc. See our EULA for more information.</span>
-            </div>
+        <hr class="w-full border-t-6 border-[rgba(110,110,110,1)]"/>
+        <div class="bg-[rgba(252,252,252,0.8)] py-3 w-full flex relative justify-center gap-x-5">
+            <img src="{{ url_for('static', filename='images/footer_ornament_logos.svg') }}" alt="" class="w-56 hidden md:block select-none"/>
+            <p class="text-[rgba(222,222,222,1)] text-xs max-w-[90%] md:max-w-[50%] leading-none">Copyleft 2025 No rights reserved. AGRF is not affiliated with Sony Computer Entertainment or SCE Studio Liverpool. Thallium and Beat are AGRF efforts. Transcendence is a syst_ins effort. Leaderboard information and Server status are powered by Thallium API. All trademarks belong to their respective owners. "PlayStation", "WipEout" and "MotorStorm" are registered trademarks of Sony Computer Entertainment Inc. See our EULA for more information.</p>
         </div>
-      </footer>
+    </footer>
 
 </body>
 </html>
