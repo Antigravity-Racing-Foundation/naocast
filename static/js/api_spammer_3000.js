@@ -15,7 +15,7 @@ function getGameName(appId, username) {
         case "21664":
             gameName = 'WipEout HD Fury';
             break;
-    
+
         case "22204":
             gameName = 'MotorStorm Arctic Edge';
             break;
@@ -30,7 +30,7 @@ function getGameName(appId, username) {
                 gameName = 'Unknown';
             }
             break;
-        
+
         default:
             gameName = 'Unknown';
             break;
@@ -56,7 +56,7 @@ function getSpeedClass(playerSkillLevel, appId) {
                 case "2":
                     speedClass = "Rapier";
                     break;
-                
+
                 case "3":
                     speedClass = "Phantom";
                     break;
@@ -74,7 +74,7 @@ function getSpeedClass(playerSkillLevel, appId) {
         case "21664":
             speedClass = '';
             break;
-    
+
         case "22204":
             speedClass = '';
             break;
@@ -92,7 +92,7 @@ function getSpeedClass(playerSkillLevel, appId) {
                 case "2":
                     speedClass = "Rapier";
                     break;
-                
+
                 case "3":
                     speedClass = "Phantom";
                     break;
@@ -102,7 +102,7 @@ function getSpeedClass(playerSkillLevel, appId) {
                     break;
             }
             break;
-        
+
         default:
             speedClass = 'Unknown';
             break;
@@ -127,7 +127,7 @@ function getGameMode(ruleSet, appId) {
                 case "16":
                     mode = "Tournament";
                     break;
-                
+
                 case "17":
                     mode = "???";
                     break;
@@ -149,7 +149,7 @@ function getGameMode(ruleSet, appId) {
         case "21664":
             mode = '';
             break;
-    
+
         case "22204":
             mode = '';
             break;
@@ -177,7 +177,7 @@ function getGameMode(ruleSet, appId) {
                     break;
             }
             break;
-        
+
         default:
             mode = 'Unknown';
             break;
@@ -208,7 +208,7 @@ function getPlatform(appId, username) {
         case "21664":
             platform = '';
             break;
-    
+
         case "22204":
             if(username.includes("(PPSSPP)")) {
                 platform = 'PPSSPP';
@@ -230,7 +230,7 @@ function getPlatform(appId, username) {
                 platform = 'UNK';
             }
             break;
-        
+
         default:
             platform = 'UNK';
             break;
@@ -253,7 +253,7 @@ function fetchPlayers() {
         var x = xmlParsed.getElementsByTagName("Player");
 
         if(x.length != 0) {
-            document.getElementById("playersTitle").innerHTML = 'Players Online: ' + x[0].parentNode.attributes.totalEntries.nodeValue; 
+            document.getElementById("playersTitle").innerHTML = 'Players Online: ' + x[0].parentNode.attributes.totalEntries.nodeValue;
             output += '<div id="playersListing" style="padding-left: 5px;">';
             for (i = 0; i < x.length; i++) {
                 output += '<div id="playersEntry">'
@@ -277,16 +277,16 @@ function fetchPlayers() {
                 output += '</div><div id="spacer"></div>';
             }
             output += '</div>';
-            document.getElementById("players").innerHTML = output; 
+            document.getElementById("players").innerHTML = output;
         } else {
-            document.getElementById("playersTitle").innerHTML = 'Players Online: 0'; 
-            document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>No one\'s online right now</h2></div>'; 
+            document.getElementById("playersTitle").innerHTML = 'Players Online: 0';
+            document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>No one\'s online right now</h2></div>';
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
 
-        document.getElementById("playersTitle").innerHTML = 'Players Online: Unknown'; 
-        document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
+        document.getElementById("playersTitle").innerHTML = 'Players Online: Unknown';
+        document.getElementById("players").innerHTML = '<div id="playersListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>';
     });
 }
 
@@ -310,7 +310,7 @@ function fetchLobbies() {
         var x = xmlParsed.getElementsByTagName("Lobby");
 
         if(x.length != 0) {
-            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: ' + x[0].parentNode.attributes.totalEntries.nodeValue; 
+            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: ' + x[0].parentNode.attributes.totalEntries.nodeValue;
             output += '<div id="lobbiesListing" style="padding-left: 5px;">';
             for (i = 0; i < x.length; i++) {
                 //print what game user is playing according to AppId
@@ -336,7 +336,7 @@ function fetchLobbies() {
                     case "22204":
                         output += '<h3>' + nowPlaying + ' // ' + x[i].attributes.GameName.nodeValue.slice(0, x[i].attributes.GameName.nodeValue.lastIndexOf('~')) + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')</h3>';
                         break;
-                    
+
                     default:
                         output += '<h3>' + nowPlaying + ' // ' + x[i].attributes.GameName.nodeValue + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')</h3>';
                         break;
@@ -390,68 +390,70 @@ function fetchLobbies() {
                 output += '</div></div><div id="spacer"></div>';
             }
             output += '</div>';
-            document.getElementById("lobbies").innerHTML = output; 
+            document.getElementById("lobbies").innerHTML = output;
         } else {
-            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: 0'; 
-            document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>No lobbies</h2></div>'; 
+            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: 0';
+            document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>No lobbies</h2></div>';
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
 
-        document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: Unknown'; 
-        document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
+        document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: Unknown';
+        document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>';
     });
 }
 
 function fetchStats() {
-    fetch('https://svo.agracingfoundation.org/medius_db/api/GetServerStats').then(response => {
-        if (!response.ok) {
-            throw new Error('API error');
-        }
-        return response.text();
-    }).then(xml => {
-        const parser = new DOMParser();
-        const xmlParsed = parser.parseFromString(xml, 'application/xml');
+    fetch('https://svo.agracingfoundation.org/medius_db/api/GetServerStats')
+        .then(response => {
+            if (!response.ok) throw new Error('API error');
+            return response.text();
+        })
+        .then(xml => {
+            const parser = new DOMParser();
+            const xmlParsed = parser.parseFromString(xml, 'application/xml');
+            const x = xmlParsed.getElementsByTagName("GetServerStats")[0];
+            const accounts = x.getElementsByTagName('AccountsRegistered')[0];
 
-        var output = "";
+            const total_accounts = accounts.attributes.totalEntries.nodeValue;
+            const reg_hd = accounts.getElementsByTagName('woHD')[0].textContent;
+            const reg_2048 = accounts.getElementsByTagName('wo2048')[0].textContent;
+            const reg_pulse = accounts.getElementsByTagName('woPulse')[0].textContent;
+            const reg_msae = accounts.getElementsByTagName('MSAE')[0].textContent;
+            const logins_day = x.getElementsByTagName('LoginsPastDay')[0].textContent;
+            const logins_week = x.getElementsByTagName('LoginsPastWeek')[0].textContent;
+            const peak_players = x.getElementsByTagName('PeakPlayerCount')[0].textContent;
 
-        var x = xmlParsed.getElementsByTagName("GetServerStats")[0];
-        var accounts = x.getElementsByTagName('AccountsRegistered')[0];
+            if(x.length != 0) {
+                document.getElementById("peakPlayers").textContent = peak_players;
+                document.getElementById("loginsDay").textContent = logins_day;
+                document.getElementById("loginsWeek").textContent = logins_week;
+                document.getElementById("totalAccounts").textContent = total_accounts;
+                document.getElementById("regHD").textContent = reg_hd;
+                document.getElementById("reg2048").textContent = reg_2048;
+                document.getElementById("regPulse").textContent = reg_pulse;
+                document.getElementById("regMSAE").textContent = reg_msae;
+            }
+        })
+        .catch(error => {
+            console.error(`API fetch failed:`, error);
+            document.querySelectorAll('.stat-element ').forEach(el => {
+                el.classList.add('text-[rgba(222,222,222,1)]');
+            });
 
-        var total_accounts = accounts.attributes.totalEntries.nodeValue;
-        var reg_hd = accounts.getElementsByTagName('woHD')[0].textContent;
-        var reg_2048 = accounts.getElementsByTagName('wo2048')[0].textContent;
-        var reg_pulse = accounts.getElementsByTagName('woPulse')[0].textContent;
-        var reg_msae = accounts.getElementsByTagName('MSAE')[0].textContent;
-        var logins_day = x.getElementsByTagName('LoginsPastDay')[0].textContent;
-        var logins_week = x.getElementsByTagName('LoginsPastWeek')[0].textContent;
-        var peak_players = x.getElementsByTagName('PeakPlayerCount')[0].textContent;
+            // unfortunately if we put the html into the target file and just set it to 0 opacity so it doesn't show up,
+            // we won't be able to select the stats contents properly, because the warning has to be on top
+            // and its div has to take up the entire block    -b
+            document.getElementById("stats").innerHTML += '<div class="w-full h-full absolute flex items-center justify-center pb-5 z-50"><span class="text-[rgba(230,7,23,1)] text-sm" id="overview-error-message" style="opacity: 0">!!! ERROR FETCHING STATS !!!</span></div>';
 
-        if(x.length != 0) {
-            output += '<div id="statsListing" style="padding-left: 5px;">';
+            const flashTarget = document.getElementById("overview-error-message");
+            let visible = true;
 
-            output += '<h3 style="margin-bottom: 8px;">Peak Players Online: ' + peak_players + '</h3>';
-            output += '<h3 style="margin-bottom: 8px;">Logins (past 24 hours): ' + logins_day + '</h3>';
-            output += '<h3 style="margin-bottom: 8px;">Logins (past week): ' + logins_week + '</h3>';
-            output += '<h3>Accounts Registered: ' + total_accounts + '</h3>';
-            output += '<ul class="list-inside list-disc">';
-            output += '<li>WipEout HD: ' + reg_hd + '</li>';
-            output += '<li>WipEout 2048: ' + reg_2048 + '</li>';
-            output += '<li>WipEout Pulse: ' + reg_pulse + '</li>';
-            output += '<li>MotorStorm Arctic Edge: ' + reg_msae + '</li>';
-            output += '</ul>';
-
-            output += '</div><br>';
-            document.getElementById("stats").innerHTML = output; 
-        } else {
-            document.getElementById("stats").innerHTML = '<div id="statsListing" style="padding-left: 5px;"><h2>An API Error has occured.</h2></div>'; 
-        }
-    }).catch(error => {
-        console.error(`API fetch failed:`, error);
-        
-        document.getElementById("stats").innerHTML = '<div id="statsListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>'; 
-    });
-    document.getElementById("statsTitle").innerHTML = "Global Server Stats"; 
+            setInterval(() => {
+                flashTarget.style.opacity = visible ? '0' : '1';
+                visible = !visible;
+            }, 250);
+        });
 }
 
 fetchPlayers();

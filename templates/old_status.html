@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Thallium Status{% endblock %}
+{% block label %}API frontend / Backend status{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<section class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 py-10 px-6 lg:px-28">
+
+    <!-- div for left side guides -->
+    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+        {% call ui.status_box(
+            box_title='Who is online?',
+            title_id='playersTitle',
+            accent_color='113,62,255') %}
+
+                <div id="players"></div>
+
+        {% endcall %}
+
+        {% call ui.status_box(
+            box_title='Waddup?',
+            title_id='statsTitle',
+            accent_color='113,62,255') %}
+
+                <div id="stats"></div>
+
+        {% endcall %}
+    </div>
+
+    <!-- div for right side guides -->
+    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+        {% call ui.status_box(
+            box_title='What\'s going on?',
+            title_id='lobbiesTitle',
+            accent_color='113,62,255') %}
+
+                <div id="lobbies"></div>
+
+        {% endcall %}
+    </div>
+</section>
+<script src="/static/js/api_spammer_3000.js"></script>
+{% endblock %}

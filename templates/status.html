@@ -7,40 +7,57 @@
 {% endblock %}
 
 {% block content %}
-<section class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 py-10 px-6 lg:px-28">
+<div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
+    {{ ui.box_title('External Utility') }}
+    <div class="relative py-10 px-10 w-full bg-[rgba(246,246,246,1)] flex items-start justify-between">
+        <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute hidden top-3.5 left-3.5 lg:block select-none"/>
+        {{ ui.corners() }}
 
-    <!-- div for left side guides -->
-    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
-        {% call ui.status_box(
-            box_title='Who is online?',
-            title_id='playersTitle',
-            accent_color='113,62,255') %}
+        <div>
+            <!-- Server Stats -->
+            <section class="flex flex-col items-start">
+                <div>
+                    <h2 class="flex mb-1 text-xs">
+                        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
+                        BACKEND STATISTICS
+                    </h2>
+                </div>
+                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+                <article class="flex flex-col relative justify-between" id="stats">
 
-                <div id="players"></div>
+                    {% set primary_fields =
+                    {"Peak Players Online": "peakPlayers",
+                    "Logins (Past 24 Hours)": "loginsDay",
+                    "Logins (Past Week)": "loginsWeek",
+                    "Accounts Registered": "totalAccounts"}%}
 
-        {% endcall %}
+                    {% set sub_fields =
+                    {"WipEout HD Accounts": "regHD",
+                    "WipEout 2048 Accounts": "reg2048",
+                    "WipEout Pulse Accounts": "regPulse",
+                    "MotorStorm Arctic Edge Accounts": "regMSAE"}%}
 
-        {% call ui.status_box(
-            box_title='Waddup?',
-            title_id='statsTitle',
-            accent_color='113,62,255') %}
+                    {% for label, value in primary_fields.items() %}
+                    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center px-2 py-1.5 text-xs gap-x-7 z-30">
+                        <p class="stat-element">{{ label }}</p>
+                        <span class="stat-element text-[rgba(113,62,255,1)] text-right min-w-10" id="{{ value }}">...</span>
+                    </div>
+                    {% endfor %}
 
-                <div id="stats"></div>
+                    {% for label, value in sub_fields.items() %}
+                    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center px-2 py-1.5 text-xs gap-x-7 z-30">
+                        <ul class="stat-element  ml-4 list-disc">
+                            <li>{{ label }}</li>
+                        </ul>
+                        <span class="stat-element text-[rgba(113,62,255,1)] text-right min-w-10" id="{{ value }}">...</span>
+                    </div>
+                    {% endfor %}
+                </article>
+                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            </section>
 
-        {% endcall %}
+        </div>
     </div>
-
-    <!-- div for right side guides -->
-    <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
-        {% call ui.status_box(
-            box_title='What\'s going on?',
-            title_id='lobbiesTitle',
-            accent_color='113,62,255') %}
-
-                <div id="lobbies"></div>
-
-        {% endcall %}
-    </div>
-</section>
+</div>
 <script src="/static/js/api_spammer_3000.js"></script>
 {% endblock %}

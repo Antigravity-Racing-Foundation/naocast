@@ -2,6 +2,11 @@ from flask import Flask, make_response, render_template, abort, request, redirec
 from functools import lru_cache
 import requests
 
+# TODO for polishing up:
+# - review (and probably remake) base and 404 html's
+# - consider accessibility tools compatibility
+# - clean up naocast.py
+
 app = Flask(__name__)
 
 # you're free to dunk on me (bonk) for how ugly ts is
@@ -88,6 +93,10 @@ def leaderboards():
 @app.route("/status")
 def status():
     return render_template("status.html")
+
+@app.route("/old_status")
+def old_status():
+    return render_template("old_status.html")
 
 def eula(path):
     if path in EULA_URLS:
