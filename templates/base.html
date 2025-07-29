@@ -79,6 +79,11 @@
                 <img src="{{ url_for('static', filename='images/footer_ornament_barcode.svg') }}" alt="" class="w-22 hidden md:block"/>
                 <img src="{{ url_for('static', filename='images/footer_ornament_watermark_bonk.svg') }}" alt="" class="w-60 hidden sm:block"/>
             </div>
+            {% if (range(0,100) | random) > 98 %}
+            <a href="https://blackpeoplemeet.com/">
+                <img src="https://media1.tenor.com/m/1LSpeLalIMoAAAAd/accept-jesus-as-your-savior-and-win-a-free-psp.gif" class="ml-26 h-16"></img>
+            </a>
+            {% endif %}
             <div class="flex gap-y-2 flex-col items-end">
                 <img src="{{ url_for('static', filename='images/footer_ornament_box.svg') }}" alt="" class="w-32 hidden md:block"/>
                 <div class="gap-x-2 flex items-end">
