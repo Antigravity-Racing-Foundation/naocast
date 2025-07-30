@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}AGRF{% endblock %}</title>
+    <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
     <style>
         @font-face {
@@ -81,7 +82,7 @@
             </div>
             {% if (range(0,100) | random) > 98 %}
             <a href="https://blackpeoplemeet.com/">
-                <img src="https://media1.tenor.com/m/1LSpeLalIMoAAAAd/accept-jesus-as-your-savior-and-win-a-free-psp.gif" class="ml-26 h-16"></img>
+                <img src="{{ url_for('static', filename='images/psp.gif') }}" class="ml-26 h-16"></img>
             </a>
             {% endif %}
             <div class="flex gap-y-2 flex-col items-end">

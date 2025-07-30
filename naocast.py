@@ -3,9 +3,9 @@ from functools import lru_cache
 import requests
 
 # TODO for polishing up:
-# - review (and probably remake) base and 404 html's
 # - consider accessibility tools compatibility
 # - clean up naocast.py
+# - fix the way the top bar buttons are displayed on tiny screens
 
 app = Flask(__name__)
 

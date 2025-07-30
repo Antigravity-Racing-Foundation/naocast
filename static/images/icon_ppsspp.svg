@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="25.602085"
+   height="25.701"
+   viewBox="0 0 6.773885 6.8000563"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="icon_ppsspp.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#d82222"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="0.33217293"
+     inkscape:cx="-109.88252"
+     inkscape:cy="109.88252"
+     inkscape:window-width="1900"
+     inkscape:window-height="995"
+     inkscape:window-x="10"
+     inkscape:window-y="75"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <filter
+       id="cvfj"
+       x="-0.027155465"
+       y="-0.027291335"
+       width="1.0543109"
+       height="1.0636798"
+       color-interpolation-filters="sRGB"
+       inkscape:label="Drop shadow">
+      <feGaussianBlur
+         in="SourceAlpha"
+         result="blur"
+         stdDeviation="5"
+         id="feGaussianBlur4" />
+      <feColorMatrix
+         result="bluralpha"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.3 0 "
+         id="feColorMatrix4" />
+      <feOffset
+         dx="0"
+         dy="4"
+         in="bluralpha"
+         result="offsetBlur"
+         id="feOffset4" />
+      <feMerge
+         id="feMerge5">
+        <feMergeNode
+           in="offsetBlur"
+           id="feMergeNode4" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode5" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       id="cvff"
+       x1="396"
+       x2="379"
+       y1="-225"
+       y2="-368"
+       gradientTransform="matrix(0.08887023,0,0,0.08887023,4630.7471,49.008051)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient219"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient219">
+      <stop
+         style="stop-color:#dedede;stop-opacity:1;"
+         offset="0"
+         id="stop218" />
+      <stop
+         style="stop-color:#cecece;stop-opacity:1;"
+         offset="1"
+         id="stop219" />
+    </linearGradient>
+    <linearGradient
+       id="cvfe"
+       x1="450"
+       x2="433"
+       y1="-143"
+       y2="-242"
+       gradientTransform="matrix(0.08887023,0,0,0.08887023,4630.7471,49.008051)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient219"
+       inkscape:collect="always" />
+    <linearGradient
+       id="cvfd"
+       x1="490"
+       x2="442"
+       y1="-113"
+       y2="-202"
+       gradientTransform="matrix(0.08887023,0,0,0.08887023,4630.7471,49.008051)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient219"
+       inkscape:collect="always" />
+    <linearGradient
+       id="cvfg"
+       x1="447"
+       x2="425"
+       y1="-140"
+       y2="-268"
+       gradientTransform="matrix(0.08887023,0,0,0.08887023,4630.7471,49.008051)"
+       gradientUnits="userSpaceOnUse"
+       xlink:href="#linearGradient219"
+       inkscape:collect="always" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-194.20414,-62.706253)">
+    <g
+       id="g223"
+       transform="matrix(0.16360208,0,0,0.16360208,-563.5134,60.998487)">
+      <g
+         transform="matrix(0.08887023,0,0,0.08887023,4630.7466,49.008212)"
+         style="fill:#646464;filter:url(#cvfj)"
+         id="g8-2">
+        <path
+           d="m 267,-422 26.6,117 -56.6,91 -90.2,-57.5 -26.6,-117 z"
+           style="fill:#646464"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+           inkscape:export-xdpi="135"
+           inkscape:export-ydpi="135"
+           sodipodi:nodetypes="cccccc"
+           id="path5-61" />
+        <path
+           d="m 20.1,-230 117,-26.6 91,56.6 -57.5,90.2 -117,26.6 z"
+           style="fill:#646464"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+           inkscape:export-xdpi="135"
+           inkscape:export-ydpi="135"
+           sodipodi:nodetypes="cccccc"
+           id="path6-06" />
+        <path
+           d="m 213,17.7 -26.6,-117 56.6,-91 90.2,57.5 26.6,117 z"
+           style="fill:#646464"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+           inkscape:export-xdpi="135"
+           inkscape:export-ydpi="135"
+           sodipodi:nodetypes="cccccc"
+           id="path7-1" />
+        <path
+           d="m 462,-175 -117,26.6 -91,-56.6 57.5,-90.2 117,-26.6 z"
+           style="fill:#646464"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+           inkscape:export-xdpi="135"
+           inkscape:export-ydpi="135"
+           sodipodi:nodetypes="cccccc"
+           id="path8-59" />
+      </g>
+      <path
+         d="m 4653.465,13.266222 1.813,7.944999 -4.0259,6.274238 -6.3275,-3.919177 -1.813,-7.944999 z"
+         style="fill:url(#cvff);stroke-width:0.0888702"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+         inkscape:export-xdpi="135"
+         inkscape:export-ydpi="135"
+         sodipodi:nodetypes="cccccc"
+         id="path9-90" />
+      <path
+         d="m 4634.269,29.618344 7.945,-1.812952 6.2743,4.025821 -3.9192,6.327561 -7.945,1.812952 z"
+         style="fill:url(#cvfe);stroke-width:0.0888702"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+         inkscape:export-xdpi="135"
+         inkscape:export-ydpi="135"
+         sodipodi:nodetypes="cccccc"
+         id="path10-91" />
+      <path
+         d="m 4650.71,48.847196 -1.8129,-7.944998 4.0258,-6.274239 6.3275,3.919177 1.813,7.944999 z"
+         style="fill:url(#cvfd);stroke-width:0.0888702"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+         inkscape:export-xdpi="135"
+         inkscape:export-ydpi="135"
+         sodipodi:nodetypes="cccccc"
+         id="path11-7" />
+      <path
+         d="m 4670.0837,32.462192 -7.945,1.812952 -6.2742,-4.025821 3.9192,-6.32756 7.945,-1.812953 z"
+         style="fill:url(#cvfg);stroke-width:0.0888702"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="D:\Dev\Emulatorer\potemkin\android\source_assets\image\dir.png"
+         inkscape:export-xdpi="135"
+         inkscape:export-ydpi="135"
+         sodipodi:nodetypes="cccccc"
+         id="path12-7" />
+    </g>
+  </g>
+</svg>

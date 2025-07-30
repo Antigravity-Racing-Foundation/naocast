@@ -1,0 +1,111 @@
+<GetLobbyListing totalEntries="3">
+
+    <Lobby AppId="23360" GameId="33" MinPlayers="1" MaxPlayers="8" PlayerCount="1" PlayerListCurrent="ThatOneBonk+Vita" GameLevel="-688739104" PlayerSkillLevel="3" GameName="ThatOneBonk 2540" RuleSet="16" GenericField1="1" GenericField2="0" GenericField3="0" GenericField4="5" GenericField5="1" GenericField6="0" GenericField7="0" GenericField8="1" Metadata="" GameCreateDt="2025-03-15T06:59:12.1239524Z">
+        <GameStats stats="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000603d030000000100000000000000000000ffffffffffffff00010000000000000000416e756c7068615f506173735f520000000000000000000000000000000000003100000001546861744f6e65426f6e6b000000000000000000000000000000000000000000ff07050ec80000000f00000000000000000000000000000000000000000000000000000000000000000000000000000000">
+            <EditCount>3</EditCount>
+            <IsFury>0</IsFury>
+            <HostName>ThatOneBonk</HostName>
+            <TrackName>Anulpha_Pass_R</TrackName>
+            <TrackList totalEntries="12">
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+            </TrackList>
+            <LapCount>5</LapCount>
+            <RaceProgress>0</RaceProgress>
+            <LobbyConfigPrimary raw="31">
+                <Reserved1>1</Reserved1>
+                <Reserved2>0</Reserved2>
+                <Reserved3>0</Reserved3>
+                <Reserved4>0</Reserved4>
+                <Reserved5>1</Reserved5>
+                <Reserved6>1</Reserved6>
+                <Reserved7>0</Reserved7>
+                <Reserved8>0</Reserved8>
+            </LobbyConfigPrimary>
+            <LobbyConfigSecondary raw="0e">
+                <WeaponHints>0</WeaponHints>
+                <BRsAllowed>0</BRsAllowed>
+                <RespawnsOn>1</RespawnsOn>
+                <PilotAssistAllowed>1</PilotAssistAllowed>
+            </LobbyConfigSecondary>
+            <ElimTarget>200</ElimTarget>
+            <ZBTarget>15</ZBTarget>
+            <WeaponsConfigPrimary raw="ff">
+                <Rockets>1</Rockets>
+                <Missiles>1</Missiles>
+                <Quake>1</Quake>
+                <Turbo>1</Turbo>
+                <Shield>1</Shield>
+                <Cannon>1</Cannon>
+                <Autopilot>1</Autopilot>
+                <Plasma>1</Plasma>
+            </WeaponsConfigPrimary>
+            <WeaponsConfigSecondary raw="07">
+                <Bomb>1</Bomb>
+                <Mines>1</Mines>
+                <LeechBeam>1</LeechBeam>
+            </WeaponsConfigSecondary>
+        </GameStats>
+    </Lobby>
+
+    <Lobby AppId="20794" GameId="21" MinPlayers="1" MaxPlayers="8" PlayerCount="2" PlayerListCurrent="JustaGamerYTBE, Sweaty-scar" GameLevel="-815691312" PlayerSkillLevel="3" GameName="fxheemldn" RuleSet="14" GenericField1="21273" GenericField2="0" GenericField3="0" GenericField4="0" GenericField5="0" GenericField6="0" GenericField7="0" GenericField8="0" Metadata="" GameCreateDt="2025-03-14T16:04:32.4245501Z">
+        <GameStats stats="000000008902000083020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000101000000000000000000000000000000000102ffffffffffff00060001024d6f6120546865726d612057686974650057686974650000000000000000000032000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+            <EditCount>11</EditCount>
+            <RaceInProgress>1</RaceInProgress>
+            <Weapons>1</Weapons>
+            <TrackName>Moa Therma White</TrackName>
+            <TrackList totalEntries="12">
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+            </TrackList>
+        </GameStats>
+    </Lobby>
+
+    <Lobby AppId="20794" GameId="21" MinPlayers="1" MaxPlayers="8" PlayerCount="2" PlayerListCurrent="ChaCheeChoo, ThatOneBonk (PPSSPP)" GameLevel="-815691312" PlayerSkillLevel="3" GameName="ThatOneBonk" RuleSet="14" GenericField1="21273" GenericField2="0" GenericField3="0" GenericField4="0" GenericField5="0" GenericField6="0" GenericField7="0" GenericField8="0" Metadata="" GameCreateDt="2025-03-14T16:04:32.4245501Z">
+        <GameStats stats="000000008902000083020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000101000000000000000000000000000000000102ffffffffffff00060001024d6f6120546865726d612057686974650057686974650000000000000000000032000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+            <EditCount>11</EditCount>
+            <RaceInProgress>1</RaceInProgress>
+            <Weapons>1</Weapons>
+            <TrackName>Moa Therma White</TrackName>
+            <TrackList totalEntries="12">
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+                <TrackId>0</TrackId>
+            </TrackList>
+        </GameStats>
+    </Lobby>
+
+    <Lobby AppId="22204" GameId="22" MinPlayers="2" MaxPlayers="6" PlayerCount="3" PlayerListCurrent="LiquidMagic (PPSSPP), Sergio_Argual, CouldntBother (PPSSPP)" GameLevel="0" PlayerSkillLevel="14" GameName="LiquidMagic~5242a39" RuleSet="0" GenericField1="2" GenericField2="5" GenericField3="2" GenericField4="8" GenericField5="0" GenericField6="1" GenericField7="475" GenericField8="0" Metadata="" GameCreateDt="2025-03-14T16:10:23.824599Z">
+        <GameStats stats="4c69717569644d61676963000000000000000000000000000000000000000000436f756c646e74426f746865720000000000000000000000000000000000000053657267696f5f41726775616c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"></GameStats>
+    </Lobby>
+
+</GetLobbyListing>

@@ -9,7 +9,8 @@
 {% block content %}
 <div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('External Utility') }}
-    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex items-start justify-end">
+    <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-36 left-12 hidden lg:block select-none"/>
+    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex flex-col 2xl:flex-row gap-y-6 justify-start gap-x-12">
         <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute top-3.5 left-3.5 block select-none"/>
         <p class="absolute text-[0.45rem] text-right text-[rgba(222,222,222,1)] right-4 bottom-4 leading-tight hidden xl:block">
             EXTERNAL UTILITY LINKED - WSXS CONNECTION ESTABLISHED<br>
@@ -20,9 +21,47 @@
         </p>
         {{ ui.corners() }}
 
+        <section class="flex flex-grow flex-col">
+            <div>
+                <h2 class="flex mb-1 text-xs">
+                    <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
+                    PLAYER LIST
+                </h2>
+            </div>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <article class="flex relative flex-col max-h-116 w-full" id="player_list">
+                {% for _ in range(0,4) %}
+                <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>
+                {% endfor %}
+                <div class="flex flex-row bg-white justify-center items-center min-w-62 z-30">
+                    <p class="text-base 2xl:text-lg py-3 mx-18 text-[rgba(222,222,222,1)]" id="initial-text">RETRIEVING STATS...</p>
+                </div>
+                {% for _ in range(0,4) %}
+                <div class="flex flex-row {{ 'bg-white' if loop.index % 2 == 0 }} justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>
+                {% endfor %}
+            </article>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)] z-50"/>
+        </section>
+
+        <section class="flex flex-grow flex-col">
+            <div>
+                <h2 class="flex mb-1 text-xs">
+                    <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
+                    LOBBY LIST
+                </h2>
+            </div>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <article class="flex flex-col overflow-y-hide max-h-116 w-full">
+                <div class="flex flex-row justify-center items-center gap-x-7 min-w-62 px-4 z-30">
+                    <p class="text-base 2xl:text-lg py-55 text-[rgba(222,222,222,1)]">NO LOBBIES.</p>
+                </div>
+            </article>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+        </section>
+
         <div class="space-y-6">
             <!-- Guide -->
-            <section class="flex flex-col items-start">
+            <section class="flex flex-col flex-grow">
                 <div>
                     <h2 class="flex mb-1 text-xs">
                         <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
@@ -30,7 +69,7 @@
                     </h2>
                 </div>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
-                <article class="flex flex-col relative justify-between" id="stats">
+                <article class="flex flex-col relative justify-center items-center">
 
                     <p class="text-xs max-w-85 px-1.5 py-1.5">
                         Welcome to Holocorp Overview™!<br><br>
@@ -39,14 +78,14 @@
                         Lists may be scrollable.<br>
                         Status is updated every 30 seconds or on page refresh.<br><br>
 
-                        <span class="text-[rgba(222,222,222,1)]">This utility uses the RPCS3 logo, property of the RPCS3 projet, and the PPSSPP logo, property of the PPSSPP project.</span>
+                        <span class="text-[rgba(222,222,222,1)]">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
                     </p>
 
                 </article>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
             </section>
             <!-- Server Stats -->
-            <section class="flex flex-col items-start">
+            <section class="flex flex-col">
                 <div>
                     <h2 class="flex mb-1 text-xs">
                         <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
@@ -86,8 +125,8 @@
                 </article>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
             </section>
-
         </div>
+
     </div>
 </div>
 <script src="/static/js/api_spammer_3000.js"></script>

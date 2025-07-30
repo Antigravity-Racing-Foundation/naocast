@@ -1,0 +1,9 @@
+<GetPlayerCount totalEntries="7">
+    <Player AppId="23360" AccountId="10" AccountName="ThatOneBonk+Vita" GameId="52" GameName="ThatOneBonk e3dc"/>
+    <Player AppId="23360" AccountId="100" AccountName="BruhGaming+PS3 (nl) (RPCS3)" GameId="" GameName=""/>
+    <Player AppId="23360" AccountId="100" AccountName="fxheemldn+PS3 (gb)" GameId="" GameName=""/>
+    <Player AppId="20794" AccountId="87" AccountName="JustaGamerYTBE" GameId="54" GameName="fxheemldn"/>
+    <Player AppId="20794" AccountId="98" AccountName="Sweaty-scar" GameId="54" GameName="fxheemldn"/>
+    <Player AppId="20794" AccountId="105" AccountName="ThatOneBonk (PPSSPP)" GameId="53" GameName="ThatOneBonk"/>
+    <Player AppId="20794" AccountId="78" AccountName="ChaCheeChoo" GameId="53" GameName="ThatOneBonk"/>
+</GetPlayerCount>
