@@ -1,4 +1,7 @@
 const API_REFRESH_DELAY = 30000;
+let errorFlashInterval = null
+let emptyListFlashInterval = null
+let lastPlayerSnapshot = "";
 
 function getGameName(appId, username) {
     var gameName = "Unknown";
@@ -238,121 +241,114 @@ function getPlatform(appId, username) {
     return platform;
 }
 
-function fetchPlayers() {
-    // TODO i'll rewrite this tomorrow (if i don't please nuke my house)
-    fetch('http://localhost:5000/static/xml/GetPlayerCountExample.xml').then(response => {
-        if (!response.ok) {
-            throw new Error('API error');
-        }
-        return response.text();
-    }).then(xml => {
-        const parser = new DOMParser();
-        const xmlParsed = parser.parseFromString(xml, 'application/xml');
+function formatPlayerName({AppId, AccountName}) {
+    const raw = AccountName;
+    if (AppId === "23360" && raw.includes("+")) {
+        return raw.slice(0, raw.lastIndexOf('+'));
+    } else if (raw.includes(' ')) {
+        return raw.slice(0, raw.lastIndexOf(' '));
+    }
+    return raw;
+}
 
-        let x = xmlParsed.getElementsByTagName("Player");
-        let listingContent = ""
+function platformBadgeClass(platform) {
+    return ["PS3", "PSP", "PS VITA"].includes(platform) ? "w-8" : "w-6 mx-1";
+}
 
-        if(x.length != 0) {
-            document.getElementById("player_list").innerHTML = ''
-            if (x.length > 9) {
-                document.getElementById('player_list').classList.add('overflow-y-scroll');
-            }
+function renderPlayerError() {
+    const list = document.getElementById("player_list");
+    list.innerHTML = "";
+    list.classList.remove("overflow-y-scroll");
 
-            let paddingPanelCount = 9
-            let playerName = ""
-            let badgeParams = ""
-            let color = ""
+    const tmpl = document.getElementById("players-error");
+    const clone = tmpl.content.cloneNode(true);
+    list.appendChild(clone);
 
-            // per player loop
-            for (let i = 0; i < x.length; i++) {
+    const flashTarget = document.getElementById("players-error-message");
+    let visible = true;
 
-                //cut off name at + to exclude platform of hd/2048 players
-                if(x[i].attributes.AppId.nodeValue == "23360") {
-                    playerName = x[i].attributes.AccountName.nodeValue
-                    if(x[i].attributes.AccountName.nodeValue.includes('+')) {
-                        playerName = playerName.slice(0, x[i].attributes.AccountName.nodeValue.lastIndexOf('+'));
-                    }
-                } else {
-                    playerName = x[i].attributes.AccountName.nodeValue
-                    if(x[i].attributes.AccountName.nodeValue.includes(' ')) {
-                        playerName = playerName.slice(0, x[i].attributes.AccountName.nodeValue.lastIndexOf(' '));
-                    }
-                }
+    if (errorFlashInterval) clearInterval(errorFlashInterval);
+    errorFlashInterval = setInterval(() => {
+        flashTarget.style.opacity = visible ? '0' : '1';
+        visible = !visible;
+    }, 250);
+}
 
-                let playerGameName = getGameName(x[i].attributes.AppId.nodeValue, x[i].attributes.AccountName.nodeValue)
+function renderEmptyPlayers() {
+    const list = document.getElementById("player_list");
+    list.innerHTML = "";
+    list.classList.remove("overflow-y-scroll");
 
-                let playerPlatform = getPlatform(x[i].attributes.AppId.nodeValue, x[i].attributes.AccountName.nodeValue)
-                if (["PS3", "PSP", "PS VITA"].includes(playerPlatform)) {
-                    badgeParams = "w-8"
-                } else {
-                    badgeParams = "w-6 mx-1"
-                }
+    const tmpl = document.getElementById("players-empty");
+    const clone = tmpl.content.cloneNode(true);
+    list.appendChild(clone);
+}
 
-                if (i % 2 == 0) {
-                    color = "bg-white"
-                } else {
-                    color = ""
-                }
+function renderPlayers(players) {
+    const list = document.getElementById("player_list");
+    list.innerHTML = "";
+    list.classList.toggle("overflow-y-scroll", players.length > 9);
 
-                listingContent += `<div class="flex flex-row justify-between ${color} items-center gap-x-3 min-w-62 px-4 z-30"><p class="text-base 2xl:text-lg py-3">${playerName}</p><div class="flex flex-row items-center gap-x-2"><span class="text-[rgba(113,62,255,1)] text-xs text-right">${playerGameName}</span><img src="/static/images/icon_${playerPlatform.toLowerCase().replace(" ", "_")}.svg" alt="" class="${badgeParams} block select-none"/></div></div>`
+    const template_player = document.getElementById("player-panel-template");
+    const template_filler = document.getElementById("filler-panel-template");
+    const fillCount = 9;
 
-                paddingPanelCount -= 1
-            }
-            for(;paddingPanelCount > 0; paddingPanelCount--) {
-                if (paddingPanelCount % 2 != 0) {
-                    color = "bg-white"
-                } else {
-                    color = ""
-                }
-                listingContent += `<div class="flex flex-row justify-between ${color} items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>`
-            }
-        } else {
-            document.getElementById("player_list").innerHTML = ''
-            document.getElementById('player_list').classList.add('overflow-y-hide');
-            for (let i = 0; i < 4; i++) {
-                if(i % 2 == 0) {
-                    fillerBlock = '<div class="flex bg-white flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>'}
-                else fillerBlock = '<div class="flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>';
-                listingContent += fillerBlock
-            }
-            listingContent += '<div class="flex flex-row bg-white justify-center items-center gap-x-7 min-w-62 px-4 z-30"><p class="text-base 2xl:text-lg py-3 text-[rgba(222,222,222,1)]">NO PLAYERS.</p></div>'
-            for (let i = 0; i < 4; i++) {
-                if(i % 2 != 0) {
-                    fillerBlock = '<div class="flex bg-white flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>'}
-                else fillerBlock = '<div class="flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>';
-                listingContent += fillerBlock
-            }
-            // this is fucking stupid isn't it -b
-        }
+    players.forEach((player, index) => {
+        const clone = template_player.content.cloneNode(true);
+        const panel = clone.querySelector(".panel");
+        if (index % 2 === 0) panel.classList.add("bg-white");
 
-        document.getElementById("player_list").innerHTML += listingContent
+        const nameEl = clone.querySelector(".player-name");
+        nameEl.textContent = formatPlayerName(player);
 
-    }).catch(error => {
-        console.error(`API fetch failed:`, error);
+        clone.querySelector(".game-name").textContent =
+            getGameName(player.AppId, player.AccountName);
 
-        document.getElementById('player_list').classList.add('overflow-y-hide');
-        let fillerBlock = ""
-        let finalBlock = ""
+        const img = clone.querySelector(".platform-icon");
+        const platform = getPlatform(player.AppId, player.AccountName) || "unknown";
+        img.src = `/static/images/icon_${platform.toLowerCase().replace(" ", "_")}.svg`;
+        const classes = platformBadgeClass(platform).split(" ");
+        classes.forEach(c => img.classList.add(c));
 
-        for (let i = 0; i < 9; i++) {
-            if(i % 2 == 0) {
-                fillerBlock = '<div class="flex bg-white flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>'}
-            else fillerBlock = '<div class="flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>';
-            finalBlock += fillerBlock
-        }
-
-        finalBlock += '<div class="w-full h-full absolute flex items-center justify-center z-50"><span class="text-[rgba(230,7,23,1)] text-sm mt-2" id="players-error-message" style="opacity: 0">!!! ERROR FETCHING PLAYERS !!!</span></div>';
-
-        document.getElementById("player_list").innerHTML = finalBlock
-
-        const flashTarget = document.getElementById("players-error-message");
-        let visible = true;
-
-        setInterval(() => {
-            flashTarget.style.opacity = visible ? '0' : '1';
-            visible = !visible;
-        }, 250);
+        list.appendChild(clone);
     });
+
+    for (let i = fillCount - players.length; i > 0; i--) {
+        const clone = template_filler.content.cloneNode(true);
+        const panel = clone.querySelector(".filler-panel");
+        if (i % 2 !== 0) panel.classList.add("bg-white");
+        list.appendChild(clone);
+    }
+}
+
+function fetchPlayers() {
+    fetch('/static/xml/GetPlayerCountExample.xml')
+        .then(r => !r.ok ? Promise.reject("API error") : r.text())
+        .then(xml => {
+            const xmlParsed = new DOMParser().parseFromString(xml, 'application/xml');
+            const items = Array.from(xmlParsed.getElementsByTagName("Player"))
+            .map(el => ({
+                AppId: el.getAttribute("AppId"),
+                AccountName: el.getAttribute("AccountName")
+            }));
+
+            const currentSnapshot = JSON.stringify(items);
+            if (currentSnapshot === lastPlayerSnapshot) {
+                return;
+            }
+
+            lastPlayerSnapshot = currentSnapshot;
+
+            if (items.length === 0) {
+                renderEmptyPlayers();
+            } else {
+                renderPlayers(items);
+            }
+        })
+        .catch(err => {
+            console.error("API fetch failed:", err);
+            renderPlayerError();
+        });
 }
 
 function fetchLobbies() {
@@ -522,17 +518,17 @@ function fetchStats() {
 }
 
 fetchPlayers();
-fetchLobbies();
+// fetchLobbies();
 fetchStats();
 
 setInterval(fetchPlayers, API_REFRESH_DELAY);
-setInterval(fetchLobbies, API_REFRESH_DELAY);
-
+// setInterval(fetchLobbies, API_REFRESH_DELAY);
 
 const flashTargetRetrieve = document.getElementById("initial-text");
 let visible = true;
 
-setInterval(() => {
+if (emptyListFlashInterval) clearInterval(emptyListFlashInterval);
+    emptyListFlashInterval = setInterval(() => {
     flashTargetRetrieve.style.opacity = visible ? '0' : '1';
     visible = !visible;
 }, 250);
