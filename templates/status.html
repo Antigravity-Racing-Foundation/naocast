@@ -50,7 +50,7 @@
         </p>
         {{ ui.corners() }}
 
-        <section class="flex flex-grow 2xl:max-w-128 min-[1900px]:min-w-128 flex-col">
+        <section class="flex flex-grow 2xl:max-w-128 min-[1900px]:min-w-120 flex-col">
             <div>
                 <h2 class="flex mb-1 text-xs">
                     <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
@@ -98,9 +98,9 @@
                 <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
                 <article class="flex flex-grow py-4 px-3">
                     <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
-                        <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[rgba(0,155,238,1)] w-full">
-                            <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.png') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-6 py-14 object-contain select-none block min-[2300px]:hidden"/>
-                            <img src="{{ url_for('static', filename='images/ad_sayonara_landscape.png') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+                        <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[rgba(255,255,255,1)] w-full">
+                            <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
+                            <img src="{{ url_for('static', filename='images/ad_sayonara_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
                         </div>
                     </a>
                 </article>
