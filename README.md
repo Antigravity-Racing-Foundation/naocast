@@ -2,8 +2,9 @@
 Version 2 of the official AGRF website
 ## What is this?
 Naocast is the code name for [AGRF's new website](https://agracingfoundation.org/), replacing the first implementation (which is closed-source and can still be accessed at https://legacy.agracingfoundation.org/).
-Written from ground-up in Flask and Tailwind with some vanilla Javascript ported as a base for the Status page.
-### Features
+
+Written from ground-up in Flask and Tailwind with some vanilla Javascript ported from the legacy website as a base for the Status page.
+## Features
 Compared to the original website, Naocast features many improvements:
 - A more complete and accurate implementation of ThatOneBonk's original design concept - a near-perfect match;
 - Proper scaling for smaller screens (mobile devices);
