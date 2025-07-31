@@ -40,6 +40,7 @@
     <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-36 left-12 hidden lg:block select-none"/>
     <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex flex-col 2xl:flex-row gap-y-6 justify-start gap-x-12">
         <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute top-3.5 left-3.5 block select-none"/>
+        <img src="{{ url_for('static', filename='images/status_ornament_barcode.svg') }}" alt="" class="h-4.5 absolute top-4 right-4 hidden md:block select-none"/>
         <p class="absolute text-[0.45rem] text-right text-[rgba(222,222,222,1)] right-4 bottom-4 leading-tight hidden xl:block">
             EXTERNAL UTILITY LINKED - WSXS CONNECTION ESTABLISHED<br>
             THIS VIEWPORT IS CONTROLLED BY REMOTE HOST 2001:41d0:303:6f39::1/56<br>
@@ -94,9 +95,9 @@
                     </h2>
                 </div>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
-                <article class="flex flex-col relative justify-center items-center">
+                <article class="flex 2xl:max-w-85 flex-col relative justify-center items-start">
 
-                    <p class="text-xs max-w-85 px-1.5 py-1.5">
+                    <p class="text-xs px-1.5 py-1.5">
                         Welcome to Holocorp Overview™!<br><br>
 
                         This utility displays the backend status of Thallium+Beat by AGRF.<br>
