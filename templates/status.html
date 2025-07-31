@@ -38,7 +38,7 @@
 <div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('External Utility') }}
     <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-36 left-12 hidden lg:block select-none"/>
-    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex flex-col 2xl:flex-row gap-y-6 justify-start gap-x-12">
+    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex flex-col 2xl:flex-row gap-y-6 justify-between gap-x-12">
         <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute top-3.5 left-3.5 block select-none"/>
         <img src="{{ url_for('static', filename='images/status_ornament_barcode.svg') }}" alt="" class="h-4.5 absolute top-4 right-4 hidden md:block select-none"/>
         <p class="absolute text-[0.45rem] text-right text-[rgba(222,222,222,1)] right-4 bottom-4 leading-tight hidden xl:block">
@@ -50,7 +50,7 @@
         </p>
         {{ ui.corners() }}
 
-        <section class="flex flex-grow flex-col">
+        <section class="flex flex-grow 2xl:max-w-128 min-[1900px]:min-w-128 flex-col">
             <div>
                 <h2 class="flex mb-1 text-xs">
                     <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
@@ -69,23 +69,46 @@
             <hr class="w-full border-t-3 border-[rgba(100,100,100,1)] z-50"/>
         </section>
 
-        <section class="flex flex-grow flex-col">
+        <section class="flex flex-col">
             <div>
                 <h2 class="flex mb-1 text-xs">
                     <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
                     LOBBY LIST
                 </h2>
             </div>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
-            <article class="flex flex-col overflow-y-hide max-h-116 w-full">
-                <div class="flex flex-row justify-center items-center gap-x-7 min-w-62 px-4 z-30">
-                    <p class="text-base 2xl:text-lg py-55 text-[rgba(222,222,222,1)]">NO LOBBIES.</p>
+            <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+            <article class="flex flex-grow max-h-116 w-full justify-center overflow-y-scroll">
+                <div class="flex flex-col py-2 px-1 2xl:py-4 2xl:px-3 space-y-4 max-h-full">
+                    <img src="{{ url_for('static', filename='images/lobby_card_bg.svg') }}" alt="" aria-hidden="true" class="h-max 2xl:max-h-52 select-none"/>
+                    <img src="{{ url_for('static', filename='images/lobby_card_bg.svg') }}" alt="" aria-hidden="true" class="h-max 2xl:max-h-52 select-none"/>
+                    <img src="{{ url_for('static', filename='images/lobby_card_bg.svg') }}" alt="" aria-hidden="true" class="h-max 2xl:max-h-52 select-none"/>
                 </div>
             </article>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
         </section>
 
-        <div class="space-y-6">
+        <section class="flex flex-grow hidden min-[1900px]:block max-w-200">
+            <div class="flex flex-grow flex-col min-h-full">
+                <div>
+                    <h2 class="flex mb-1 text-xs">
+                        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
+                        OUR SPONSOR
+                    </h2>
+                </div>
+                <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+                <article class="flex flex-grow py-4 px-3">
+                    <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
+                        <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[rgba(0,155,238,1)] w-full">
+                            <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.png') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-6 py-14 object-contain select-none block min-[2300px]:hidden"/>
+                            <img src="{{ url_for('static', filename='images/ad_sayonara_landscape.png') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+                        </div>
+                    </a>
+                </article>
+                <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+            </div>
+        </section>
+
+        <div class="flex flex-col gap-y-6 2xl:gap-y-0 justify-between">
             <!-- Guide -->
             <section class="flex flex-col flex-grow">
                 <div>
@@ -119,7 +142,7 @@
                     </h2>
                 </div>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
-                <article class="flex w-full flex-col relative justify-between" id="stats">
+                <article class="flex w-full flex-col relative justify-between mb-0.5" id="stats">
 
                     {% set primary_fields =
                     {"Peak Players Online": "peakPlayers",

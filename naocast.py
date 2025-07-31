@@ -1,25 +1,38 @@
-from flask import Flask, make_response, render_template, abort, request, redirect, url_for
+import os
+import fnmatch
 from functools import lru_cache
+
 import requests
+from flask import (
+    Flask, make_response, render_template, abort,
+    request, redirect, url_for
+)
 
 # TODO for polishing up:
 # - consider accessibility tools compatibility
-# - clean up naocast.py
-# - fix the way the top bar buttons are displayed on tiny screens
 
 app = Flask(__name__)
 
-# you're free to dunk on me (bonk) for how ugly ts is
+def get_svg_preloads(patterns, folder='static/images'):
+    matched_files = []
+    for root, dirs, files in os.walk(folder):
+        for pattern in patterns:
+            for filename in fnmatch.filter(files, pattern):
+                rel_path = os.path.relpath(os.path.join(root, filename), 'static')
+                matched_files.append('/static/' + rel_path.replace(os.sep, '/'))
+    return matched_files
+
+_BASE_EULA_URL = "https://svo.agracingfoundation.org/external/assets/eula"
 EULA_URLS = {
-    "wipeout/hd":     "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",
-    "hd":     "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",
-    "wipeout/pulse":  "https://svo.agracingfoundation.org/external/assets/eula/Pulse/eula_full.txt",
-    "pulse":  "https://svo.agracingfoundation.org/external/assets/eula/Pulse/eula_full.txt",
-    "wipeout/2048":   "https://svo.agracingfoundation.org/external/assets/eula/2048/Global/eula_PEGI.txt",
-    "2048":   "https://svo.agracingfoundation.org/external/assets/eula/2048/Global/eula_PEGI.txt",
-    "motorstorm/ae":  "https://svo.agracingfoundation.org/external/assets/eula/AE/Global/eula_PEGI.txt",
-    "msae":  "https://svo.agracingfoundation.org/external/assets/eula/AE/Global/eula_PEGI.txt",
-    "":               "https://svo.agracingfoundation.org/external/assets/eula/HD/Global/eula_PEGI.txt",  # default
+    "wipeout/hd":     f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
+    "hd":             f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
+    "wipeout/pulse":  f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
+    "pulse":          f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
+    "wipeout/2048":   f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
+    "2048":           f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
+    "motorstorm/ae":  f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
+    "msae":           f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
+    "":               f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",  # default
 }
 
 UA_REDIRECTS = {
@@ -29,7 +42,7 @@ UA_REDIRECTS = {
 }
 
 @app.before_request
-def disallow_ps_vita():
+def disallow_old_clients():
     if request.endpoint == 'static':
         return
 
@@ -59,6 +72,10 @@ def get_eula(url: str):
         txt_content = "Could not load file content."
 
     return txt_content
+
+@app.context_processor
+def inject_preload_svgs():
+    return dict(preload_svgs=preload_svgs)
 
 @app.route("/")
 def home():
@@ -94,6 +111,10 @@ def leaderboards():
 def status():
     return render_template("status.html")
 
+@app.route("/why_we_have_ads")
+def ad_explainer():
+    return render_template("ad_explainer.html")
+
 @app.route("/old_status")
 def old_status():
     return render_template("old_status.html")
@@ -113,6 +134,9 @@ app.add_url_rule("/eulas/<path:path>", view_func=eula)
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
+
+preload_patterns = ['bar_ornament_*.svg', 'footer_ornament_*.svg', 'agrf.svg', 'corner_*.svg', 'text_ornament_*.svg']
+preload_svgs = get_svg_preloads(preload_patterns)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

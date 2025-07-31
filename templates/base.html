@@ -6,6 +6,13 @@
     <title>{% block title %}AGRF{% endblock %}</title>
     <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+
+    {% for svg in preload_svgs %}
+        <link rel="preload" href="{{ svg }}" as="image" type="image/svg+xml">
+    {% endfor %}
+
+    <link rel="preload" href="{{ url_for('static', filename='fonts/HelveticaNowMicro_Bold.otf') }}" as="font" type="font/otf" crossorigin="anonymous">
+
     <style>
         @font-face {
             font-family: 'Helvetica';
@@ -52,7 +59,7 @@
             "Status": "status",
             "EULA": "eula"} %}
 
-            <ul class="gap-x-1 flex items-center">
+            <ul class="gap-x-1 flex flex-col flex-row items-center">
 
                 {% for label, endpoint in buttons.items() %}
 

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Hold on!{% endblock %}
+{% block label %}Subdirectory view / Data fragment{% endblock %}
+
+{% block content %}
+<div class="h-full flex-grow w-screen px-6 lg:px-28 mt-10 pb-10 xl:mt-30 xl:mb-6 flex items-center justify-center">
+    <article class="items-start">
+        <h2 class="flex mb-1 text-sm">
+          <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
+          Information Flyout
+        </h2>
+        <div class="relative px-6 py-6 bg-[rgba(246,246,246,1)]">
+            {{ ui.corners() }}
+            <h3 class="text-lg md:text-2xl leading-tight" style="color: rgba(113,62,255,1)">
+                Why we have ads
+            </h3>
+            <hr class="w-full border-t-4 mt-2 mb-1 border-[rgba(222,222,222,1)]"/>
+            <div class="text-md md:text-xl leading-snug max-w-196">
+                We don't!<br><br>
+
+                What you see on the Status page if your screen is wide enough
+                is just a filler object - a decoration. We added it because we can't scale
+                other objects easily. The contents of the "ads" are in-universe ads or ads for actual game events.<br><br>
+
+                We're not popular enough to run actual ads :(
+            </div>
+        </div>
+    </article>
+</div>
+{% endblock %}
