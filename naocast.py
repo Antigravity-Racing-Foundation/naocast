@@ -8,9 +8,6 @@ from flask import (
     request, redirect, url_for
 )
 
-# TODO for polishing up:
-# - consider accessibility tools compatibility
-
 app = Flask(__name__)
 
 def get_svg_preloads(patterns, folder='static/images'):
