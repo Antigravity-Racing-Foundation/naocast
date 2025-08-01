@@ -1,4 +1,7 @@
 const API_REFRESH_DELAY = 30000;
+const PLAYER_API_URL = "/static/xml/GetPlayerCountExample.xml";
+const LOBBY_API_URL = "/static/xml/GetLobbyListingExample.xml";
+const SERVER_STATS_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetServerStats";
 let errorFlashInterval = null
 let emptyListFlashInterval = null
 let lastPlayerSnapshot = "";
@@ -322,7 +325,7 @@ function renderPlayers(players) {
 }
 
 function fetchPlayers() {
-    fetch('/static/xml/GetPlayerCountExample.xml')
+    fetch(PLAYER_API_URL)
         .then(r => !r.ok ? Promise.reject("API error") : r.text())
         .then(xml => {
             const xmlParsed = new DOMParser().parseFromString(xml, 'application/xml');
@@ -352,7 +355,7 @@ function fetchPlayers() {
 }
 
 function fetchLobbies() {
-    fetch('http://localhost:5000/static/xml/GetLobbyListingExample.xml').then(response => {
+    fetch(LOBBY_API_URL).then(response => {
         if (!response.ok) {
             throw new Error('API error');
         }
@@ -465,7 +468,7 @@ function fetchLobbies() {
 }
 
 function fetchStats() {
-    fetch('https://svo.agracingfoundation.org/medius_db/api/GetServerStats')
+    fetch(SERVER_STATS_API_URL)
         .then(response => {
             if (!response.ok) throw new Error('API error');
             return response.text();
