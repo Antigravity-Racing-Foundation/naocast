@@ -1,10 +1,38 @@
 const API_REFRESH_DELAY = 30000;
-const PLAYER_API_URL = "/static/xml/GetPlayerCountExample.xml";
-const LOBBY_API_URL = "/static/xml/GetLobbyListingExample.xml";
+
+const PLAYER_API_LOCAL_URL = "/static/xml/GetPlayerCountExample.xml";
+const LOBBY_API_LOCAL_URL = "/static/xml/GetLobbyListingExample.xml";
+
+const PLAYER_API_REMOTE_URL = "https://svo.agracingfoundation.org/medius_db/api/GetPlayerCount";
+const LOBBY_API_REMOTE_URL = "https://svo.agracingfoundation.org/medius_db/api/GetLobbyListing";
+
 const SERVER_STATS_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetServerStats";
-let errorFlashInterval = null
-let emptyListFlashInterval = null
+
+let currentAPIEndpoint = "local";
+let PLAYER_API_URL = "/static/xml/GetPlayerCountExample.xml";
+let LOBBY_API_URL = "/static/xml/GetLobbyListingExample.xml";
+
+let errorFlashInterval = null;
+let emptyListFlashInterval = null;
 let lastPlayerSnapshot = "";
+
+const status = {
+    // this is probably bad but i feel like shit right now and cba to make it better  -b
+    toggleAPIsRemoteLocal() {
+        if (currentAPIEndpoint == "remote") {
+            PLAYER_API_URL = PLAYER_API_LOCAL_URL
+            LOBBY_API_URL = LOBBY_API_LOCAL_URL
+            currentAPIEndpoint = "local"
+        } else {
+            PLAYER_API_URL = PLAYER_API_REMOTE_URL
+            LOBBY_API_URL = LOBBY_API_REMOTE_URL
+            currentAPIEndpoint = "remote"
+        }
+        fetchPlayers();
+        // fetchLobbies();
+        console.log(`Fetching from ${currentAPIEndpoint} API now!`)
+    },
+};
 
 function getGameName(appId, username) {
     var gameName = "Unknown";
