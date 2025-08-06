@@ -78,6 +78,11 @@
         </nav>
     </header>
 
+    <div class="mx-4 mt-4 px-4 py-4 flex relative items-center justify-between select-none bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(200,7,23,0.15),_transparent)] hidden">
+        {{ ui.corners() }}
+        <p class="text-[rgba(100,100,100,1)] text-sm">EVERYTHING WORKS FINE AND THERE AREN'T ANY ISSUES. Thank you for your attention.</p>
+    </div>
+
     <main class="flex-grow relative text-[rgba(100,100,100,1)]">
         {% block content %}{% endblock %}
     </main>
