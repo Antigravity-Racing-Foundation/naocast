@@ -59,13 +59,13 @@
 </section>
 
 <div class="mx-6 lg:mx-10 text-center">
-    <h2 class="text-base md:text-lg">
+    <h2 class="text-sm md:text-lg">
         <!-- there's totally more elegant way to do this but i'm currently lazy  -->
-        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="ml-3 mt-1 inline-block align-text-top select-none"/>
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="ml-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
         CONFIG INSTRUCTIONS FOLLOW
-        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_blue.svg') }}" alt="" class="mr-3 mt-1 inline-block align-text-top select-none"/>
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_blue.svg') }}" alt="" class="mr-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
     </h2>
-    <hr class="w-full border-t-6 border-[rgba(222,222,222,1)]" />
+    <hr class="w-full border-t-4 sm:border-t-6 border-[rgba(222,222,222,1)]" />
 </div>
 
 <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-30 left-4 hidden lg:block select-none"/>
