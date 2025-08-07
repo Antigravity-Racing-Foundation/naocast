@@ -51,6 +51,31 @@
         </p>
         {{ ui.corners() }}
 
+        <!-- Guide (Mobile) -->
+        <section class="flex flex-col flex-grow block 2xl:hidden">
+            <div>
+                <h2 class="flex mb-1 text-xs">
+                    <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
+                    INFORMATION
+                </h2>
+            </div>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <article class="flex 2xl:max-w-85 flex-col relative justify-center items-start">
+
+                <p class="2xl:text-xs md:text-base text-sm px-1.5 py-1.5">
+                    Welcome to Holocorp Overview™!<br><br>
+
+                    This utility displays the backend status of Thallium+Beat by AGRF.<br>
+                    Lists may be scrollable (in both axis!)<br>
+                    Status is updated every 30 seconds or on page refresh.<br><br>
+
+                    <span class="text-[rgba(222,222,222,1)]">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
+                </p>
+
+            </article>
+            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+        </section>
+
         <!-- Player list -->
         <section class="flex flex-grow 2xl:max-w-128 min-[1900px]:min-w-120 flex-col">
             <div>
@@ -83,12 +108,12 @@
             <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">
                 <div class="flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
 
-                    {% for _ in range(0,1) %}
+                    {% for _ in range(0,4) %}
 
                     <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4">
                         <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="max-h-52 select-none hidden 2xl:block"/>
                         <div class="2xl:absolute left-0 top-0 2xl:px-3 2xl:h-[31%] flex items-center">
-                            <p class="md:text-sm sm:text-xs text-xs leading-tight">
+                            <p class="md:text-sm sm:text-xs text-xs leading-tight md:max-w-full max-w-60">
                                 <span class="text-[rgba(138,192,202,1)]">WipEout HD</span> lobby<br>
                                 ThatOneBonk (8/8) // Phantom Single Race
                             </p>
@@ -134,8 +159,8 @@
         </section>
 
         <div class="flex flex-col gap-y-6 2xl:gap-y-0 justify-between">
-            <!-- Guide -->
-            <section class="flex flex-col flex-grow">
+            <!-- Guide (Desktop) -->
+            <section class="flex flex-col flex-grow hidden 2xl:block">
                 <div>
                     <h2 class="flex mb-1 text-xs">
                         <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
