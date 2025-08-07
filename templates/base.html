@@ -54,15 +54,26 @@
         </div>
         <nav class="gap-x-6 flex items-center">
 
-            {% set buttons =
-            {"News": "news",
-            "Boards": "leaderboards",
-            "Status": "status",
+            {% set buttons_active =
+            {"Status": "status",
             "EULA": "eula"} %}
+
+            {% set buttons_inactive =
+            {"News": "news",
+            "Boards": "leaderboards"} %}
 
             <ul class="gap-x-1 flex flex-col min-[350px]:flex-row items-center">
 
-                {% for label, endpoint in buttons.items() %}
+                {% for label, endpoint in buttons_inactive.items() %}
+
+                <li>
+                    <span class="text-[rgba(110,110,110,1)] focus:underline text-sm sm:text-lg" title="Coming soon!">{{ label }}</span>
+                    <span class="text-[rgba(110,110,110,1)] text-base sm:text-xl min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
+                </li>
+
+                {% endfor %}
+
+                {% for label, endpoint in buttons_active.items() %}
 
                 <li>
                     <a href="{{ url_for(endpoint) }}" class="text-[rgba(113,62,255,1)] hover:underline focus:underline text-sm sm:text-lg">{{ label }}</a>
@@ -71,7 +82,7 @@
                     {% endif %}
                 </li>
 
-            {% endfor %}
+                {% endfor %}
             </ul>
             <img src="{{ url_for('static', filename='images/bar_ornament_kana.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
             <img src="{{ url_for('static', filename='images/bar_ornament_dots.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
