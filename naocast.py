@@ -47,8 +47,7 @@ def disallow_old_clients():
         return
 
     if request.cookies.get('redirect_to_legacy') == '1':
-        # FIXME change to legacy.agrf.org when going live
-        return redirect('https://agracingfoundation.org/', code=301)
+        return redirect('https://legacy.agracingfoundation.org/', code=301)
 
     ua = request.headers.get('User-Agent', '')
 
