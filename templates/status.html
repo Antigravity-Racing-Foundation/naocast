@@ -17,11 +17,11 @@
     </div>
 </template>
 <template id="filler-panel-template">
-    <div class="filler-panel flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 py-6.5 z-30"></div>
+    <div class="filler-panel flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 md:py-6.5 py-5.5 z-30"></div>
 </template>
 <template id="players-empty">
     {% for _ in range(0,9) %}
-    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center min-w-90 px-8 py-6.5 z-30"></div>
+    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
     {% endfor %}
     <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
         <p class="text-base 2xl:text-lg mt-1 text-[rgba(222,222,222,1)]">NO PLAYERS.</p>
@@ -29,7 +29,7 @@
 </template>
 <template id="players-error">
     {% for _ in range(0,9) %}
-    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center min-w-90 px-8 py-6.5 z-30"></div>
+    <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
     {% endfor %}
     <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
         <p class="text-sm mt-2 text-[rgba(230,7,23,1)]" id="players-error-message" style="opacity: 1">!!! ERROR FETCHING PLAYERS !!!</p>
@@ -62,10 +62,10 @@
             <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
             <article class="flex relative flex-col max-h-116 w-full" id="player_list">
                 {% for _ in range(0,9) %}
-                <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center min-w-90 px-8 py-6.5 z-30"></div>
+                <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
                 {% endfor %}
                 <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-                    <p class="text-base 2xl:text-lg py-3 mx-18 mt-1 text-[rgba(222,222,222,1)]" id="initial-text" style="opacity: 0">RETRIEVING STATS...</p>
+                    <p class="text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-[rgba(222,222,222,1)]" id="initial-text" style="opacity: 0">RETRIEVING STATS...</p>
                 </div>
             </article>
             <hr class="w-full border-t-3 border-[rgba(100,100,100,1)] z-50"/>
@@ -80,9 +80,8 @@
                 </h2>
             </div>
             <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
-            <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll">
-                <div class="flex 2xl:flex-col flex-row py-2 px-1 2xl:py-4 2xl:px-3 2xl:space-y-4 space-x-4 max-h-full">
-                <!-- space-y-4 should be appended only when there's one card! handle this in js! -->
+            <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">
+                <div class="flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
 
                     {% for _ in range(0,1) %}
 
@@ -129,99 +128,6 @@
                         <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
                     </div>
 
-                    <!-- <div class="relative 2xl:bg-transparent 2xl:block 2xl:p-0 p-25 w-screen flex items-left justify-start bg-white">
-                        <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 lg:h-96 md:h-84 select-none hidden 2xl:block"/>
-                        <div class="absolute top-0 left-0 2xl:px-3 px-5 py-2 w-full 2xl:h-[31%] flex items-center overflow-hidden">
-                            <p class="2xl:text-sm md:text-xl text-[0.5rem] leading-tight">
-                                <span class="text-[rgba(138,192,202,1)]">WipEout HD</span> lobby<br>
-                                ThatOneBonk (8/8) // Phantom Single Race
-                            </p>
-                        </div>
-                        <div class="absolute 2xl:text-xs md:text-xl text-[0.5rem] bottom-0 left-0 w-full 2xl:h-[69%] pl-[4%] pr-[7%] py-2 flex flex-row justify-between items-start">
-                            <p class="leading-tight">
-                                - ThatOneBonk<br>
-                                - Patrex<br>
-                                - Ame_Chan<br>
-                                - yel<br>
-                                - jwelsh2004<br>
-                                - Naotyu_WZ<br>
-                                - CelestialEmotion<br>
-                                - MaxiMars08<br>
-                            </p>
-                            <p class="leading-tight text-right">
-                                [PS Vita]<br>
-                                [PS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                            </p>
-                        </div>
-                    </div> -->
-                    <!-- <div class="relative">
-                        <img src="{{ url_for('static', filename='images/lobby_card_pulse.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 md:h-96 select-none"/>
-                        <div class="absolute top-0 left-0 px-3 py-2 w-full h-[31%] flex items-center overflow-hidden">
-                            <p class="text-sm leading-tight">
-                                <span class="text-[rgba(33,147,152,1)]">WipEout Pulse</span> lobby<br>
-                                tiraborson (8/8) // Phantom Single Race
-                            </p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 w-full h-[69%] pl-[4%] pr-[7%] py-2 flex flex-row justify-between items-start">
-                            <p class="text-xs leading-tight">
-                                - tiraborson<br>
-                                - fxheemldn<br>
-                                - dRoastedcat<br>
-                                - Spade<br>
-                                - eagle-eyes777<br>
-                                - LadyWhite12<br>
-                                - Kabelsalat<br>
-                                - ChaCheeChoo<br>
-                            </p>
-                            <p class="text-xs leading-tight text-right">
-                                [PSP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PSP]<br>
-                                [PSP]<br>
-                                [PSP]<br>
-                            </p>
-                        </div>
-                    </div> -->
-                    <!-- <div class="relative">
-                        <img src="{{ url_for('static', filename='images/lobby_card_ae.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 md:h-96 select-none"/>
-                        <div class="absolute top-0 left-0 px-3 py-2 w-full h-[31%] flex items-center overflow-hidden">
-                            <p class="text-sm leading-tight">
-                                <span class="text-[rgba(140,210,255,1)]">MotorStorm Arctic Edge</span> lobby<br>
-                                sex (8/8)
-                            </p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 w-full h-[69%] pl-[4%] pr-[7%] py-2 flex flex-row justify-between items-start">
-                            <p class="text-xs leading-tight">
-                                - sex<br>
-                                - chingchong<br>
-                                - dickhead<br>
-                                - cockswing<br>
-                                - assblaster1337<br>
-                                - PussyDestroyer69<br>
-                                - LigmaDodger<br>
-                                - DieselHuffer<br>
-                            </p>
-                            <p class="text-xs leading-tight text-right">
-                                [PSP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PPSSPP]<br>
-                                [PSP]<br>
-                                [PSP]<br>
-                                [PSP]<br>
-                            </p>
-                        </div>
-                    </div> -->
                 </div>
             </article>
             <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
