@@ -4,29 +4,36 @@
 {% block label %}API frontend / Backend status{% endblock %}
 
 {% block head %}
+    <link rel="preload" href="/static/images/lobby_card_blank.svg" as="image" type="image/svg+xml">
 {% endblock %}
 
 {% block content %}
+
+<!-- Player list templates -->
+
 <template id="player-panel-template">
-    <div class="panel flex flex-row justify-between ${color} items-center gap-x-3 min-w-62 px-4 z-30">
-        <p class="player-name text-sm md:text-xl 2xl:text-lg py-3">${playerName}</p>
+    <div class="panel flex flex-row justify-between items-center gap-x-3 min-w-62 px-4 z-30">
+        <p class="player-name text-sm md:text-xl 2xl:text-lg py-3"></p>
         <div class="flex flex-row items-center gap-x-2">
             <span class="game-name text-[rgba(113,62,255,1)] md:text-xs text-[0.6rem] text-right"></span>
             <img alt="" class="platform-icon block select-none"/>
         </div>
     </div>
 </template>
+
 <template id="filler-panel-template">
     <div class="filler-panel flex flex-row justify-between items-center gap-x-7 min-w-62 px-8 md:py-6.5 py-5.5 z-30"></div>
 </template>
+
 <template id="players-empty">
     {% for _ in range(0,9) %}
     <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
     {% endfor %}
     <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-        <p class="text-base 2xl:text-lg mt-1 text-[rgba(222,222,222,1)]">NO PLAYERS.</p>
+        <p class="text-base 2xl:text-lg mt-1 text-[rgba(222,222,222,1)]">(NO PLAYERS.)</p>
     </div>
 </template>
+
 <template id="players-error">
     {% for _ in range(0,9) %}
     <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
@@ -35,6 +42,67 @@
         <p class="text-sm mt-2 text-[rgba(230,7,23,1)]" id="players-error-message" style="opacity: 1">!!! ERROR FETCHING PLAYERS !!!</p>
     </div>
 </template>
+
+<!-- Lobby list templates -->
+
+<template id="lobby-card-template">
+    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4">
+        <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="lobby-background max-h-52 select-none hidden 2xl:block"/>
+        <div class="2xl:absolute left-0 top-0 2xl:px-3 2xl:h-[31%] flex items-center">
+            <p class="md:text-sm sm:text-xs text-xs leading-tight md:max-w-full max-w-60">
+                <span class="game-name"></span> lobby<br>
+                <span class="lobby-settings"></span>
+            </p>
+        </div>
+        <hr class="w-full border-t-3 my-1 border-[rgba(222,222,222,1)] block 2xl:hidden"/>
+        <div class="2xl:absolute 2xl:h-[69%] 2xl:pl-4 2xl:pr-7 2xl:pt-2 left-0 bottom-0 2xl:text-xs md:text-sm text-xs w-full flex flex-row justify-between">
+            <p class="lobby-participants leading-tight">
+            </p>
+            <p class="lobby-participants-platforms text-right">
+            </p>
+        </div>
+    </div>
+</template>
+
+<template id="filler-card-template">
+    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block opacity-35">
+        <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
+    </div>
+</template>
+
+<template id="lobbies-empty">
+    <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
+        <p class="text-sm 2xl:text-lg text-[rgba(222,222,222,1)]" style="opacity: 0">(NO LOBBIES.)</p>
+    </div>
+
+    <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
+        <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
+    </div>
+
+    {% for _ in range(0,2) %}
+    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block opacity-35">
+        <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
+    </div>
+    {% endfor %}
+</template>
+
+<template id="lobbies-empty">
+    <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
+        <p class="text-sm text-[rgba(230,7,23,1)]" id="lobbies-error-message" style="opacity: 1">!!! ERROR FETCHING LOBBIES !!!</p>
+    </div>
+
+    <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
+        <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
+    </div>
+
+    {% for _ in range(0,2) %}
+    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block opacity-35">
+        <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
+    </div>
+    {% endfor %}
+</template>
+
+<!-- Page markup -->
 
 <div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('External Utility') }}
@@ -90,7 +158,7 @@
                 <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
                 {% endfor %}
                 <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-                    <p class="text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-[rgba(222,222,222,1)]" id="initial-text" style="opacity: 0">RETRIEVING STATS...</p>
+                    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-[rgba(222,222,222,1)]" style="opacity: 0">RETRIEVING STATS...</p>
                 </div>
             </article>
             <hr class="w-full border-t-3 border-[rgba(100,100,100,1)] z-50"/>
@@ -106,52 +174,21 @@
             </div>
             <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
             <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">
-                <div class="flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
+                <div class="relative flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
 
-                    {% for _ in range(0,4) %}
-
-                    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4">
-                        <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="max-h-52 select-none hidden 2xl:block"/>
-                        <div class="2xl:absolute left-0 top-0 2xl:px-3 2xl:h-[31%] flex items-center">
-                            <p class="md:text-sm sm:text-xs text-xs leading-tight md:max-w-full max-w-60">
-                                <span class="text-[rgba(138,192,202,1)]">WipEout HD</span> lobby<br>
-                                ThatOneBonk (8/8) // Phantom Single Race
-                            </p>
-                        </div>
-                        <hr class="w-full border-t-3 my-1 border-[rgba(222,222,222,1)] block 2xl:hidden"/>
-                        <div class="2xl:absolute 2xl:h-[69%] 2xl:pl-4 2xl:pr-7 2xl:pt-2 left-0 bottom-0 2xl:text-xs md:text-sm text-xs w-full flex flex-row justify-between">
-                            <p class="leading-tight">
-                                - ThatOneBonk<br>
-                                - Patrex<br>
-                                - Ame_Chan<br>
-                                - yel<br>
-                                - jwelsh2004<br>
-                                - Naotyu_WZ<br>
-                                - CelestialEmotion<br>
-                                - MaxiMars08<br>
-                            </p>
-                            <p class="leading-tight text-right">
-                                [PS Vita]<br>
-                                [PS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                                [PS3]<br>
-                                [RPCS3]<br>
-                            </p>
-                        </div>
+                    <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
+                        <p class="initial-text text-sm 2xl:text-lg text-[rgba(222,222,222,1)]" style="opacity: 0">RETRIEVING STATS...</p>
                     </div>
-
-                    {% endfor %}
 
                     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
                         <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
                     </div>
 
-                    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block">
+                    {% for _ in range(0,2) %}
+                    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block opacity-35">
                         <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
                     </div>
+                    {% endfor %}
 
                 </div>
             </article>
@@ -221,6 +258,7 @@
                         <span class="stat-element text-[rgba(113,62,255,1)] text-right min-w-10" id="{{ value }}">...</span>
                     </div>
                     {% endfor %}
+
                 </article>
                 <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
             </section>
@@ -246,7 +284,6 @@
                 <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
             </div>
         </section>
-
     </div>
 </div>
 <script src="/static/js/api_spammer_3000.js"></script>
