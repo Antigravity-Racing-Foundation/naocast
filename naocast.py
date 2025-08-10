@@ -131,7 +131,7 @@ app.add_url_rule("/eulas/<path:path>", view_func=eula)
 def page_not_found(e):
     return render_template("404.html"), 404
 
-preload_patterns = ['bar_ornament_*.svg', 'footer_ornament_*.svg', 'agrf.svg', 'corner_*.svg', 'text_ornament_*.svg']
+preload_patterns = ['bar_ornament_*.svg', 'footer_ornament_*.svg', 'agrf.svg', 'corner_*.svg', 'text_ornament_*.svg', 'lobby_card_*.svg']
 preload_svgs = get_svg_preloads(preload_patterns)
 
 if __name__ == "__main__":

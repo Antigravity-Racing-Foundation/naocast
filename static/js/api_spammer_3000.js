@@ -555,11 +555,13 @@ fetchStats();
 setInterval(fetchPlayers, API_REFRESH_DELAY);
 // setInterval(fetchLobbies, API_REFRESH_DELAY);
 
-const flashTargetRetrieve = document.getElementById("initial-text");
+const flashTargetsRetrieve = document.getElementsByClassName("initial-text");
 let visible = true;
 
 if (emptyListFlashInterval) clearInterval(emptyListFlashInterval);
     emptyListFlashInterval = setInterval(() => {
-    flashTargetRetrieve.style.opacity = visible ? '0' : '1';
+    for (let el of flashTargetsRetrieve) {
+        el.style.opacity = visible ? '0' : '1';
+    }
     visible = !visible;
 }, 250);
