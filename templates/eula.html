@@ -11,7 +11,7 @@
   <!-- EULA Picker -->
   <nav class="flex flex-col items-start px-6 lg:px-11 w-screen">
     {{ ui.box_title('Option Picker') }}
-    <div class="relative px-6 py-4 w-full bg-[rgba(222,222,222,1)] flex items-center justify-between">
+    <div class="relative px-6 py-4 w-full bg-nc-light-grey flex items-center justify-between">
       {{ ui.corners() }}
 
       <span class="hidden lg:block text-lg">View EULA for:</span>
@@ -24,10 +24,10 @@
       <div class="gap-x-1 select-none">
 
         {% for label, endpoint in buttons.items() %}
-        <a href="{{ url_for('eula', path=endpoint) }}" class="text-[rgba(113,62,255,1)] hover:underline focus:underline text-sm sm:text-lg whitespace-nowrap">{{ label }}</a>
+        <a href="{{ url_for('eula', path=endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-lg whitespace-nowrap">{{ label }}</a>
 
         {% if not loop.last %}
-        <span class="text-[rgba(110,110,110,1)] text-sm sm:text-lg">//</span>
+        <span class="text-nc-grey text-sm sm:text-lg">//</span>
         {% endif %}
 
         {% endfor %}
@@ -41,7 +41,7 @@
     <div class="relative px-6 py-6 w-full bg-white flex items-center justify-start">
       {{ ui.corners() }}
 
-      <pre class="text-[rgba(110,110,110,1)] text-base font-helvetica whitespace-pre-wrap break-words leading-tight w-full">{{ eula }}</pre>
+      <pre class="text-nc-grey text-base font-helvetica whitespace-pre-wrap break-words leading-tight w-full">{{ eula }}</pre>
     </div>
   </article>
 </section>

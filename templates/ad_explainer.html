@@ -10,12 +10,12 @@
           <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
           Information Flyout
         </h2>
-        <div class="relative px-6 py-6 bg-[rgba(246,246,246,1)]">
+        <div class="relative px-6 py-6 bg-nc-bg">
             {{ ui.corners() }}
-            <h3 class="text-lg md:text-2xl leading-tight text-[rgba(113,62,255,1)]">
+            <h3 class="text-lg md:text-2xl leading-tight text-agrf-strike">
                 Why do we have ads?
             </h3>
-            <hr class="w-full border-t-4 mt-2 mb-1 border-[rgba(222,222,222,1)]"/>
+            <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
             <div class="text-md md:text-xl leading-snug max-w-196">
                 We don't!<br><br>
 
@@ -24,7 +24,7 @@
                 other objects there easily. The contents of the "ads" are in-universe ads or promotions of actual game events.<br><br>
 
                 We're not popular enough to run actual ads :(<br><br>
-                <a href="{{ url_for('status') }}" class="hover:underline text-[rgba(138,192,202,1)]">[Want to go back to listing now?]</a>
+                <a href="{{ url_for('status') }}" class="hover:underline text-hd-blue">[Want to go back to listing now?]</a>
             </div>
         </div>
     </article>

@@ -15,7 +15,7 @@
     <div class="panel flex flex-row justify-between items-center gap-x-3 min-w-62 px-4 z-30">
         <p class="player-name text-sm md:text-xl 2xl:text-lg py-3"></p>
         <div class="flex flex-row items-center gap-x-2">
-            <span class="game-name text-[rgba(113,62,255,1)] md:text-xs text-[0.6rem] text-right"></span>
+            <span class="game-name text-agrf-statement md:text-xs text-[0.6rem] text-right"></span>
             <img alt="" class="platform-icon block select-none"/>
         </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
     {% endfor %}
     <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-        <p class="text-base 2xl:text-lg mt-1 text-[rgba(222,222,222,1)]">(NO PLAYERS.)</p>
+        <p class="text-base 2xl:text-lg mt-1 text-nc-light-grey">(NO PLAYERS.)</p>
     </div>
 </template>
 
@@ -39,7 +39,7 @@
     <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
     {% endfor %}
     <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-        <p class="text-sm mt-2 text-[rgba(230,7,23,1)]" id="players-error-message" style="opacity: 1">!!! ERROR FETCHING PLAYERS !!!</p>
+        <p class="text-sm mt-2 text-nc-fault" id="players-error-message" style="opacity: 1">!!! ERROR FETCHING PLAYERS !!!</p>
     </div>
 </template>
 
@@ -54,7 +54,7 @@
                 <span class="lobby-settings"></span>
             </p>
         </div>
-        <hr class="w-full border-t-3 my-1 border-[rgba(222,222,222,1)] block 2xl:hidden"/>
+        <hr class="w-full border-t-3 my-1 border-nc-light-grey block 2xl:hidden"/>
         <div class="2xl:absolute 2xl:h-[69%] 2xl:pl-4 2xl:pr-7 2xl:pt-2 left-0 bottom-0 2xl:text-xs md:text-sm text-xs w-full flex flex-row justify-between">
             <p class="lobby-participants leading-tight">
             </p>
@@ -72,11 +72,11 @@
 
 <template id="lobbies-empty">
     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
-        <p class="text-sm 2xl:text-lg text-[rgba(222,222,222,1)]" style="opacity: 0">(NO LOBBIES.)</p>
+        <p class="text-sm 2xl:text-lg text-nc-light-grey" style="opacity: 0">(NO LOBBIES.)</p>
     </div>
 
     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
-        <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
+        <span class="rotate-90 text-nc-light-grey text-sm">&lt&ltEOL&gt&gt</span>
     </div>
 
     {% for _ in range(0,2) %}
@@ -88,11 +88,11 @@
 
 <template id="lobbies-empty">
     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
-        <p class="text-sm text-[rgba(230,7,23,1)]" id="lobbies-error-message" style="opacity: 1">!!! ERROR FETCHING LOBBIES !!!</p>
+        <p class="text-sm text-nc-fault" id="lobbies-error-message" style="opacity: 1">!!! ERROR FETCHING LOBBIES !!!</p>
     </div>
 
     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
-        <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
+        <span class="rotate-90 text-nc-light-grey text-sm">&lt&ltEOL&gt&gt</span>
     </div>
 
     {% for _ in range(0,2) %}
@@ -107,10 +107,10 @@
 <div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('External Utility') }}
     <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-36 left-12 hidden lg:block select-none"/>
-    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-[rgba(246,246,246,1)] flex flex-col 2xl:flex-row gap-y-6 justify-between gap-x-12">
+    <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-nc-bg flex flex-col 2xl:flex-row gap-y-6 justify-between gap-x-12">
         <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute top-3.5 left-3.5 block select-none"/>
         <img src="{{ url_for('static', filename='images/status_ornament_barcode.svg') }}" alt="" class="h-4.5 absolute top-4 right-4 hidden md:block select-none"/>
-        <p class="absolute text-[0.45rem] text-right text-[rgba(222,222,222,1)] right-4 bottom-4 leading-tight hidden xl:block">
+        <p class="absolute text-[0.45rem] text-right text-nc-light-grey right-4 bottom-4 leading-tight hidden xl:block">
             EXTERNAL UTILITY LINKED - WSXS CONNECTION ESTABLISHED<br>
             THIS VIEWPORT IS CONTROLLED BY REMOTE HOST 2001:41d0:303:6f39::1/56<br>
             Copyleft 2205 Holocorp Overview v.2.6 (946dda0) This software is licensed under the AGPL license.<br>
@@ -127,7 +127,7 @@
                     INFORMATION
                 </h2>
             </div>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="w-full border-t-3 border-nc-grey"/>
             <article class="flex 2xl:max-w-85 flex-col relative justify-center items-start">
 
                 <p class="2xl:text-xs md:text-base text-sm px-1.5 py-1.5">
@@ -137,11 +137,11 @@
                     Lists may be scrollable (in both axis!)<br>
                     Status is updated every 30 seconds or on page refresh.<br><br>
 
-                    <span class="text-[rgba(222,222,222,1)]">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
+                    <span class="text-nc-light-grey">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
                 </p>
 
             </article>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="w-full border-t-3 border-nc-grey"/>
         </section>
 
         <!-- Player list -->
@@ -152,16 +152,16 @@
                     PLAYER LIST
                 </h2>
             </div>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="w-full border-t-3 border-nc-grey"/>
             <article class="flex relative flex-col max-h-116 w-full" id="player_list">
                 {% for _ in range(0,9) %}
                 <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
                 {% endfor %}
                 <div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-                    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-[rgba(222,222,222,1)]" style="opacity: 0">RETRIEVING STATS...</p>
+                    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-nc-light-grey" style="opacity: 0">RETRIEVING STATS...</p>
                 </div>
             </article>
-            <hr class="w-full border-t-3 border-[rgba(100,100,100,1)] z-50"/>
+            <hr class="w-full border-t-3 border-nc-grey z-50"/>
         </section>
 
         <!-- Lobby list -->
@@ -172,16 +172,16 @@
                     LOBBY LIST
                 </h2>
             </div>
-            <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="border-t-3 border-nc-grey"/>
             <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">
                 <div class="relative flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
 
                     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
-                        <p class="initial-text text-sm 2xl:text-lg text-[rgba(222,222,222,1)]" style="opacity: 0">RETRIEVING STATS...</p>
+                        <p class="initial-text text-sm 2xl:text-lg text-nc-light-grey" style="opacity: 0">RETRIEVING STATS...</p>
                     </div>
 
                     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
-                        <span class="rotate-90 text-[rgba(235,235,235,1)] text-sm">&lt&ltEOL&gt&gt</span>
+                        <span class="rotate-90 text-nc-light-grey text-sm">&lt&ltEOL&gt&gt</span>
                     </div>
 
                     {% for _ in range(0,2) %}
@@ -192,7 +192,7 @@
 
                 </div>
             </article>
-            <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+            <hr class="border-t-3 border-nc-grey"/>
         </section>
 
         <div class="flex flex-col gap-y-6 2xl:gap-y-0 justify-between">
@@ -204,7 +204,7 @@
                         INFORMATION
                     </h2>
                 </div>
-                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="w-full border-t-3 border-nc-grey"/>
                 <article class="flex 2xl:max-w-85 flex-col relative justify-center items-start">
 
                     <p class="2xl:text-xs md:text-base text-sm px-1.5 py-1.5">
@@ -214,11 +214,11 @@
                         Lists may be scrollable.<br>
                         Status is updated every 30 seconds or on page refresh.<br><br>
 
-                        <span class="text-[rgba(222,222,222,1)]">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
+                        <span class="text-nc-light-grey">This utility uses the RPCS3 logo, property of the RPCS3 project, and the PPSSPP logo, property of the PPSSPP project.</span>
                     </p>
 
                 </article>
-                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="w-full border-t-3 border-nc-grey"/>
             </section>
             <!-- Server Stats -->
             <section class="flex flex-col">
@@ -228,7 +228,7 @@
                         BACKEND STATISTICS
                     </h2>
                 </div>
-                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="w-full border-t-3 border-nc-grey"/>
                 <article class="flex w-full flex-col relative justify-between mb-0.5 2xl:text-xs md:text-base text-sm" id="stats">
 
                     {% set primary_fields =
@@ -246,7 +246,7 @@
                     {% for label, value in primary_fields.items() %}
                     <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center px-2 py-1.5 gap-x-7 z-30">
                         <p class="stat-element">{{ label }}</p>
-                        <span class="stat-element text-[rgba(113,62,255,1)] text-right min-w-10" id="{{ value }}">...</span>
+                        <span class="stat-element text-agrf-statement text-right min-w-10" id="{{ value }}">...</span>
                     </div>
                     {% endfor %}
 
@@ -255,12 +255,12 @@
                         <ul class="stat-element  ml-4 list-disc">
                             <li>{{ label }}</li>
                         </ul>
-                        <span class="stat-element text-[rgba(113,62,255,1)] text-right min-w-10" id="{{ value }}">...</span>
+                        <span class="stat-element text-agrf-statement text-right min-w-10" id="{{ value }}">...</span>
                     </div>
                     {% endfor %}
 
                 </article>
-                <hr class="w-full border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="w-full border-t-3 border-nc-grey"/>
             </section>
         </div>
 
@@ -272,8 +272,9 @@
                         OUR SPONSOR
                     </h2>
                 </div>
-                <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="border-t-3 border-nc-grey"/>
                 <article class="flex flex-grow py-4 px-3">
+                    <!-- TODO move ads to a dedicated template file -->
                     <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
                         <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[rgba(255,255,255,1)] w-full">
                             <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
@@ -281,7 +282,7 @@
                         </div>
                     </a>
                 </article>
-                <hr class="border-t-3 border-[rgba(100,100,100,1)]"/>
+                <hr class="border-t-3 border-nc-grey"/>
             </div>
         </section>
     </div>

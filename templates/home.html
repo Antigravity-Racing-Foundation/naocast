@@ -7,7 +7,7 @@
 <section class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('Introduction Flyout') }}
     <!-- section's inner container -->
-    <div class="relative pt-2 pb-8 px-8 w-full bg-[rgba(246,246,246,1)] flex items-start justify-between">
+    <div class="relative pt-2 pb-8 px-8 w-full bg-nc-bg flex items-start justify-between">
         {{ ui.corners() }}
         <!-- additional padding in the article because we want the image to be above the text slightly -->
         <article class="pt-6 space-y-3">
@@ -21,10 +21,10 @@
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt=""
                     class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
                 Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
-                of WipEout 2048's online features. We also support MotorStorm: Arctic Edge, with events held on the <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-[rgba(113,62,255,1)]">MS World Online Discord</a>!<br><br>
+                of WipEout 2048's online features. We also support MotorStorm: Arctic Edge, with events held on the <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-agrf-strike">MS World Online Discord</a>!<br><br>
                 Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <i><b>everything works!</b></i>
                 <br><br>
-                We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-[rgba(113,62,255,1)]">our WipEout Discord server</a>, including:
+                We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including:
             </h3>
 
             {% set events = [
@@ -65,7 +65,7 @@
         CONFIG INSTRUCTIONS FOLLOW
         <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_blue.svg') }}" alt="" class="mr-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
     </h2>
-    <hr class="w-full border-t-4 sm:border-t-6 border-[rgba(222,222,222,1)]" />
+    <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
 </div>
 
 <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-30 left-4 hidden lg:block select-none"/>
@@ -80,7 +80,7 @@
         {% call ui.guide_article(
             box_title='PLAYSTATION® 3 Setup Guide',
             guide_title='Thallium setup for PS3',
-            accent_color='113,62,255') %}
+            accent_color='153, 120, 255') %}
 
                 This process won't take longer than a minute.<br><br>
 
@@ -92,8 +92,8 @@
                     <li>On the Select a setting method screen, pick Custom</li>
                     <li>Continue the setup according to your preference, picking the default options whenever you are unsure until you reach the DNS Setting screen</li>
                     <li>Select Manual</li>
-                    <li>Set Primary DNS to {{ ui.highlight('147.135.213.57', '113,62,255') }}</li>
-                    <li>and the Secondary DNS to {{ ui.highlight('1.1.1.1', '113,62,255') }}</li>
+                    <li>Set Primary DNS to {{ ui.highlight('147.135.213.57', '153, 120, 255') }}</li>
+                    <li>and the Secondary DNS to {{ ui.highlight('1.1.1.1', '153, 120, 255') }}</li>
                     <li>Continue the setup as before and save your settings</li>
                     <li>Testing connection is optional</li>
                     <li>You should be done</li>

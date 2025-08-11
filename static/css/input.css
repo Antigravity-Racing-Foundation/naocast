@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@theme {
+    --color-agrf-strike: #713eff;
+    --color-agrf-statement: #8c66ff;
+    --color-agrf-whisper: #a79eff;
+    --color-nc-footer: #fcfcfc;
+    --color-nc-bg: #f6f6f6;
+    --color-nc-light-grey: #dedede;
+    --color-nc-grey: #646464;
+    --color-hd-blue: #8ac0ca;
+    --color-nc-fault: #ea0000;
+}

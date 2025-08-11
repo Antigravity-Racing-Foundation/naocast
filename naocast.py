@@ -111,10 +111,6 @@ def status():
 def ad_explainer():
     return render_template("ad_explainer.html")
 
-@app.route("/old_status")
-def old_status():
-    return render_template("old_status.html")
-
 def eula(path):
     if path in EULA_URLS:
         eula_text = get_eula(EULA_URLS[path])

@@ -25,12 +25,12 @@
               <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
               {{ box_title }}
             </h2>
-            <div class="relative px-6 py-6 bg-[rgba(246,246,246,1)]">
+            <div class="relative px-6 py-6 bg-nc-bg">
                 {{ corners() }}
                 <h3 class="text-lg md:text-xl leading-tight" style="color: rgba({{ accent_color }},1)">
                     {{ guide_title }}
                 </h3>
-                <hr class="w-full border-t-4 mt-2 mb-1 border-[rgba(222,222,222,1)]"/>
+                <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
                 <div class="text-sm md:text-lg leading-snug">
                     {{ caller() }}
                 </div>
@@ -44,12 +44,12 @@
               <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
               {{ box_title }}
             </h2>
-            <div class="relative px-6 py-6 bg-[rgba(246,246,246,1)]">
+            <div class="relative px-6 py-6 bg-nc-bg">
                 {{ corners() }}
                 <h3 id="{{ title_id }}" class="text-lg md:text-xl leading-tight" style="color: rgba({{ accent_color }},1)">
 
                 </h3>
-                <hr class="w-full border-t-4 mt-2 mb-1 border-[rgba(222,222,222,1)]"/>
+                <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
                 <div class="text-md md:text-lg leading-snug">
                     {{ caller() }}
                 </div>
