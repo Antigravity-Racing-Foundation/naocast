@@ -21,15 +21,17 @@ def get_svg_preloads(patterns, folder='static/images'):
 
 _BASE_EULA_URL = "https://svo.agracingfoundation.org/external/assets/eula"
 EULA_URLS = {
-    "wipeout/hd":     f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
-    "hd":             f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
-    "wipeout/pulse":  f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
-    "pulse":          f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
-    "wipeout/2048":   f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
-    "2048":           f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
-    "motorstorm/ae":  f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
-    "msae":           f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
-    "":               f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",  # default
+    "wipeout/hd":       f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
+    "hd":               f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
+    "wipeout/pulse":    f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
+    "pulse":            f"{_BASE_EULA_URL}/Pulse/eula_full.txt",
+    "wipeout/2048":     f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
+    "2048":             f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
+    "motorstorm/ae":    f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
+    "msae":             f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
+    "naocast":          f"/static/license/agpl.txt",
+    "site":             f"/static/license/agpl.txt",
+    "":                 f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",  # default
 }
 
 UA_REDIRECTS = {
@@ -57,15 +59,20 @@ def disallow_old_clients():
 
 @lru_cache(maxsize=16)
 def get_eula(url: str):
-    try:
-        response = requests.get(url)
-        response.encoding = 'utf-8'
-        response.raise_for_status()
-        txt_content = response.text\
-        .replace("Online Interactions Not Rated by PEGI", "Online Interactions Not Rated by the ESRB, PEGI or CERO")\
-        .replace("`", "'") # symbol ` doesn't render properly with our font :(
-    except requests.RequestException:
-        txt_content = "Could not load file content."
+    if url.startswith("/static"):
+        local_path = os.path.join(os.path.dirname(__file__), url.lstrip("/"))
+        with open(local_path, encoding="utf-8") as f:
+            txt_content = f.read()
+    else:
+        try:
+            response = requests.get(url)
+            response.encoding = 'utf-8'
+            response.raise_for_status()
+            txt_content = response.text\
+            .replace("Online Interactions Not Rated by PEGI", "Online Interactions Not Rated by the ESRB, PEGI or CERO")\
+            .replace("`", "'") # symbol ` doesn't render properly with our font :(
+        except requests.RequestException:
+            txt_content = "Could not load file content."
 
     return txt_content
 
@@ -122,6 +129,10 @@ app.add_url_rule("/eula", defaults={"path": ""}, view_func=eula)
 app.add_url_rule("/eulas/", defaults={"path": ""}, view_func=eula)
 app.add_url_rule("/eula/<path:path>", view_func=eula)
 app.add_url_rule("/eulas/<path:path>", view_func=eula)
+
+@app.route("/license")
+def horizon_license():
+    return make_response(redirect('https://github.com/Horizon-Private-Server/horizon-server/blob/master/LICENSE', code=301))
 
 @app.errorhandler(404)
 def page_not_found(e):

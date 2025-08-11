@@ -120,11 +120,17 @@
         <hr class="w-full border-t-6 border-nc-grey"/>
         <div class="bg-nc-footer py-3 w-full flex relative justify-center gap-x-5">
             <img src="{{ url_for('static', filename='images/footer_ornament_logos.svg') }}" alt="" class="w-56 hidden md:block select-none"/>
-            <p class="text-nc-light-grey text-xs max-w-[90%] md:max-w-[50%] leading-none">Copyleft 2025 No rights reserved. AGRF is not affiliated
-                with Sony Computer Entertainment or SCE Studio Liverpool. Thallium and Beat are AGRF efforts.
-                Transcendence is a syst_ins effort. Leaderboard information and Backend status are powered by Thallium API.
-                All trademarks belong to their respective owners. "PlayStation", "WipEout" and "MotorStorm" are registered trademarks of
-                Sony Computer Entertainment Inc. See our EULA for more information.</p>
+            <p class="text-nc-light-grey text-xs max-w-[90%] md:max-w-[50%] leading-tight">AGRF is not affiliated
+                with Sony Computer Entertainment or SCE Studio Liverpool. All trademarks belong to their respective owners.
+                "PlayStation", "WipEout" and "MotorStorm" are registered trademarks of Sony Computer Entertainment Inc.
+                This website is
+                <a href="https://github.com/Antigravity-Racing-Foundation/naocast" class="underline hover:text-agrf-whisper">
+                    free and open-source software</a>
+                licensed under
+                <a href="{{ url_for('eula', path='naocast') }}" class="underline hover:text-agrf-whisper">
+                    the AGPL license.</a>
+                Thallium+Beat is a preservation project by AGRF. See the EULA section of this website for more information
+                about Thallium+Beat's terms and conditions.</p>
         </div>
     </footer>
 
