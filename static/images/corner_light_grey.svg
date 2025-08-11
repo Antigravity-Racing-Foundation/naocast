@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
-   sodipodi:docname="corner_br_lightgrey.svg"
+   sodipodi:docname="corner_light_grey.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@
      inkscape:document-units="px"
      inkscape:zoom="5.3955976"
      inkscape:cx="17.236274"
-     inkscape:cy="-6.5794381"
+     inkscape:cy="-6.579438"
      inkscape:window-width="1900"
      inkscape:window-height="1019"
      inkscape:window-x="10"
@@ -43,6 +43,6 @@
     <path
        id="rect1-9-8-36-7"
        style="fill:#dedede;stroke:#646464;stroke-width:0;paint-order:markers fill stroke"
-       d="m 440.52972,18.519305 v -2.90889 h -0.87869 v 2.0302 h -2.0302 v 0.87869 z" />
+       d="m 437.62083,15.610415 v 2.90889 h 0.87869 v -2.0302 h 2.0302 v -0.87869 z" />
   </g>
 </svg>

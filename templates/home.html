@@ -49,10 +49,10 @@
             <div class="flex relative">
                 <img src="{{ url_for('static', filename='images/2048_teatime.webp') }}" alt="" class="max-h-[35rem] w-auto"/>
                 <!-- not using the corners macro since here the right corners must be a different color -->
-                <img src="{{ url_for('static', filename='images/corner_tl.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
-                <img src="{{ url_for('static', filename='images/corner_tr_lightgrey.svg') }}" class="absolute select-none top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
-                <img src="{{ url_for('static', filename='images/corner_bl.svg') }}" class="absolute select-none bottom-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
-                <img src="{{ url_for('static', filename='images/corner_br_lightgrey.svg') }}" class="absolute select-none bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+                <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+                <img src="{{ url_for('static', filename='images/corner_light_grey.svg') }}" class="absolute select-none rotate-90 top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+                <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none rotate-270 bottom-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+                <img src="{{ url_for('static', filename='images/corner_light_grey.svg') }}" class="absolute select-none rotate-180 bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
             </div>
         </figure>
     </div>
