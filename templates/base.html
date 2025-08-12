@@ -34,9 +34,9 @@
 
 </head>
 
-<body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,color-mix(in_srgb,var(--color-nc-grey)_20%,transparent),_transparent)] bg-no-repeat bg-cover flex flex-col min-h-screen overflow-x-hidden font-helvetica">
+<body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,var(--color-nc-bg-start),var(--color-nc-bg-end))] bg-no-repeat bg-cover flex flex-col min-h-screen overflow-x-hidden font-helvetica">
 
-    {% import "macros.html" as ui %}
+    {% import "macros_ui.html" as ui %}
 
     <!-- tiny screen scaling is fragile (test it when top bar buttons change and please redo this later!) -->
     <header class="mx-4 mt-4 px-4 py-4 min-[350px]:h-20 flex relative items-center justify-between select-none">
