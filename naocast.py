@@ -10,15 +10,6 @@ from flask import (
 
 app = Flask(__name__)
 
-def get_svg_preloads(patterns, folder='static/images'):
-    matched_files = []
-    for root, dirs, files in os.walk(folder):
-        for pattern in patterns:
-            for filename in fnmatch.filter(files, pattern):
-                rel_path = os.path.relpath(os.path.join(root, filename), 'static')
-                matched_files.append('/static/' + rel_path.replace(os.sep, '/'))
-    return matched_files
-
 _BASE_EULA_URL = "https://svo.agracingfoundation.org/external/assets/eula"
 EULA_URLS = {
     "wipeout/hd":       f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
@@ -75,10 +66,6 @@ def get_eula(url: str):
             txt_content = "Could not load file content."
 
     return txt_content
-
-@app.context_processor
-def inject_preload_svgs():
-    return dict(preload_svgs=preload_svgs)
 
 @app.route("/")
 def home():
@@ -137,9 +124,6 @@ def horizon_license():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
-
-preload_patterns = ['bar_ornament_*.svg', 'footer_ornament_*.svg', 'agrf.svg', 'corner_*.svg', 'text_ornament_*.svg', 'lobby_card_*.svg']
-preload_svgs = get_svg_preloads(preload_patterns)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

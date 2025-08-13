@@ -7,10 +7,6 @@
     <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 
-    {% for svg in preload_svgs %}
-        <link rel="preload" href="{{ svg }}" as="image" type="image/svg+xml">
-    {% endfor %}
-
     <link rel="preload" href="{{ url_for('static', filename='fonts/HelveticaNowMicro_Bold.otf') }}" as="font" type="font/otf" crossorigin="anonymous">
 
     <style>
@@ -37,6 +33,7 @@
 <body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,var(--color-nc-bg-start),var(--color-nc-bg-end))] bg-no-repeat bg-cover flex flex-col min-h-screen overflow-x-hidden font-helvetica">
 
     {% import "macros_ui.html" as ui %}
+    {% import "macros_svg.html" as svg %}
 
     <!-- tiny screen scaling is fragile (test it when top bar buttons change and please redo this later!) -->
     <header class="mx-4 mt-4 px-4 py-4 min-[350px]:h-20 flex relative items-center justify-between select-none">
@@ -84,8 +81,8 @@
 
                 {% endfor %}
             </ul>
-            <img src="{{ url_for('static', filename='images/bar_ornament_kana.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
-            <img src="{{ url_for('static', filename='images/bar_ornament_dots.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/>
+            {{ svg.bar_kana(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
+            {{ svg.bar_dots(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
         </nav>
     </header>
 
