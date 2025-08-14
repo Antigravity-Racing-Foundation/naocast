@@ -31,7 +31,7 @@ const status = {
             currentAPIEndpoint = "remote"
         }
         fetchPlayers();
-        // fetchLobbies();
+        fetchLobbies();
         console.log(`Fetching from ${currentAPIEndpoint} API now!`)
     },
 };
@@ -457,9 +457,6 @@ function renderLobbies(lobbies) {
             playerPlatform = getPlatform(lobby["AppId"], player);
             platformList += `[${playerPlatform}]<br>`
         });
-
-        console.log(playerList)
-        console.log(platformList)
 
         const gameNameElement = clone.querySelector(".game-name");
         gameNameElement.textContent = gameName;

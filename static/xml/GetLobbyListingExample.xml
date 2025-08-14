@@ -1,6 +1,6 @@
 <GetLobbyListing totalEntries="3">
 
-    <Lobby AppId="23360" GameId="33" MinPlayers="1" MaxPlayers="8" PlayerCount="1" PlayerListCurrent="ThatOneBonk+Vita" GameLevel="-688739104" PlayerSkillLevel="3" GameName="ThatOneBonk 2540" RuleSet="16" GenericField1="1" GenericField2="0" GenericField3="0" GenericField4="5" GenericField5="1" GenericField6="0" GenericField7="0" GenericField8="1" Metadata="" GameCreateDt="2025-03-15T06:59:12.1239524Z">
+    <Lobby AppId="23360" GameId="33" MinPlayers="1" MaxPlayers="8" PlayerCount="1" PlayerListCurrent="ThatOneBonk+Vita, ChaCheeChoo+Vita, Naotyu_WZ+PS3 (HK) (RPCS3)" GameLevel="-688739104" PlayerSkillLevel="3" GameName="ThatOneBonk 2540" RuleSet="16" GenericField1="1" GenericField2="0" GenericField3="0" GenericField4="5" GenericField5="1" GenericField6="0" GenericField7="0" GenericField8="1" Metadata="" GameCreateDt="2025-03-15T06:59:12.1239524Z">
         <GameStats stats="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000603d030000000100000000000000000000ffffffffffffff00010000000000000000416e756c7068615f506173735f520000000000000000000000000000000000003100000001546861744f6e65426f6e6b000000000000000000000000000000000000000000ff07050ec80000000f00000000000000000000000000000000000000000000000000000000000000000000000000000000">
             <EditCount>3</EditCount>
             <IsFury>0</IsFury>
@@ -59,29 +59,6 @@
     </Lobby>
 
     <Lobby AppId="20794" GameId="21" MinPlayers="1" MaxPlayers="8" PlayerCount="2" PlayerListCurrent="JustaGamerYTBE, Sweaty-scar" GameLevel="-815691312" PlayerSkillLevel="3" GameName="fxheemldn" RuleSet="14" GenericField1="21273" GenericField2="0" GenericField3="0" GenericField4="0" GenericField5="0" GenericField6="0" GenericField7="0" GenericField8="0" Metadata="" GameCreateDt="2025-03-14T16:04:32.4245501Z">
-        <GameStats stats="000000008902000083020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000101000000000000000000000000000000000102ffffffffffff00060001024d6f6120546865726d612057686974650057686974650000000000000000000032000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
-            <EditCount>11</EditCount>
-            <RaceInProgress>1</RaceInProgress>
-            <Weapons>1</Weapons>
-            <TrackName>Moa Therma White</TrackName>
-            <TrackList totalEntries="12">
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-                <TrackId>0</TrackId>
-            </TrackList>
-        </GameStats>
-    </Lobby>
-
-    <Lobby AppId="20794" GameId="21" MinPlayers="1" MaxPlayers="8" PlayerCount="2" PlayerListCurrent="ChaCheeChoo, ThatOneBonk (PPSSPP)" GameLevel="-815691312" PlayerSkillLevel="3" GameName="ThatOneBonk" RuleSet="14" GenericField1="21273" GenericField2="0" GenericField3="0" GenericField4="0" GenericField5="0" GenericField6="0" GenericField7="0" GenericField8="0" Metadata="" GameCreateDt="2025-03-14T16:04:32.4245501Z">
         <GameStats stats="000000008902000083020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000101000000000000000000000000000000000102ffffffffffff00060001024d6f6120546865726d612057686974650057686974650000000000000000000032000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
             <EditCount>11</EditCount>
             <RaceInProgress>1</RaceInProgress>
