@@ -23,13 +23,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="1.1373381"
-     inkscape:cx="263.77382"
-     inkscape:cy="197.39074"
+     inkscape:zoom="1.608439"
+     inkscape:cx="297.80427"
+     inkscape:cy="122.78986"
      inkscape:window-width="1900"
-     inkscape:window-height="1019"
+     inkscape:window-height="995"
      inkscape:window-x="10"
-     inkscape:window-y="51"
+     inkscape:window-y="75"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      showgrid="false" />
@@ -48,8 +48,8 @@
     <rect
        style="fill:#f6f6f6;fill-opacity:1;stroke:#ee111a;stroke-width:0;stroke-linecap:square;stroke-miterlimit:4.6;paint-order:markers fill stroke"
        id="rect418-2"
-       width="135.60701"
-       height="46.752178"
+       width="133.51331"
+       height="47.352009"
        x="95.514534"
        y="85.032463" />
     <g
@@ -89,5 +89,9 @@
          id="path9498"
          sodipodi:nodetypes="zcccsscccz" />
     </g>
+    <path
+       id="barcode_bar1"
+       style="fill:#f6f6f6;stroke-width:0.311546;fill-opacity:1"
+       d="m 231.57716,132.38441 h 3.78315 v -0.49843 h -3.78315 z m 0,-0.99689 h 3.78315 v -0.49843 h -3.78315 z m 0,-1.49532 h 3.78315 v -0.49844 h -3.78315 z m 0,-1.49533 h 3.78315 V 127.4 h -3.78315 z m 0,-1.99376 h 3.78315 v -0.99688 h -3.78315 z m 0,-1.99376 h 3.78315 v -0.49845 h -3.78315 z m 0,-1.99377 h 3.78315 v -0.49844 h -3.78315 z m 0,-0.99687 h 3.78315 v -0.99689 h -3.78315 z m 0,-1.49533 h 3.78315 v -1.49532 h -3.78315 z m 0,-1.99378 h 3.78315 v -0.99687 h -3.78315 z m 0,-1.99376 h 3.78315 v -0.49843 h -3.78315 z m 0,-1.49532 h 3.78315 v -0.99689 h -3.78315 z m 0,-1.99376 h 3.78315 v -0.49846 h -3.78315 z m 0,-1.49533 h 3.78315 v -0.99689 h -3.78315 z m 0,-1.49532 h 3.78315 v -0.49846 h -3.78315 z m 0,-0.99689 h 3.78315 v -0.49843 h -3.78315 z m 0,-0.99688 h 3.78315 v -1.49533 h -3.78315 z m 0,-2.4922 h 3.78315 v -0.49845 h -3.78315 z m 0,-0.99689 h 3.78315 v -0.49843 h -3.78315 z m 0,-0.99689 h 3.78315 v -0.49843 h -3.78315 z m 0,-2.49219 h 3.78315 v -0.498461 h -3.78315 z m 0,-1.993781 h 3.78315 v -0.49844 h -3.78315 z m 0,-1.495328 h 3.78315 v -0.498435 h -3.78315 z m 0,-0.99687 h 3.78315 v -0.498455 h -3.78315 z m 0,-2.492215 h 3.78315 v -1.495324 h -3.78315 z m 0,-1.99376 h 3.78315 v -0.498454 h -3.78315 z m 0,-1.495325 h 3.78315 v -0.996889 h -3.78315 z m 0,-1.993778 h 3.78315 v -0.996871 h -3.78315 z m 0,-1.495325 h 3.78315 v -0.498436 h -3.78315 z m 0,-0.996871 h 3.78315 v -0.498454 h -3.78315 z" />
   </g>
 </svg>

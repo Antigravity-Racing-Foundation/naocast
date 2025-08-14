@@ -12,9 +12,11 @@ let currentAPIEndpoint = "local";
 let PLAYER_API_URL = "/static/xml/GetPlayerCountExample.xml";
 let LOBBY_API_URL = "/static/xml/GetLobbyListingExample.xml";
 
-let errorFlashInterval = null;
-let emptyListFlashInterval = null;
+let errorFlashIntervalPlayers = null;
+let errorFlashIntervalLobbies = null;
+let initialListFlashInterval = null;
 let lastPlayerSnapshot = "";
+let lastLobbySnapshot = "";
 
 const status = {
     // this is probably bad but i feel like shit right now and cba to make it better  -b
@@ -272,7 +274,7 @@ function getPlatform(appId, username) {
     return platform;
 }
 
-function formatPlayerName({AppId, AccountName}) {
+function formatPlayerName(AppId, AccountName) {
     const raw = AccountName;
     if (AppId === "23360" && raw.includes("+")) {
         return raw.slice(0, raw.lastIndexOf('+'));
@@ -298,8 +300,8 @@ function renderPlayerError() {
     const flashTarget = document.getElementById("players-error-message");
     let visible = true;
 
-    if (errorFlashInterval) clearInterval(errorFlashInterval);
-    errorFlashInterval = setInterval(() => {
+    if (errorFlashIntervalPlayers) clearInterval(errorFlashIntervalPlayers);
+    errorFlashIntervalPlayers = setInterval(() => {
         flashTarget.style.opacity = visible ? '0' : '1';
         visible = !visible;
     }, 250);
@@ -330,7 +332,7 @@ function renderPlayers(players) {
         if (index % 2 === 0) panel.classList.add("bg-white");
 
         const nameEl = clone.querySelector(".player-name");
-        nameEl.textContent = formatPlayerName(player);
+        nameEl.textContent = formatPlayerName(player["AppId"], player["AccountName"]);
 
         clone.querySelector(".game-name").textContent =
             getGameName(player.AppId, player.AccountName);
@@ -354,26 +356,26 @@ function renderPlayers(players) {
 
 function fetchPlayers() {
     fetch(PLAYER_API_URL)
-        .then(r => !r.ok ? Promise.reject("API error") : r.text())
+        .then(response => !response.ok ? Promise.reject("API error") : response.text())
         .then(xml => {
             const xmlParsed = new DOMParser().parseFromString(xml, 'application/xml');
-            const items = Array.from(xmlParsed.getElementsByTagName("Player"))
+            const playerItems = Array.from(xmlParsed.getElementsByTagName("Player"))
             .map(el => ({
                 AppId: el.getAttribute("AppId"),
                 AccountName: el.getAttribute("AccountName")
             }));
 
-            const currentSnapshot = JSON.stringify(items);
+            const currentSnapshot = JSON.stringify(playerItems);
             if (currentSnapshot === lastPlayerSnapshot) {
                 return;
             }
 
             lastPlayerSnapshot = currentSnapshot;
 
-            if (items.length === 0) {
+            if (playerItems.length === 0) {
                 renderEmptyPlayers();
             } else {
-                renderPlayers(items);
+                renderPlayers(playerItems);
             }
         })
         .catch(err => {
@@ -382,117 +384,160 @@ function fetchPlayers() {
         });
 }
 
+function renderLobbies(lobbies) {
+    const list = document.getElementById("lobby_list");
+    list.innerHTML = "";
+
+    const template_lobby = document.getElementById("lobby-card-template");
+    const template_filler = document.getElementById("filler-card-template");
+
+    lobbies.forEach((lobby) => {
+
+        let lobbyName = "";
+        let gameName = "";
+        let speedClass = "";
+        let gameMode = "";
+        let bgPath = "";
+
+        const clone = template_lobby.content.cloneNode(true);
+        const card = clone.querySelector(".card");
+
+        switch(lobby["AppId"]) {
+            case "23360":
+                lobbyName = lobby["GameName"].split(" ")[0];
+                speedClass = getSpeedClass(lobby["PlayerSkillLevel"], lobby["AppId"]);
+                gameMode = getGameMode(lobby["RuleSet"], lobby["AppId"]);
+
+                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}) // ${speedClass} ${gameMode}`;
+
+                gameName = "WipEout HD";
+                gameNameColor = "game-hd";
+
+                bgPath = "/static/images/lobby_card_hd.svg"
+                break;
+
+            case "20794":
+                lobbyName = lobby["GameName"];
+                speedClass = getSpeedClass(lobby["PlayerSkillLevel"], lobby["AppId"]);
+                gameMode = getGameMode(lobby["RuleSet"], lobby["AppId"]);
+
+                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}) // ${speedClass} ${gameMode}`;
+
+                gameName = "WipEout Pulse";
+                gameNameColor = "game-pulse";
+
+                bgPath = "/static/images/lobby_card_pulse.svg"
+                break;
+
+            case "22204":
+                lobbyName = lobby["GameName"].split("~")[0];
+
+                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]})`;
+
+                gameName = "MotorStorm: Arctic Edge";
+                gameNameColor = "game-ae";
+
+                bgPath = "/static/images/lobby_card_ae.svg"
+                break;
+
+            default:
+                lobbyData = "null";
+                gameName ="null";
+                bgPath = "/static/images/lobby_card_blank.svg"
+                break;
+        }
+
+        let playerList = "";
+        let platformList = "";
+
+        lobby["PlayerList"].split(", ").forEach((player) => {
+            playerEntry = formatPlayerName(lobby["AppId"], player);
+            playerList += `${playerEntry}<br>`;
+
+            playerPlatform = getPlatform(lobby["AppId"], player);
+            platformList += `[${playerPlatform}]<br>`
+        });
+
+        console.log(playerList)
+        console.log(platformList)
+
+        const gameNameElement = clone.querySelector(".game-name");
+        gameNameElement.textContent = gameName;
+        gameNameElement.style["color"] = `var(--color-${gameNameColor})`;
+        clone.querySelector(".lobby-settings").textContent = lobbyData;
+        clone.querySelector(".lobby-participants").innerHTML = playerList;
+        clone.querySelector(".lobby-participants-platforms").innerHTML = platformList;
+        clone.querySelector("#card-background").src = bgPath;
+
+        list.appendChild(clone);
+    })
+
+    if(lobbies.length === 1) {
+        list.appendChild(template_filler.content.cloneNode(true));
+        list.appendChild(document.getElementById("lobbies-eol").content.cloneNode(true));
+    }
+}
+
+function renderEmptyLobbies() {
+    const list = document.getElementById("lobby_list");
+    list.innerHTML = "";
+
+    const tmpl = document.getElementById("lobbies-empty");
+    const clone = tmpl.content.cloneNode(true);
+    list.appendChild(clone);
+}
+
+function renderLobbyError() {
+    const list = document.getElementById("lobby_list");
+    list.innerHTML = "";
+
+    const tmpl = document.getElementById("lobbies-error");
+    const clone = tmpl.content.cloneNode(true);
+    list.appendChild(clone);
+
+    const flashTarget = document.getElementById("lobbies-error-message");
+    let visible = true;
+
+    if (errorFlashIntervalLobbies) clearInterval(errorFlashIntervalLobbies);
+    errorFlashIntervalLobbies = setInterval(() => {
+        flashTarget.style.opacity = visible ? '0' : '1';
+        visible = !visible;
+    }, 250);
+}
+
 function fetchLobbies() {
-    fetch(LOBBY_API_URL).then(response => {
-        if (!response.ok) {
-            throw new Error('API error');
-        }
-        return response.text();
-    }).then(xml => {
-        const parser = new DOMParser();
-        const xmlParsed = parser.parseFromString(xml, 'application/xml');
+    fetch(LOBBY_API_URL)
+        .then(response => !response.ok ? Promise.reject("API error") : response.text())
+        .then(xml => {
+            const xmlParsed = new DOMParser().parseFromString(xml, 'application/xml');
+            const lobbyItems = Array.from(xmlParsed.getElementsByTagName("Lobby"))
+            .map(el => ({
+                AppId: el.getAttribute("AppId"),
+                MaxPlayers: el.getAttribute("MaxPlayers"),
+                PlayerCount: el.getAttribute("PlayerCount"),
+                PlayerList: el.getAttribute("PlayerListCurrent"),
+                PlayerSkillLevel: el.getAttribute("PlayerSkillLevel"),
+                GameName: el.getAttribute("GameName"),
+                RuleSet: el.getAttribute("RuleSet")
+            }));
 
-        var output = "";
-
-        var nowPlaying = "";
-        var gameMode = "";
-        var speedClass = "";
-        var PlayerList;
-
-        var x = xmlParsed.getElementsByTagName("Lobby");
-
-        if(x.length != 0) {
-            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: ' + x[0].parentNode.attributes.totalEntries.nodeValue;
-            output += '<div id="lobbiesListing" style="padding-left: 5px;">';
-            for (i = 0; i < x.length; i++) {
-                //print what game user is playing according to AppId
-                nowPlaying = getGameName(x[i].attributes.AppId.nodeValue, '+PS3');
-                gameMode = getGameMode(x[i].attributes.RuleSet.nodeValue, x[i].attributes.AppId.nodeValue);
-                speedClass = getSpeedClass(x[i].attributes.PlayerSkillLevel.nodeValue, x[i].attributes.AppId.nodeValue);
-
-                PlayerList = x[i].attributes.PlayerListCurrent.nodeValue.split(', ');
-
-                output += '<div id="lobbiesEntry">';
-
-                //print base lobby info
-                output += '<div id="lobbiesEntryTitle">';
-                switch(x[i].attributes.AppId.nodeValue) {
-                    case "23360":
-                        output += '<h3>' + nowPlaying + ' // ' + x[i].getElementsByTagName('GameStats')[0].getElementsByTagName('HostName')[0].textContent + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')' + ' // ' + speedClass + ' ' + gameMode + '</h3>';
-                        break;
-
-                    case "20794":
-                        output += '<h3>' + nowPlaying + ' // ' + x[i].attributes.GameName.nodeValue + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')' + ' // ' + speedClass + ' ' + gameMode + '</h3>';
-                        break;
-
-                    case "22204":
-                        output += '<h3>' + nowPlaying + ' // ' + x[i].attributes.GameName.nodeValue.slice(0, x[i].attributes.GameName.nodeValue.lastIndexOf('~')) + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')</h3>';
-                        break;
-
-                    default:
-                        output += '<h3>' + nowPlaying + ' // ' + x[i].attributes.GameName.nodeValue + ' (' + x[i].attributes.PlayerCount.nodeValue + '/' + x[i].attributes.MaxPlayers.nodeValue + ')</h3>';
-                        break;
-                }
-
-                output += '</div><div id="lobbiesEntryExtraInfo">';
-
-                switch(x[i].attributes.AppId.nodeValue) {
-                    case "23360":
-                        if(x[i].attributes.GenericField1.nodeValue == "0" && gameMode != "Zone Battle") {
-                            output += '<h5>Weapons Off</h5>';
-                        }
-                        if(x[i].getElementsByTagName('GameStats')[0].getElementsByTagName('LobbyConfigSecondary')[0].getElementsByTagName('BRsAllowed')[0].textContent == "0") {
-                            output += '<h5>Barrel Rolls Off</h5>';
-                        }
-                        if(gameMode == "Eliminator") {
-                            output += '<h5>Elimination Target: ' + x[i].getElementsByTagName('GameStats')[0].getElementsByTagName('ElimTarget')[0].textContent + '</h5>';
-                        }
-                        if(gameMode == "Zone Battle") {
-                            output += '<h5>Zone Target: ' + x[i].getElementsByTagName('GameStats')[0].getElementsByTagName('ZBTarget')[0].textContent + '</h5>';
-                        }
-                        break;
-
-                    case "20794":
-                        if(x[i].getElementsByTagName('GameStats')[0].getElementsByTagName('Weapons')[0].textContent == "0") {
-                            output += '<h5>Weapons Off</h5>';
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-
-                output += '</div><div id="lobbiesEntryPlayerList">';
-
-                for(o = 0; o < PlayerList.length; o++) {
-                    if(x[i].attributes.AppId.nodeValue == "23360") {
-                        if(PlayerList[o].includes('+')) {
-                            output += '<h4>' + PlayerList[o].slice(0, PlayerList[o].lastIndexOf('+')) + ' (' + getPlatform(x[i].attributes.AppId.nodeValue, PlayerList[o]) + ')</h4>';
-                        } else {
-                            output += '<h4>' + PlayerList[o] + ' (' + getPlatform(x[i].attributes.AppId.nodeValue, PlayerList[o]) + ')</h4>';
-                        }
-                    } else {
-                        if(PlayerList[o].includes(' ')) {
-                            output += '<h4>' + PlayerList[o].slice(0, PlayerList[o].lastIndexOf(' ')) + ' (' + getPlatform(x[i].attributes.AppId.nodeValue, PlayerList[o]) + ')</h4>';
-                        } else {
-                            output += '<h4>' + PlayerList[o] + ' (' + getPlatform(x[i].attributes.AppId.nodeValue, PlayerList[o]) + ')</h4>';
-                        }
-                    }
-                }
-                output += '</div></div><div id="spacer"></div>';
+            const currentSnapshot = JSON.stringify(lobbyItems);
+            if (currentSnapshot === lastLobbySnapshot) {
+                return;
             }
-            output += '</div>';
-            document.getElementById("lobbies").innerHTML = output;
-        } else {
-            document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: 0';
-            document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>No lobbies</h2></div>';
-        }
-    }).catch(error => {
-        console.error(`API fetch failed:`, error);
 
-        document.getElementById("lobbiesTitle").innerHTML = 'Ongoing Lobbies: Unknown';
-        document.getElementById("lobbies").innerHTML = '<div id="lobbiesListing" style="padding-left: 5px;"><h2>Waiting on API...</h2></div>';
-    });
+            lastLobbySnapshot = currentSnapshot;
+
+            if (lobbyItems.length === 0) {
+                renderEmptyLobbies();
+            } else {
+                renderLobbies(lobbyItems);
+            }
+        })
+        .catch(err => {
+            console.error("API fetch failed:", err);
+            renderLobbyError();
+        });
 }
 
 function fetchStats() {
@@ -536,6 +581,8 @@ function fetchStats() {
             // unfortunately if we put the html into the target file and just set it to 0 opacity so it doesn't show up,
             // we won't be able to select the stats contents properly, because the warning has to be on top
             // and its div has to take up the entire block    -b
+
+            // fix this by putting it into a template   -future b
             document.getElementById("stats").innerHTML += '<div class="w-full h-full absolute flex items-center justify-center pb-5 z-50"><span class="text-[rgba(230,7,23,1)] text-sm" id="stats-error-message" style="opacity: 0">!!! ERROR FETCHING STATS !!!</span></div>';
 
             const flashTargetStats = document.getElementById("stats-error-message");
@@ -549,17 +596,17 @@ function fetchStats() {
 }
 
 fetchPlayers();
-// fetchLobbies();
+fetchLobbies();
 fetchStats();
 
 setInterval(fetchPlayers, API_REFRESH_DELAY);
-// setInterval(fetchLobbies, API_REFRESH_DELAY);
+setInterval(fetchLobbies, API_REFRESH_DELAY);
 
 const flashTargetsRetrieve = document.getElementsByClassName("initial-text");
 let visible = true;
 
-if (emptyListFlashInterval) clearInterval(emptyListFlashInterval);
-    emptyListFlashInterval = setInterval(() => {
+if (initialListFlashInterval) clearInterval(initialListFlashInterval);
+    initialListFlashInterval = setInterval(() => {
     for (let el of flashTargetsRetrieve) {
         el.style.opacity = visible ? '0' : '1';
     }

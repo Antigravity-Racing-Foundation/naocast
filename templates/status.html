@@ -4,6 +4,10 @@
 {% block label %}API frontend / Backend status{% endblock %}
 
 {% block head %}
+    <link rel="preload" href="/static/images/lobby_card_hd.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/static/images/lobby_card_pulse.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/static/images/lobby_card_ae.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/static/images/lobby_card_blank.svg" as="image" type="image/svg+xml">
 {% endblock %}
 
 {% block content %}
@@ -45,8 +49,8 @@
 <!-- Lobby list templates -->
 
 <template id="lobby-card-template">
-    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4">
-        <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="lobby-background max-h-52 select-none hidden 2xl:block"/>
+    <div class="card relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4">
+        <img src="{{ url_for('static', filename='images/lobby_card_hd.svg') }}" alt="" aria-hidden="true" class="lobby-background max-h-52 select-none hidden 2xl:block" id="card-background"/>
         <div class="2xl:absolute left-0 top-0 2xl:px-3 2xl:h-[31%] flex items-center">
             <p class="md:text-sm sm:text-xs text-xs leading-tight md:max-w-full max-w-60">
                 <span class="game-name"></span> lobby<br>
@@ -54,8 +58,8 @@
             </p>
         </div>
         <hr class="w-full border-t-3 my-1 border-nc-light-grey block 2xl:hidden"/>
-        <div class="2xl:absolute 2xl:h-[69%] 2xl:pl-4 2xl:pr-7 2xl:pt-2 left-0 bottom-0 2xl:text-xs md:text-sm text-xs w-full flex flex-row justify-between">
-            <p class="lobby-participants leading-tight">
+        <div class="2xl:absolute 2xl:h-[69%] 2xl:pl-4 2xl:pr-8 2xl:pt-1 left-0 bottom-0 2xl:text-xs md:text-sm text-xs w-full flex flex-row justify-between">
+            <p class="lobby-participants">
             </p>
             <p class="lobby-participants-platforms text-right">
             </p>
@@ -64,14 +68,20 @@
 </template>
 
 <template id="filler-card-template">
-    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block opacity-35">
+    <div class="relative 2xl:bg-transparent 2xl:p-0 bg-white w-max p-4 hidden 2xl:block">
         <img src="{{ url_for('static', filename='images/lobby_card_blank.svg') }}" alt="" aria-hidden="true" class="2xl:max-h-52 select-none"/>
+    </div>
+</template>
+
+<template id="lobbies-eol">
+    <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
+        <span class="rotate-90 text-nc-light-grey text-sm">&lt&ltEOL&gt&gt</span>
     </div>
 </template>
 
 <template id="lobbies-empty">
     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
-        <p class="text-sm 2xl:text-lg text-nc-light-grey" style="opacity: 0">(NO LOBBIES.)</p>
+        <p class="text-sm 2xl:text-lg text-nc-light-grey">(NO LOBBIES.)</p>
     </div>
 
     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
@@ -85,9 +95,9 @@
     {% endfor %}
 </template>
 
-<template id="lobbies-empty">
+<template id="lobbies-error">
     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
-        <p class="text-sm text-nc-fault" id="lobbies-error-message" style="opacity: 1">!!! ERROR FETCHING LOBBIES !!!</p>
+        <p class="text-sm text-nc-fault 2xl:before:content-['!!!_'] 2xl:after:content-['_!!!']" id="lobbies-error-message" style="opacity: 1">ERROR FETCHING LOBBIES</p>
     </div>
 
     <div class="flex w-16 items-center justify-center bg-white 2xl:hidden block">
@@ -173,7 +183,7 @@
             </div>
             <hr class="border-t-3 border-nc-grey"/>
             <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">
-                <div class="relative flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full">
+                <div class="relative flex 2xl:flex-col flex-row py-2 px-2 2xl:py-4 2xl:px-3 2xl:space-y-4 2xl:space-x-0 space-x-4 max-h-full" id="lobby_list">
 
                     <div class="2xl:absolute top-0 left-0 flex flex-row justify-center items-center h-full w-full z-30l 2xl:max-w-full max-w-60 2xl:px-0 2xl:py-0 px-8 py-10 bg-white 2xl:bg-transparent text-center">
                         <p class="initial-text text-sm 2xl:text-lg text-nc-light-grey" style="opacity: 0">RETRIEVING STATS...</p>
