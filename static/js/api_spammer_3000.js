@@ -34,6 +34,11 @@ const status = {
         fetchLobbies();
         console.log(`Fetching from ${currentAPIEndpoint} API now!`)
     },
+    updateNow() {
+        fetchPlayers();
+        fetchLobbies();
+        console.log("you're impatient :)")
+    }
 };
 
 function getGameName(appId, username) {
