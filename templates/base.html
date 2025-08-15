@@ -33,7 +33,7 @@
 <body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,var(--color-nc-bg-start),var(--color-nc-bg-end))] bg-no-repeat bg-cover flex flex-col min-h-screen overflow-x-hidden font-helvetica">
 
     {% import "macros_ui.html" as ui %}
-    {% import "macros_svg.html" as svg %}
+    {% import "macros_svg_common.html" as svg_base %}
 
     <!-- tiny screen scaling is fragile (test it when top bar buttons change and please redo this later!) -->
     <header class="mx-4 mt-4 px-4 py-4 min-[350px]:h-20 flex relative items-center justify-between select-none">
@@ -43,9 +43,12 @@
             <a href="{{ url_for('home') }}" title="AGRF Home">
                 <img src="{{ url_for('static', filename='images/agrf.svg') }}" alt="AGRF Logo" class="min-[380px]:h-12 min-[350px]:h-10 h-16"/>
             </a>
-            <img src="{{ url_for('static', filename='images/bar_ornament_logos.svg') }}" alt="" class="h-12 w-24 ml-3 hidden md:block" role="presentation"/>
+            <!-- <img src="{{ url_for('static', filename='images/bar_ornament_logos.svg') }}" alt="" class="h-12 w-24 ml-3 hidden md:block" role="presentation"/>
             <img src="{{ url_for('static', filename='images/bar_ornament_ship.svg') }}" alt="" class="h-12 w-20 ml-3 hidden md:block" role="presentation"/>
-            <img src="{{ url_for('static', filename='images/bar_ornament_angle.svg') }}" alt="" class="w-28 ml-4 hidden 2xl:block" role="presentation"/>
+            <img src="{{ url_for('static', filename='images/bar_ornament_angle.svg') }}" alt="" class="w-28 ml-4 hidden 2xl:block" role="presentation"/> -->
+            {{ svg_base.bar_ornament_logos(class = "h-12 w-24 ml-3 hidden md:block", color = "nc-grey") }}
+            {{ svg_base.bar_ornament_ship(class = "h-12 w-20 ml-3 hidden md:block", color = "nc-grey") }}
+            {{ svg_base.bar_ornament_angle(class = "w-28 ml-4 hidden 2xl:block", color = "nc-light-grey") }}
             <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="ml-3 hidden 2xl:block" role="presentation"/>
             <h1 class="text-nc-grey text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
         </div>
@@ -81,8 +84,10 @@
 
                 {% endfor %}
             </ul>
-            {{ svg.bar_kana(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
-            {{ svg.bar_dots(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
+            <!-- <img src="{{ url_for('static', filename='images/bar_ornament_kana.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/> -->
+            <!-- <img src="{{ url_for('static', filename='images/bar_ornament_dots.svg') }}" alt="" class="h-12 w-28 hidden lg:block"/> -->
+            {{ svg_base.bar_ornament_kana(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
+            {{ svg_base.bar_ornament_dots(class = "h-12 w-28 hidden lg:block", color = "agrf-whisper") }}
         </nav>
     </header>
 
@@ -98,8 +103,10 @@
     <footer class="pb-4 px-4 lg:pb-6 lg:px-6">
         <div class="flex justify-between items-end pb-1.5 select-none" role="presentation">
             <div class="flex gap-y-2 flex-col items-start">
-                <img src="{{ url_for('static', filename='images/footer_ornament_barcode.svg') }}" alt="" class="w-22 hidden md:block"/>
-                <img src="{{ url_for('static', filename='images/footer_ornament_watermark_bonk.svg') }}" alt="" class="w-60 hidden sm:block"/>
+                <!-- <img src="{{ url_for('static', filename='images/footer_ornament_barcode.svg') }}" alt="" class="w-22 hidden md:block"/>
+                <img src="{{ url_for('static', filename='images/footer_ornament_watermark_bonk.svg') }}" alt="" class="w-60 hidden sm:block"/> -->
+                {{ svg_base.footer_ornament_barcode(class = "w-22 hidden md:block", color = "nc-grey") }}
+                {{ svg_base.footer_ornament_watermark_bonk(class = "w-60 h-full hidden sm:block", color = "nc-grey", color_accent_1 = "hd-blue") }}
             </div>
             {% if (range(0,100) | random) > 98 %}
             <a href="https://blackpeoplemeet.com/">
@@ -107,10 +114,13 @@
             </a>
             {% endif %}
             <div class="flex gap-y-2 flex-col items-end">
-                <img src="{{ url_for('static', filename='images/footer_ornament_box.svg') }}" alt="" class="w-32 hidden md:block"/>
+                <!-- <img src="{{ url_for('static', filename='images/footer_ornament_box.svg') }}" alt="" class="w-32 hidden md:block"/> -->
+                {{ svg_base.footer_ornament_box(class = "w-32 h-full hidden md:block", color = "nc-grey") }}
                 <div class="gap-x-2 flex items-end">
-                    <img src="{{ url_for('static', filename='images/footer_ornament_bray.svg') }}" alt="" class="w-32 hidden md:block"/>
-                    <img src="{{ url_for('static', filename='images/footer_ornament_watermark_choo.svg') }}" alt="" class="w-60 hidden sm:block"/>
+                    <!-- <img src="{{ url_for('static', filename='images/footer_ornament_bray.svg') }}" alt="" class="w-32 hidden md:block"/>
+                    <img src="{{ url_for('static', filename='images/footer_ornament_watermark_choo.svg') }}" alt="" class="w-60 hidden sm:block"/> -->
+                    {{ svg_base.footer_ornament_bray(class = "w-32 hidden md:block", color = "nc-grey", color_accent_1 = "hd-blue", color_accent_2 = "nc-light-grey" )}}
+                    {{ svg_base.footer_ornament_watermark_choo(class = "w-60 h-full hidden sm:block", color = "nc-grey", color_accent_1 = "pulse-green" )}}
                 </div>
             </div>
         </div>
