@@ -125,8 +125,9 @@
             </div>
         </div>
         <hr class="w-full border-t-6 border-nc-grey"/>
-        <div class="bg-nc-footer py-3 w-full flex relative justify-center gap-x-5">
-            <img src="{{ url_for('static', filename='images/footer_ornament_logos.svg') }}" alt="" class="w-56 hidden md:block select-none"/>
+        <div class="bg-nc-footer py-3 w-full flex relative justify-center items-center gap-x-5">
+            <!-- <img src="{{ url_for('static', filename='images/footer_ornament_logos.svg') }}" alt="" class="w-56 hidden md:block select-none"/> -->
+            {{ svg_base.footer_ornament_logos(class = "w-56 hidden md:block select-none h-max", color = "nc-light-grey" )}}
             <p class="text-nc-light-grey text-xs max-w-[90%] md:max-w-[50%] leading-tight">AGRF is not affiliated
                 with Sony Computer Entertainment or SCE Studio Liverpool. All trademarks belong to their respective owners.
                 "PlayStation", "WipEout" and "MotorStorm" are registered trademarks of Sony Computer Entertainment Inc.
