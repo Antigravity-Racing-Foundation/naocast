@@ -10,7 +10,7 @@ const SERVER_STATS_API_URL = "https://svo.agracingfoundation.org/medius_db/api/G
 
 let currentAPIEndpoint = "remote";
 let PLAYER_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetPlayerCount";
-let LOBBY_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetLobbyListinga";
+let LOBBY_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetLobbyListing";
 
 let errorFlashIntervalPlayers = null;
 let errorFlashIntervalLobbies = null;
