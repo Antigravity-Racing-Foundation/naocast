@@ -2,7 +2,7 @@ venv/
 static/css/output.css
 __pycache__
 Dockerfile
-.Dockerignore
+.dockerignore
 gunicorn_config.py
 *.tar
 build/

@@ -101,6 +101,10 @@ def leaderboards():
 def status():
     return render_template("status.html")
 
+@app.route("/listing")
+def listing_to_status_redirct():
+    return make_response(redirect('/status', code=301))
+
 @app.route("/why_we_have_ads")
 def ad_explainer():
     return render_template("ad_explainer.html")
