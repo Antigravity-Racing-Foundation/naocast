@@ -85,7 +85,7 @@ def fallback_psp():
 
 @app.route('/accept-legacy-redirect', methods=['POST'])
 def accept_legacy_redirect():
-    response = make_response(redirect('https://agracingfoundation.org/', code=301))
+    response = make_response(redirect('https://legacy.agracingfoundation.org/', code=301))
     response.set_cookie('redirect_to_legacy', '1', max_age=60*60*24*31)
     return response
 
