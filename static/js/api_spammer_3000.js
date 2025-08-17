@@ -10,7 +10,7 @@ const SERVER_STATS_API_URL = "https://svo.agracingfoundation.org/medius_db/api/G
 
 let currentAPIEndpoint = "remote";
 let PLAYER_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetPlayerCount";
-let LOBBY_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetLobbyListing";
+let LOBBY_API_URL = "https://svo.agracingfoundation.org/medius_db/api/GetLobbyListinga";
 
 let errorFlashIntervalPlayers = null;
 let errorFlashIntervalLobbies = null;
@@ -302,6 +302,8 @@ function renderPlayerError() {
     const clone = tmpl.content.cloneNode(true);
     list.appendChild(clone);
 
+    lastPlayerSnapshot = ""
+
     const flashTarget = document.getElementById("players-error-message");
     let visible = true;
 
@@ -496,6 +498,8 @@ function renderLobbyError() {
     const tmpl = document.getElementById("lobbies-error");
     const clone = tmpl.content.cloneNode(true);
     list.appendChild(clone);
+
+    lastLobbySnapshot = ""
 
     const flashTarget = document.getElementById("lobbies-error-message");
     let visible = true;
