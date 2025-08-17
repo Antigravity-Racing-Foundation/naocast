@@ -1,7 +1,7 @@
 # Naocast
 Version 2 of the official AGRF website
 ## What is this?
-Naocast is the code name for [AGRF's new website](https://agracingfoundation.org/), replacing the first implementation (which is closed-source and can still be accessed at https://legacy.agracingfoundation.org/).
+Naocast is the code name for [AGRF's new website](https://agracingfoundation.org/), replacing the first implementation (which is also [open-source](https://github.com/Antigravity-Racing-Foundation/agrf-frontend) and can still be accessed at https://legacy.agracingfoundation.org/).
 
 Built from ground-up in Flask and Tailwind with some vanilla JavaScript ported from the legacy website as a base for the Status page.
 ## Features
