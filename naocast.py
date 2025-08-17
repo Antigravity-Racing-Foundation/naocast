@@ -121,9 +121,21 @@ app.add_url_rule("/eulas/<path:path>", view_func=eula)
 def horizon_license():
     return make_response(redirect('https://github.com/Horizon-Private-Server/horizon-server/blob/master/LICENSE', code=301))
 
+@app.route("/discord")
+def discord():
+    return make_response(redirect('https://discord.gg/FqKnfCmw6J', code=301))
+
+@app.route("/github")
+def github():
+    return make_response(redirect('https://github.com/Antigravity-Racing-Foundation', code=301))
+
+@app.route("/medals")
+def medals():
+    return make_response(redirect('https://docs.google.com/spreadsheets/d/1lGnkajZ974fSgC_DMnf8X2mABWz-xYYnVmexDE7e_Ug', code=301))
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0')

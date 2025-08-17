@@ -1,2 +1,8 @@
 venv/
 static/css/output.css
+__pycache__
+Dockerfile
+.Dockerignore
+gunicorn_config.py
+*.tar
+build/
