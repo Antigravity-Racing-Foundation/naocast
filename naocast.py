@@ -10,6 +10,8 @@ from flask import (
 
 app = Flask(__name__)
 
+app.url_map.strict_slashes = False
+
 _BASE_EULA_URL = "https://svo.agracingfoundation.org/external/assets/eula"
 EULA_URLS = {
     "wipeout/hd":       f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",
