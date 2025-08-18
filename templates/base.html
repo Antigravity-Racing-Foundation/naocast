@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>{% block title %}AGRF{% endblock %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}AGRF{% endblock %}</title>
+    {% block head %}{% endblock %}
+
     <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 
@@ -25,9 +27,6 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
     <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
-
-    {% block head %}{% endblock %}
-
 </head>
 
 <body class="bg-[radial-gradient(circle_farthest-side_at_10%_60rem,var(--color-nc-bg-start),var(--color-nc-bg-end))] bg-no-repeat bg-cover flex flex-col min-h-screen overflow-x-hidden font-helvetica">
