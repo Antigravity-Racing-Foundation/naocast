@@ -47,7 +47,9 @@
         <figure class="flex-col items-start ml-5 hidden xl:flex">
             {{ ui.box_title('Image by @s.erein12') }}
             <div class="flex relative">
-                <img src="{{ url_for('static', filename='images/2048_teatime.webp') }}" alt="" class="max-h-[35rem] w-auto"/>
+                <a href="{{ url_for('static', filename='images/2048_teatime.jpg') }}" target="_blank" aria-hidden="true">
+                    <img src="{{ url_for('static', filename='images/2048_teatime_small.webp') }}" alt="" class="max-h-[35rem] w-auto"/>
+                </a>
                 <!-- not using the corners macro since here the right corners must be a different color -->
                 <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
                 <img src="{{ url_for('static', filename='images/corner_light_grey.svg') }}" class="absolute select-none rotate-90 top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
