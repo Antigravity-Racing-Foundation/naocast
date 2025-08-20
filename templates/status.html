@@ -182,6 +182,11 @@
                 </h2>
             </div>
             <hr class="w-full border-t-3 border-nc-grey"/>
+            {% if (range(0,200) | random) > 198 %}
+            <a href="https://www.psone.online/home">
+                <img src="{{ url_for('static', filename='images/clippy.webp') }}" class="h-60 bottom-20 right-20 absolute hidden 2xl:block z-50"/>
+            </a>
+            {% endif %}
             <article class="flex relative flex-col max-h-116 w-full" id="player_list">
                 {% for _ in range(0,3) %}
                 <div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
