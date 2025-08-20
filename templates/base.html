@@ -4,7 +4,20 @@
     <title>{% block title %}AGRF{% endblock %}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block head %}{% endblock %}
+    {% block head %}
+    <meta name="description" content="WipEout Pulse, HD, 2048 and MotorStorm Arctic Edge Server Revivals"/>
+    <meta name="keywords" content="WipEout, HD, 2048, Pulse, MotorStorm, Arctic Edge, Raging Ice, Server, Revival, Multiplayer, Emulator, Online, AGRF, AG Racing Foundation">
+    <meta name="author" content="Antigravity Racing Foundation"/>
+    <meta name="robots" content="index"/>
+
+    <meta property="og:title" content="AGRF"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="The official site of AGRF, a WipEout community and revival group."/>
+    <meta property="og:url" content="https://agracingfoundation.org/"/>
+    <meta property="og:image" content="https://agracingfoundation.org/static/images/site_embed.webp"/>
+    <meta property="og:image:alt" content="A pretty graphic in the style of the website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    {% endblock %}
 
     <link rel="preload" href="{{ url_for('static', filename='css/output.css') }}" as="style">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
@@ -95,7 +108,7 @@
         <p class="text-white text-sm">Undefined error</p>
     </div>
 
-    <main class="flex-grow relative text-nc-grey">
+    <main class="flex-1 relative text-nc-grey">
         {% block content %}{% endblock %}
     </main>
 
