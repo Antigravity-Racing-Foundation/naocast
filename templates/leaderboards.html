@@ -20,15 +20,221 @@
 {% endblock %}
 
 {% block content %}
-<script src="/static/js/leaderboard_getter_4000.js"></script>
-<div class="flex items-center justify-center mt-[10%] mb-[1%]">
-    <div class="items-start flex flex-col">
-        {{ ui.box_title('Info Flyout') }}
-        <div class="relative px-20 h-52 bg-white flex items-center justify-center">
+<div class="flex flex-row flex-1 justify-between gap-x-14 px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
+    <div class="items-start flex-2">
+        {{ ui.box_title('Board Picker') }}
+        <div class="relative py-10 px-10 w-full bg-nc-bg flex flex-col">
             {{ ui.corners() }}
+            <div class="bg-hd-blue w-full"></div>
+        </div>
+    </div>
 
-            <div id="board" class="text-center"></div>
+    <div class="flex flex-col items-start flex-4">
+        {{ ui.box_title('Board View') }}
+        <div class="relative pb-10 pt-4 px-10 w-full bg-nc-bg flex flex-col flex-1">
+            {{ ui.corners() }}
+            <section class="flex flex-col flex-1">
+
+                <table class="text-left">
+                    <thead class="text-sm text-hd-blue">
+                        <tr class="border-b-3 border-nc-grey">
+                            <th scope="col" class="px-2 py-2 text-center">
+                                Pos
+                            </th>
+                            <th scope="col" class="px-6">
+                                Name
+                            </th>
+                            <th scope="col" class="px-6 text-center">
+                                Zone
+                            </th>
+                            <th scope="col" class="px-6 text-center">
+                                Perfect zones
+                            </th>
+                            <th scope="col" class="px-2 text-right">
+                                Score
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 w-[5%] py-3 text-center">
+                                1
+                            </th>
+                            <td class="px-6">
+                                systeminspired
+                            </td>
+                            <td class="px-6 text-center">
+                                99
+                            </td>
+                            <td class="px-6 text-center">
+                                67
+                            </td>
+                            <td class="px-2 text-right">
+                                301337
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                2
+                            </th>
+                            <td class="px-6">
+                                Naotyu
+                            </td>
+                            <td class="px-6 text-center">
+                                88
+                            </td>
+                            <td class="px-6 text-center">
+                                67
+                            </td>
+                            <td class="px-2 text-right">
+                                277212
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                3
+                            </th>
+                            <td class="px-6">
+                                x3medexyu-sa
+                            </td>
+                            <td class="px-6 text-center">
+                                83
+                            </td>
+                            <td class="px-6 text-center">
+                                60
+                            </td>
+                            <td class="px-2 text-right">
+                                267025
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                4
+                            </th>
+                            <td class="px-6">
+                                xXzVoltzXx
+                            </td>
+                            <td class="px-6 text-center">
+                                89
+                            </td>
+                            <td class="px-6 text-center">
+                                56
+                            </td>
+                            <td class="px-2 text-right">
+                                250373
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                5
+                            </th>
+                            <td class="px-6">
+                                MaxiMars7
+                            </td>
+                            <td class="px-6 text-center">
+                                78
+                            </td>
+                            <td class="px-6 text-center">
+                                57
+                            </td>
+                            <td class="px-2 text-right">
+                                248614
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                6
+                            </th>
+                            <td class="px-6">
+                                fxheemldn
+                            </td>
+                            <td class="px-6 text-center">
+                                82
+                            </td>
+                            <td class="px-6 text-center">
+                                56
+                            </td>
+                            <td class="px-2 text-right">
+                                224607
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                7
+                            </th>
+                            <td class="px-6">
+                                x3medexyu-sa
+                            </td>
+                            <td class="px-6 text-center">
+                                83
+                            </td>
+                            <td class="px-6 text-center">
+                                60
+                            </td>
+                            <td class="px-2 text-right">
+                                267025
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                8
+                            </th>
+                            <td class="px-6">
+                                xXzVoltzXx
+                            </td>
+                            <td class="px-6 text-center">
+                                89
+                            </td>
+                            <td class="px-6 text-center">
+                                56
+                            </td>
+                            <td class="px-2 text-right">
+                                250373
+                            </td>
+                        </tr>
+                        <tr class="border-b-3 border-nc-light-grey">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                9
+                            </th>
+                            <td class="px-6">
+                                MaxiMars7
+                            </td>
+                            <td class="px-6 text-center">
+                                78
+                            </td>
+                            <td class="px-6 text-center">
+                                57
+                            </td>
+                            <td class="px-2 text-right">
+                                248614
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <th scope="row" class="px-2 py-3 text-center">
+                                0
+                            </th>
+                            <td class="px-6">
+                                ^ SAMPLE DATA ^
+                            </td>
+                            <td class="px-6 text-center">
+                                0
+                            </td>
+                            <td class="px-6 text-center">
+                                0
+                            </td>
+                            <td class="px-2 text-right">
+                                0
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr class="w-full border-t-3 border-nc-grey" aria-hidden="true"/>
+
+            </section>
         </div>
     </div>
 </div>
+
+<!-- <script src="/static/js/leaderboard_getter_4000.js"></script> -->
 {% endblock %}
