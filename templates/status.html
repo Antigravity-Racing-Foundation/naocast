@@ -312,10 +312,16 @@
                 <hr class="border-t-3 border-nc-grey"/>
                 <article class="flex flex-grow py-4 px-3">
                     <!-- TODO move ads to a dedicated template file -->
-                    <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
+                    <!-- <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
                         <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[rgba(255,255,255,1)] w-full">
                             <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
                             <img src="{{ url_for('static', filename='images/ad_sayonara_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+                        </div>
+                    </a> -->
+                    <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
+                        <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[#365f9aff] w-full">
+                            <img src="{{ url_for('static', filename='images/ad_assegai_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
+                            <img src="{{ url_for('static', filename='images/ad_assegai_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
                         </div>
                     </a>
                 </article>
