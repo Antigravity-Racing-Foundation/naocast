@@ -7,7 +7,7 @@
 
 {%- macro box_title(box_title) -%}
   <h2 class="flex mb-1 text-sm">
-    <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
+    <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 ml-0.5 select-none"/>
     {{ box_title }}
   </h2>
 {%- endmacro -%}
@@ -22,7 +22,7 @@
 {%- macro guide_article(box_title, guide_title, accent_color, caller=None) -%}
         <article class="items-start">
             <h2 class="flex mb-1 text-sm">
-              <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 select-none"/>
+              <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 ml-0.5 select-none"/>
               {{ box_title }}
             </h2>
             <div class="relative px-6 py-6 bg-nc-bg">
