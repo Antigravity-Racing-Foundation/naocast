@@ -315,6 +315,7 @@
 
                     {% set ads_list =
                     ["ad_sayonara",
+                    "ad_bng",
                     "ad_assegai"]%}
 
                     {% set ad_name = ads_list | random %}
@@ -322,6 +323,8 @@
                         {{ ads.ad_sayonara() }}
                     {% elif ad_name == "ad_assegai" %}
                         {{ ads.ad_assegai() }}
+                    {% elif ad_name == "ad_bng" %}
+                        {{ ads.ad_bng() }}
                     {% endif %}
                 </article>
                 <hr class="border-t-3 border-nc-grey"/>

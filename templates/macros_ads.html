@@ -1,17 +1,26 @@
 {%- macro ad_sayonara() -%}
 <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
     <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[#ffffffff] w-full">
-        <img src="{{ url_for('static', filename='images/ad_sayonara_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
-        <img src="{{ url_for('static', filename='images/ad_sayonara_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+        <img src="{{ url_for('static', filename='images/ads/ad_sayonara_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
+        <img src="{{ url_for('static', filename='images/ads/ad_sayonara_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
     </div>
 </a>
 {%- endmacro -%}
 
 {%- macro ad_assegai() -%}
 <a href="{{ url_for('ad_explainer') }}" class="flex flex-grow">
-    <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[url('/static/images/ad_assegai_background.webp')] bg-cover w-full">
-        <img src="{{ url_for('static', filename='images/ad_assegai_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
-        <img src="{{ url_for('static', filename='images/ad_assegai_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+    <div title="This is a decoration, not an actual ad! (yet >:) )" class="flex items-center justify-center bg-[url('/static/images/ads/ad_assegai_background.webp')] bg-cover w-full">
+        <img src="{{ url_for('static', filename='images/ads/ad_assegai_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 object-contain select-none block min-[2300px]:hidden"/>
+        <img src="{{ url_for('static', filename='images/ads/ad_assegai_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-20 py-6 object-contain select-none hidden min-[2300px]:block"/>
+    </div>
+</a>
+{%- endmacro -%}
+
+{%- macro ad_bng() -%}
+<a href="https://store.steampowered.com/app/473770/BallisticNG/" target="_blank" class="flex flex-grow">
+    <div title="Visit the BallisticNG Steam store page" class="flex items-center justify-center bg-[url('/static/images/ads/ad_bng_background.jpg')] bg-cover bg-center w-full">
+        <img src="{{ url_for('static', filename='images/ads/ad_bng_portrait.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-4 py-14 min-[2100px]:py-4 object-contain select-none block min-[2200px]:hidden"/>
+        <img src="{{ url_for('static', filename='images/ads/ad_bng_landscape.svg') }}" alt="" aria-hidden="true" class="min-h-0 h-full px-2 py-6 object-contain select-none hidden min-[2200px]:block"/>
     </div>
 </a>
 {%- endmacro -%}
