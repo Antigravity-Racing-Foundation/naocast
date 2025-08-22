@@ -21,7 +21,6 @@
 {% block content %}
 <section class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
     {{ ui.box_title('Introduction Flyout') }}
-    <!-- section's inner container -->
     <div class="relative pt-2 pb-8 px-8 w-full bg-nc-bg flex items-start justify-between">
         {{ ui.corners() }}
         <!-- additional padding in the article because we want the image to be above the text slightly -->
@@ -32,7 +31,7 @@
                 Welcome to the official Antigravity Racing Foundation Website!
             </h3>
 
-            <h3 class="text-sm md:text-lg max-w-screen-lg leading-snug">
+            <div class="text-sm md:text-lg max-w-screen-lg leading-snug">
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt=""
                     class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
                 Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
@@ -40,7 +39,7 @@
                 Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <i><b>everything works!</b></i>
                 <br><br>
                 We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including:
-            </h3>
+            </div>
 
             {% set events = [
               "WipEout HD Weekly Lobby, a time to simply play with others, <b>on Saturday at 19:00 UTC.</b>",
@@ -101,7 +100,7 @@
 
                 This process won't take longer than a minute.<br><br>
 
-                <ul class="list-inside list-disc">
+                <ul class="list-inside list-[square]">
                     <li>Go to the Settings tab in the XMB</li>
                     <li>Go down to Network Settings</li>
                     <li>Pick Internet Connection Settings</li>
@@ -129,7 +128,7 @@
                 You must be on firmware version 6.61 and signed into PlayStation Network on your PSP to play online.<br><br>
 
                 Once you can connect to a Wi-Fi network,
-                <ul class="list-inside list-disc">
+                <ul class="list-inside list-[square]">
                     <li>Go to the Settings tab in the XMB</li>
                     <li>Pick Infrastructure Mode</li>
                     <li>Select a connection to edit or make a new one</li>
@@ -154,7 +153,7 @@
 
                 To connect to Thallium/Beat using a Vita:<br><br>
 
-                <ul class="list-inside list-disc">
+                <ul class="list-inside list-[square]">
                     <li>Go to Settings</li>
                     <li>Select Network</li>
                     <li>Select Wi-Fi Settings</li>
@@ -202,7 +201,7 @@
 
                 PPSSPP versions 1.19 and above connect to WipEout Pulse and MotorStorm Arctic Edge online automatically!<br><br>
 
-                <ul class="list-inside list-disc">
+                <ul class="list-inside list-[square]">
                     <li>Check Settings -> Networking -> (Networking category) -> Enable networking/WLAN</li>
                     <li>Confirm your username in Settings -> Networking -> (Infrastructure category) -> Username</li>
                     <li>You should be done</li><br>
@@ -224,7 +223,7 @@
             Beat supports the WipEout Pulse custom ship skins feature. With it, you can create a custom ship skin and bring it online!<br>
             To create a custom WipEout Pulse ship skin:<br><br>
 
-            <ul class="list-inside list-disc">
+            <ul class="list-inside list-[square]">
                 <li>Download Thomas Perl's (aka thp) shipedit utility to create your skin, available for
                 <a href="https://svo.agracingfoundation.org/external/content/shipedit-distro/ship-editor-linux.7z" class="hover:underline" style="color: rgba(33,147,152,1)">Linux</a>
                 and
@@ -232,7 +231,7 @@
                 </li>
                 <li>Export your custom skin</li>
                 <li>Send @chacheechoo the following information in Discord DM's:
-                    <ul class="list-inside list-[circle] ml-10">
+                    <ul class="list-inside list-disc ml-10">
                         <li>The "16034453" file in the exported skin's folder;</li>
                         <li>Your PSN/PPSSPP Username;</li>
                         <li>The slot that you want to use (0-4);</li>
