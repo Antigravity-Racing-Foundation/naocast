@@ -35,10 +35,10 @@
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt=""
                     class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
                 Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
-                of WipEout 2048's online features. We also support MotorStorm: Arctic Edge, with events held on the <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-agrf-strike">MS World Online Discord</a>!<br><br>
+                of WipEout 2048's online features. We also support MotorStorm: Arctic Edge, with events held on the <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">MS World Online Discord</a>!<br><br>
                 Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <i><b>everything works!</b></i>
                 <br><br>
-                We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including:
+                We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including:
             </div>
 
             {% set events = [
@@ -184,7 +184,7 @@
             accent_color='172,7,23') %}
 
                 To configure RPCS3 to use our Thallium backend, follow
-                <a href="https://wiki.rpcs3.net/index.php?title=Help:Netplay#Global_configuration" class="hover:underline" style="color: rgba(172,7,23,1)">[This guide]</a><br><br>
+                <a href="https://wiki.rpcs3.net/index.php?title=Help:Netplay#Global_configuration" target="_blank" class="hover:underline" style="color: rgba(172,7,23,1)">[This guide]</a><br><br>
 
                 The IP/Host Switches you need is this string:<br><br>
 
@@ -248,6 +248,44 @@
 
         {% endcall %}
 
+    </div>
+</section>
+
+<div class="mx-6 lg:mx-10">
+    <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey"/>
+</div>
+
+<section class="items-start w-screen px-6 lg:px-28 py-10">
+    {{ ui.box_title('About Us') }}
+    <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+        {{ ui.corners() }}
+        <h3 class="text-lg md:text-xl leading-tight text-agrf-statement">
+            Who are we?
+        </h3>
+        <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
+        <div class="text-sm md:text-lg">
+            The Antigravity Racing Foundation is a passionate community of people that love the WipEout video game series.
+            We began public operation on March 2nd, 2024, when we started inviting people to
+            <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">our Discord server.</a><br><br>
+
+            The community was co-founded by ThatOneBonk and ChaCheeChoo. The former handles community affairs, promotion,
+            various graphics, miscellaneous programming and formal writing; the latter is the talented developer who made Thallium+Beat.<br><br>
+
+            The point of AGRF was to unify the people and create a place where Thallium+Beat players could organize and
+            meet, but it exceeded that original purpose, thanks to the countless people who have contributed
+            to AGRF and to keeping the game alive. These people organized in-game and real life events,
+            gave feedback, inspired, played, talked and welcomed AGRF's way into being <i>the</i> WipEout community to be in.<br><br>
+
+            <ul class="list-inside list-[square]">
+                <li>We're a passion project.</li>
+                <li><a href="https://github.com/Antigravity-Racing-Foundation" target="_blank" class="underline hover:text-agrf-strike">Some of our software is open-source.</a></li>
+                <li>Our API endpoints for Thallium+Beat - player list, lobby list and leaderboards - are available to developers on request.</li>
+                <li><a href="https://svo.agracingfoundation.org/external/content/AGRF%20Press%20Kit.zip" class="underline hover:text-agrf-strike">We have a press kit.</a></li>
+                <li>If you're as passionate about WipEout as we are,
+                    <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">you should join.</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>
 {% endblock %}
