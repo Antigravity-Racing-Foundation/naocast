@@ -99,6 +99,10 @@ def news():
 def leaderboards():
     return render_template("leaderboards.html")
 
+@app.route("/boards")
+def boards_to_leaderboards_redirct():
+    return make_response(redirect('/leaderboards', code=301))
+
 @app.route("/status")
 def status():
     return render_template("status.html")
