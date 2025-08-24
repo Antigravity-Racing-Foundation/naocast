@@ -411,7 +411,7 @@ function renderLobbies(lobbies) {
 
         switch(lobby["AppId"]) {
             case "23360":
-                lobbyName = lobby["GameName"].split(" ")[0];
+                lobbyName = lobby["HostName"];
                 speedClass = getSpeedClass(lobby["PlayerSkillLevel"], lobby["AppId"]);
                 gameMode = getGameMode(lobby["RuleSet"], lobby["AppId"]);
 
@@ -524,6 +524,7 @@ function fetchLobbies() {
                 PlayerList: el.getAttribute("PlayerListCurrent"),
                 PlayerSkillLevel: el.getAttribute("PlayerSkillLevel"),
                 GameName: el.getAttribute("GameName"),
+                HostName: el.getElementsByTagName("HostName")[0]?.textContent || undefined,
                 RuleSet: el.getAttribute("RuleSet")
             }));
 
