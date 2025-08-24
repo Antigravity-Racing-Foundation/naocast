@@ -175,11 +175,14 @@
 
         <!-- Player list -->
         <section class="flex flex-grow 2xl:max-w-128 min-[1900px]:min-w-120 flex-col">
-            <div>
-                <h2 class="flex mb-1 text-xs">
+            <div class="flex flex-row justify-between text-xs">
+                <h2 class="flex mb-1">
                     <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
                     PLAYER LIST
                 </h2>
+                <div class="mr-1 mb-1">
+                    [<span id="player-count">...</span> ENTRIES]
+                </div>
             </div>
             <hr class="w-full border-t-3 border-nc-grey"/>
             {% if (range(0,200) | random) > 198 %}
@@ -203,11 +206,14 @@
 
         <!-- Lobby list -->
         <section class="flex flex-col">
-            <div>
-                <h2 class="flex mb-1 text-xs">
+            <div class="flex flex-row justify-between text-xs">
+                <h2 class="flex mb-1">
                     <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mx-0.5 select-none"/>
                     LOBBY LIST
                 </h2>
+                <div class="mr-1 mb-1 text-nc-grey">
+                    [<span id="lobby-count">...</span> ENTRIES]
+                </div>
             </div>
             <hr class="border-t-3 border-nc-grey"/>
             <article class="flex flex-grow max-h-116 w-full 2xl:justify-center justify-start overflow-y-scroll overflow-x-scroll 2xl:overflow-x-hidden 2xl:bg-none md:bg-[radial-gradient(circle_farthest-corner_at_10%,rgba(222,222,222,0.5),_transparent)]">

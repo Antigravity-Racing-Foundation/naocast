@@ -379,6 +379,8 @@ function fetchPlayers() {
 
             lastPlayerSnapshot = currentSnapshot;
 
+            document.getElementById("player-count").textContent = xmlParsed.documentElement.getAttribute("totalEntries")
+
             if (playerItems.length === 0) {
                 renderEmptyPlayers();
             } else {
@@ -534,6 +536,8 @@ function fetchLobbies() {
             }
 
             lastLobbySnapshot = currentSnapshot;
+
+            document.getElementById("lobby-count").textContent = xmlParsed.documentElement.getAttribute("totalEntries")
 
             if (lobbyItems.length === 0) {
                 renderEmptyLobbies();
