@@ -379,7 +379,9 @@ function fetchPlayers() {
 
             lastPlayerSnapshot = currentSnapshot;
 
-            document.getElementById("player-count").textContent = xmlParsed.documentElement.getAttribute("totalEntries")
+            var playerCount = xmlParsed.documentElement.getAttribute("totalEntries");
+            playerCount += playerCount != 1 ? " ENTRIES" : " ENTRY";
+            document.getElementById("player-count").textContent = playerCount;
 
             if (playerItems.length === 0) {
                 renderEmptyPlayers();
@@ -537,7 +539,9 @@ function fetchLobbies() {
 
             lastLobbySnapshot = currentSnapshot;
 
-            document.getElementById("lobby-count").textContent = xmlParsed.documentElement.getAttribute("totalEntries")
+            var lobbyCount = xmlParsed.documentElement.getAttribute("totalEntries");
+            lobbyCount += lobbyCount != 1 ? " ENTRIES" : " ENTRY";
+            document.getElementById("lobby-count").textContent = lobbyCount;
 
             if (lobbyItems.length === 0) {
                 renderEmptyLobbies();
