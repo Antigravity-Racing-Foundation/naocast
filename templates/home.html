@@ -25,13 +25,13 @@
         {{ ui.corners() }}
         <!-- additional padding in the article because we want the image to be above the text slightly -->
         <article class="pt-6 space-y-3">
-            <h3 class="text-lg md:text-xl leading-tight">
+            <h3 class="text-base md:text-lg leading-tight">
                 <img src="{{ url_for('static', filename='images/text_ornament_arrow.svg') }}" alt=""
-                    class="h-5 w-5 inline-block align-text-bottom select-none"/>
+                    class="h-4 w-4 inline-block align-text-bottom select-none"/>
                 Welcome to the official Antigravity Racing Foundation Website!
             </h3>
 
-            <div class="text-sm md:text-lg max-w-screen-lg leading-snug">
+            <div class="text-xs md:text-base max-w-screen-lg leading-snug">
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt=""
                     class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
                 Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
@@ -46,7 +46,7 @@
               "WipEout HD Mode Shuffle, an appreciation of often neglected ways to enjoy the game <b>every Sunday at 19:00 UTC.</b>",
               "WipEout Pulse Portable Rush, its version of Weekly Lobby, held <b>every Thursday at 19:00 UTC.</b>"
             ] %}
-            <ul class="text-sm md:text-lg space-y-4 leading-tight mt-4">
+            <ul class="text-xs md:text-base space-y-4 leading-tight mt-4">
               {% for event in events %}
               <li class="flex items-start">
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}"
@@ -62,7 +62,7 @@
             {{ ui.box_title('Image by @s.erein12') }}
             <div class="flex relative">
                 <a href="{{ url_for('static', filename='images/2048_teatime.jpg') }}" target="_blank" aria-hidden="true">
-                    <img src="{{ url_for('static', filename='images/2048_teatime_small.webp') }}" alt="" class="max-h-[35rem] w-auto"/>
+                    <img src="{{ url_for('static', filename='images/2048_teatime_small.webp') }}" alt="" class="max-h-[30rem] w-auto"/>
                 </a>
                 <!-- not using the corners macro since here the right corners must be a different color -->
                 <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
@@ -75,7 +75,7 @@
 </section>
 
 <div class="mx-6 lg:mx-10 text-center">
-    <h2 class="text-sm md:text-lg">
+    <h2 class="text-xs md:text-base">
         <!-- there's totally more elegant way to do this but i'm currently lazy  -->
         <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="ml-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
         CONFIG INSTRUCTIONS FOLLOW
@@ -259,11 +259,11 @@
     {{ ui.box_title('About Us') }}
     <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
         {{ ui.corners() }}
-        <h3 class="text-lg md:text-xl leading-tight text-agrf-statement">
+        <h3 class="text-base md:text-lg leading-tight text-agrf-statement">
             Who are we?
         </h3>
         <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
-        <div class="text-sm md:text-lg">
+        <div class="text-xs md:text-base">
             The Antigravity Racing Foundation is a passionate community of people that love the WipEout video game series.
             We began public operation on March 2nd, 2024, when we started inviting people to
             <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">our Discord server.</a><br><br>

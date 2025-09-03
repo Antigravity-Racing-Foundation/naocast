@@ -30,7 +30,7 @@
     <div class="relative px-6 py-4 w-full bg-nc-light-grey flex items-center justify-between">
       {{ ui.corners() }}
 
-      <span class="hidden lg:block text-lg">View EULA for:</span>
+      <span class="hidden lg:block text-base">View EULA for:</span>
       {% set buttons =
       {"WipEout HD": "wipeout/hd",
       "WipEout Pulse": "wipeout/pulse",
@@ -40,10 +40,10 @@
       <div class="gap-x-1 select-none">
 
         {% for label, endpoint in buttons.items() %}
-        <a href="{{ url_for('eula', path=endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-lg whitespace-nowrap">{{ label }}</a>
+        <a href="{{ url_for('eula', path=endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-base whitespace-nowrap">{{ label }}</a>
 
         {% if not loop.last %}
-        <span class="text-nc-grey text-sm sm:text-lg">//</span>
+        <span class="text-nc-grey text-sm sm:text-base">//</span>
         {% endif %}
 
         {% endfor %}

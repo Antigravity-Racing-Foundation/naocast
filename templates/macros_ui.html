@@ -6,7 +6,7 @@
 {%- endmacro -%}
 
 {%- macro box_title(box_title) -%}
-  <h2 class="flex mb-1 text-sm">
+  <h2 class="flex mb-1 text-xs">
     <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 ml-0.5 select-none"/>
     {{ box_title }}
   </h2>
@@ -21,17 +21,17 @@
 
 {%- macro guide_article(box_title, guide_title, accent_color, caller=None) -%}
         <article class="items-start">
-            <h2 class="flex mb-1 text-sm">
+            <h2 class="flex mb-1 text-xs">
               <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 ml-0.5 select-none"/>
               {{ box_title }}
             </h2>
             <div class="relative px-6 py-6 bg-nc-bg">
                 {{ corners() }}
-                <h3 class="text-lg md:text-xl leading-tight" style="color: rgba({{ accent_color }},1)">
+                <h3 class="text-base md:text-lg leading-tight" style="color: rgba({{ accent_color }},1)">
                     {{ guide_title }}
                 </h3>
                 <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
-                <div class="text-sm md:text-lg leading-snug">
+                <div class="text-xs md:text-base leading-snug">
                     {{ caller() }}
                 </div>
             </div>

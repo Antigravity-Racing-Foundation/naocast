@@ -62,7 +62,7 @@
             {{ svg_base.bar_ornament_ship(class = "h-12 w-20 ml-3 hidden md:block", color = "nc-grey") }}
             {{ svg_base.bar_ornament_angle(class = "w-28 ml-4 hidden 2xl:block", color = "nc-light-grey") }}
             <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="ml-3 hidden 2xl:block" role="presentation"/>
-            <h1 class="text-nc-grey text-lg hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
+            <h1 class="text-nc-grey text-base hidden ml-1 2xl:block select-text">{%block label%}Invalid endpoint / Bad request{%endblock%}</h1>
         </div>
         <nav class="gap-x-6 flex items-center">
 
@@ -79,8 +79,8 @@
                 {% for label, endpoint in buttons_inactive.items() %}
 
                 <li>
-                    <span class="text-nc-grey focus:underline text-sm sm:text-lg" title="Coming soon!">{{ label }}</span>
-                    <span class="text-nc-grey text-base sm:text-xl min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
+                    <span class="text-nc-grey focus:underline text-sm sm:text-base" title="Coming soon!">{{ label }}</span>
+                    <span class="text-nc-grey text-base sm:text-lg min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
                 </li>
 
                 {% endfor %}
@@ -88,9 +88,9 @@
                 {% for label, endpoint in buttons_active.items() %}
 
                 <li>
-                    <a href="{{ url_for(endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-lg">{{ label }}</a>
+                    <a href="{{ url_for(endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-base">{{ label }}</a>
                     {% if not loop.last %}
-                    <span class="text-nc-grey text-base sm:text-xl min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
+                    <span class="text-nc-grey text-base sm:text-lg min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
                     {% endif %}
                 </li>
 
