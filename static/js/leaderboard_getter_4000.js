@@ -104,13 +104,7 @@ const ranked_list = [
 ];
 
 const test_boards = [
-    1030004,
-    1130004,
     1230003,
-    1300009,
-    1530004,
-    1700008,
-    1800014
 ];
 
 
@@ -133,7 +127,7 @@ var trackId = 0;
 function timeConverter(time) {
     milliseconds = time % 100; // get the last two digits (00 of 100)
     seconds = Math.floor(time / 100); // we divide hdTime such that 69420 == 694.20 and use floor to dismiss everything after period
-    
+
     minutes = Math.floor(seconds / 60); // divide seconds by 60 and floor it to get rid of funky shenanigans in second calc
     seconds = seconds - minutes * 60;
     humanTime = minutes + ':' + seconds + '.' + milliseconds;
@@ -155,7 +149,7 @@ function headerFromMode(mode) {
         case "0":
         case "1":
         case "2":
-            ret = "<td>Pos.</td><td>Username</td><td>Team</td><td>Time</td><td>Pads</td>";
+            ret = '<tr class="border-b-3 border-nc-grey"><th scope="col" class="px-2 py-2 text-center">Pos.</th><th scope="col" class="px-6">Username</th><th scope="col" class="px-6 text-center">Team</th><th scope="col" class="px-6 text-center">Time</th><th scope="col" class="px-2 text-right">Pads</th></tr>';
             break;
 
         case "5":
@@ -233,11 +227,8 @@ function fetchBoard(id, pageSize, row, player, go_to) {
         total_entries = x.attributes.totalEntries.nodeValue;
 
         if(x.length != 0) {
-            output += '<table>';
 
-            output += '<tr>' + headerFromMode(gameMode) + '</tr>';
-
-            output += '<tr></tr>'; //spacer
+            document.getElementById("table-head").innerHTML = headerFromMode(gameMode);
 
             for(var i=0; i<pageSize; i++) {
                 if(x.childNodes[i].attributes.filler && x.childNodes[i].attributes.filler.nodeValue == "true") {
@@ -258,11 +249,11 @@ function fetchBoard(id, pageSize, row, player, go_to) {
                     switch(gameMode) {
                         case "0":
                         case "1":
-                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
-                            output += "<td>" + timeConverter(x.childNodes[i].attributes.raceTime.nodeValue) + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.racePads.nodeValue + "</td></tr>";
+                            // output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
+                            // output += "<td>" + timeConverter(x.childNodes[i].attributes.raceTime.nodeValue) + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.racePads.nodeValue + "</td></tr>";
                             break;
 
                         case "5":
@@ -274,11 +265,33 @@ function fetchBoard(id, pageSize, row, player, go_to) {
                             break;
 
                         case "2":
-                            output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
-                            output += "<td>" + timeConverter(x.childNodes[i].attributes.lapTime.nodeValue) + "</td>";
-                            output += "<td>" + x.childNodes[i].attributes.lapPads.nodeValue + "</td></tr>";
+
+                            const values = [
+                                [1, x.childNodes[i].attributes.position.nodeValue],
+                                [2, x.childNodes[i].attributes.name.nodeValue],
+                                [3, x.childNodes[i].attributes.team.nodeValue],
+                                [4, timeConverter(x.childNodes[i].attributes.lapTime.nodeValue)],
+                                [5, x.childNodes[i].attributes.lapPads.nodeValue]
+                            ]
+
+                            for (const [valueId, value] of values) {
+                                if (i+1==pageSize)
+                                    var id = `tr-last-${valueId}`;
+                                else
+                                    var id = `tr-${i+1}-${valueId}`;
+                                console.log(`Writing to ${id}`)
+                                const el = document.getElementById(id);
+                                if (!el) {
+                                    console.warn("No element with id:", id);
+                                    return;
+                                }
+                                el.textContent = value;
+                            }
+                            // output += "<tr " + ((my_stats_exists == true && x.childNodes[i].attributes.id.nodeValue == my_stats_id) ? 'style="font-weight: bold; text-decoration: underline;"' : '') + "><td>" + x.childNodes[i].attributes.position.nodeValue + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.name.nodeValue + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.team.nodeValue + "</td>";
+                            // output += "<td>" + timeConverter(x.childNodes[i].attributes.lapTime.nodeValue) + "</td>";
+                            // output += "<td>" + x.childNodes[i].attributes.lapPads.nodeValue + "</td></tr>";
                             break;
 
                         case "3":
@@ -309,7 +322,7 @@ function fetchBoard(id, pageSize, row, player, go_to) {
             }
 
             output += '</table>';
-            document.getElementById("board").innerHTML = output; 
+            // document.getElementById("board").innerHTML = output;
         }
     }).catch(error => {
         console.error(`API fetch failed:`, error);
@@ -319,4 +332,4 @@ function fetchBoard(id, pageSize, row, player, go_to) {
 //pick a random board from list
 var id = test_boards[Math.floor(Math.random() * test_boards.length)];
 
-fetchBoard(id, 10, 0, "", "GOTO_ME");
+fetchBoard(id, 2, 0, "", "GOTO_ME");
