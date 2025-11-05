@@ -192,7 +192,19 @@ function getGameMode(ruleSet, appId) {
             break;
 
         case "22204":
-            mode = '';
+            switch(ruleSet) {
+                case "5":
+                    mode = "Race";
+                    break;
+
+                case "6":
+                    mode = "Time Ticker";
+                    break;
+
+                default:
+                    mode = "Unknown";
+                    break;
+            }
             break;
 
         case "23360":
@@ -442,8 +454,13 @@ function renderLobbies(lobbies) {
 
             case "22204":
                 lobbyName = lobby["GameName"].split("~")[0];
+                gameMode = getGameMode(lobby["GF2"], lobby["AppId"]);
+                laps = "";
+                if(gameMode === "Race") {
+                    laps = lobby["GF3"] + " Lap";
+                }
 
-                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]})`;
+                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}) // ${laps} ${gameMode}`;
 
                 gameName = "MotorStorm: Arctic Edge";
                 gameNameColor = "game-ae";
@@ -529,7 +546,9 @@ function fetchLobbies() {
                 PlayerSkillLevel: el.getAttribute("PlayerSkillLevel"),
                 GameName: el.getAttribute("GameName"),
                 HostName: el.getElementsByTagName("HostName")[0]?.textContent || undefined,
-                RuleSet: el.getAttribute("RuleSet")
+                RuleSet: el.getAttribute("RuleSet"),
+                GF2: el.getAttribute("GenericField2"),
+                GF3: el.getAttribute("GenericField3")
             }));
 
             const currentSnapshot = JSON.stringify(lobbyItems);
