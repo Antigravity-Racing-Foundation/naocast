@@ -139,6 +139,15 @@
         <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-12 -left-17 hidden lg:block select-none"/>
         <img src="{{ url_for('static', filename='images/status_ornament_overview.svg') }}" alt="" class="h-5.5 absolute top-3.5 left-3.5 block select-none"/>
         <img src="{{ url_for('static', filename='images/status_ornament_barcode.svg') }}" alt="" class="h-4.5 absolute top-4 right-4 hidden md:block select-none"/>
+        <div class="flex-row items-center h-4 absolute bottom-6.5 left-6 hidden lg:flex space-x-3">
+            <a class="" href="https://adhoc.agracingfoundation.org" title="See our Ad Hoc server status">
+                <img src="{{url_for('static', filename='images/status_ornament_adhoc.svg')}}" alt=""/>
+            </a>
+            <span class="text-sm flex">
+                <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" aria-hidden="true" class="w-1.5 mr-2 mb-0.5 select-none rotate-180"/>
+                ALSO SEE
+            </span>
+        </div>
         <p class="absolute text-[0.45rem] text-right text-nc-light-grey right-4 bottom-4 leading-tight hidden xl:block">
             EXTERNAL UTILITY LINKED - WSXS CONNECTION ESTABLISHED<br>
             THIS VIEWPORT IS CONTROLLED BY REMOTE HOST 2001:41d0:303:6f39::1/56<br>
@@ -336,6 +345,15 @@
                 <hr class="border-t-3 border-nc-grey"/>
             </div>
         </section>
+    </div>
+</div>
+
+<!-- mobile adhoc link -->
+<div class="items-start w-screen px-6 pb-10 block lg:hidden">
+    {{ ui.box_title('Ad Hoc Status') }}
+    <div class="relative p-4 w-full bg-nc-bg flex justify-center text-center">
+        {{ui.corners()}}
+        <a href="https://adhoc.agracingfoundation.org/" class="text-agrf-strike">Ad Hoc status is listed <span class="underline">separately</span>.</a>
     </div>
 </div>
 <script src="/static/js/api_spammer_3000.js"></script>
