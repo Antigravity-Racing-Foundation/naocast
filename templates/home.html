@@ -189,9 +189,9 @@
         <span class="text-pulse-green">WIPEOUT® PULSE</span>/<span class="text-game-ae">MOTORSTORM® ARCTIC EDGE</span>
     </div>
 
-        <a name="WipEout Pulse"></a>
-        <a name="MotorStorm Arctic Edge"></a>
-        <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 pb-4 px-6 lg:px-28">
+    <a name="WipEout Pulse"></a>
+    <a name="MotorStorm Arctic Edge"></a>
+    <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 pb-4 px-6 lg:px-28">
         <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
             {% call ui.guide_article(
@@ -277,6 +277,78 @@
                     <li>You should be done</li><br>
                     We are not responsible for any issues that may arise when using custom skins on any platform
                 </ul>
+
+            {% endcall %}
+        </div>
+    </article>
+
+    <div class="mx-6 lg:mx-10 text-center space-y-1">
+        <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
+        <span class="text-game-pure">WIPEOUT® PURE</span>
+    </div>
+
+    <a name="WipEout Pure"></a>
+    <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 pb-4 px-6 lg:px-28">
+        <!-- left side -->
+        <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+            {% call ui.guide_article(
+                box_title='Console Setup Guide',
+                guide_title='Ad Hoc setup for PSP/PS Vita',
+                accent_color='74,203,238') %}
+
+                    Playing WipEout Pure online on a console requires it to already be jailbroken.<br>
+                    This method of playing WipEout Pure isn't supported on PSP 1000 and E1000 (Street) consoles.<br><br>
+
+                    Once your console is jailbroken, follow the guide that's appropriate for your system:
+                    <ul class="list-inside list-[square]">
+                        <li>
+                            <a href="https://github.com/Kethen/aemu/blob/2026-02-02/installation.md#psp-2000-3000/" target="_blank" class="hover:underline" style="color: rgba(74,203,238,1)">
+                            PSP 2000/3000
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Kethen/aemu/blob/2026-02-02/installation.md#psvita/" target="_blank" class="hover:underline" style="color: rgba(74,203,238,1)">
+                            PS Vita
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Kethen/aemu/blob/2026-02-02/installation.md#psp-go/" target="_blank" class="hover:underline" style="color: rgba(74,203,238,1)">
+                            PSP Go
+                            </a>
+                        </li><br>
+                    </ul>
+
+                    After you're done, edit the "server.txt" file in the "seplugins" folder and replace "socom.cc" with "agracingfoundation.org".<br><br>
+
+                    When you start the game, pressing the PS/Home button should bring up the PRO Online menu.
+                    If the menu doesn't show up, the plugin isn't being loaded properly. Confirm that:
+                    <ul class="list-inside list-[square]">
+                        <li>You've followed the guide properly;</li>
+                        <li>You're using an ISO copy of the game. The digital (EBOOT.PBP) version isn't supported.</li>
+                    </ul>
+
+            {% endcall %}
+        </div>
+        <!-- right side -->
+        <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
+            {% call ui.guide_article(
+                box_title='PPSSPP Setup Guide',
+                guide_title='Ad Hoc setup for PPSSPP',
+                accent_color='74,203,238') %}
+
+                    To play WipEout Pure online, you must be using PPSSPP v1.20 or newer.<br><br>
+
+                    <ul class="list-inside list-[square]">
+                        <li>Check Settings -> Networking -> (Networking category) -> Enable networking/WLAN</li>
+                        <li>Set Settings -> Networking -> (Ad Hoc multiplayer category) -> Try to use server-provided packet relay to Yes</li>
+                        <li>Replace Settings -> Networking -> (Ad Hoc server category) -> Change PRO ad hoc server IP address to "agracingfoundation.org"</li>
+                        <li>Set Settings -> Networking -> (Miscellaneous) -> Port offset to 10000</li><br>
+                    </ul>
+
+                    It is also recommended to change your Nickname in Settings -> System -> (PSP settings category) -> Change nickname to be easily identifiable on
+                    <a href="https://adhoc.agracingfoundation.org/" target="_blank" class="hover:underline" style="color: rgba(74,203,238,1)">
+                        the Ad Hoc status page.
+                    </a>
 
             {% endcall %}
         </div>
