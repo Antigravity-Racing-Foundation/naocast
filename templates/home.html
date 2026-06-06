@@ -87,9 +87,18 @@
 
 <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-30 left-11 hidden lg:block select-none"/>
 <img src="{{ url_for('static', filename='images/body_ornament_blue_lines.svg') }}" alt="" class="w-7 absolute top-30 right-10 hidden lg:block select-none"/>
-
 <section class="space-y-6 my-6">
     <a name="WipEout HD"></a>
+    <article class="items-start w-screen px-6 lg:px-28">
+        {{ ui.box_title('Warning') }}
+        <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between shadow-[0_0px_20px_0px_rgba(255,219,8,0.2)]">
+            {{ ui.corners() }}
+            <div class="text-sm md:text-base text-nc-grey">
+                NOTICE: By default it is not possible to use the same username across PS3 and RPCS3 to play WipEout HD. If you would like
+                to share the same account across both platforms you must Direct Message @chacheechoo on Discord to request whitelisting.
+            </div>
+        </div>
+    </article>
     <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 px-6 pb-4 lg:px-28">
         <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
@@ -155,6 +164,7 @@
 
     <a name="WipEout 2048"></a>
     <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-15 pb-4 px-6 lg:px-28">
+        <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
             {% call ui.guide_article(
                 box_title='PlayStation® Vita Setup Guide',
@@ -181,6 +191,17 @@
                     You should be able to play WipEout Pulse and MotorStorm Arctic Edge online through Adrenaline now; if not, follow the PSP system setup guide through Adrenaline's XMB
 
             {% endcall %}
+        </div>
+        <!-- right side -->
+        <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[30%]">
+            {{ ui.box_title('Warning') }}
+            <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between shadow-[0_0px_20px_0px_rgba(255,219,8,0.2)]">
+                {{ ui.corners() }}
+                <div class="text-sm md:text-base text-nc-grey">
+                    NOTICE: If you had previously played WipEout HD online using the RPCS3 emulator and would like to use the
+                    same username on WipEout 2048, you must request account whitelisting by Direct Messaging @chacheechoo on Discord.
+                </div>
+            </div>
         </div>
     </article>
 
