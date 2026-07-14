@@ -25,44 +25,68 @@
         {{ ui.corners() }}
         <!-- additional padding in the article because we want the image to be above the text slightly -->
         <article class="pt-6 space-y-3">
-            <h3 class="text-lg md:text-lg leading-tight">
+            <h3 class="text-lg md:text-2xl leading-tight">
                 <img src="{{ url_for('static', filename='images/text_ornament_arrow.svg') }}" alt=""
-                    class="h-4 w-4 inline-block align-text-bottom select-none"/>
-                Welcome to the official Antigravity Racing Foundation Website!
+                    class="h-4.5 md:h-6 inline-block align-text-bottom select-none"/>
+                WELCOME TO WIPEOUT®
             </h3>
 
-            <div class="text-sm md:text-base max-w-screen-lg leading-snug">
-                <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt=""
-                    class="h-2 inline-block mb-0.5 ml-0.5 select-none"/>
-                Our flagship project, Thallium+Beat, allows you to play WipEout HD and WipEout Pulse online again, as well as re-experience most
-                of WipEout 2048's online features. We also support MotorStorm: Arctic Edge, with events held on the <a href="https://discord.gg/g5hA2w5XmG" target="_blank" class="underline hover:text-agrf-strike">MS World Online Discord</a>!<br><br>
-                Except for WipEout 2048 Online Campaign and some WipEout Pulse in-game website features, <i><b>everything works!</b></i>
-                <br><br>
-                We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including:
+            <hr class="border-t-4 xl:mr-8">
+
+            <div class="text-sm md:text-lg max-w-screen-lg leading-normal">
+                Experience the newer WipEout games again thanks to our vibrant community and the Thallium+Beat server revival.
+                <span class="text-agrf-statement">Now with full WipEout 2048 support.</span><br><br>
+                <span class="text-base hidden md:inline-block"> Find out how to get started:</span>
+                <span class="text-base md:hidden">Learn about:</span><br>
+                <!-- We hold several weekly events on <a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline hover:text-agrf-strike">our WipEout Discord server</a>, including: -->
             </div>
 
-            {% set events = [
-              "WipEout HD Weekly Lobby, a time to simply play with others, <b>on Saturday at 19:00 UTC.</b>",
-              "WipEout HD Mode Shuffle, an appreciation of often neglected ways to enjoy the game <b>every Sunday at 19:00 UTC.</b>",
-              "WipEout Pulse Portable Rush, its version of Weekly Lobby, held <b>every Thursday at 19:00 UTC.</b>"
+            <!-- <span class="text-sm">
+                    We also support MotorStorm: Arctic Edge. <a href="https://discord.gg/g5hA2w5XmG" target="_blank" class="underline hover:text-agrf-strike">Join the MS World Online Discord</a>
+                    for more information.
+            </span> -->
+
+            {% set games = [
+                {"bigtext": "Discover our <span class='underline text-agrf-strike'>weekly events and Discord communities</span>.",
+                "smalltext": "<span class='text-agrf-strike'>Events and communities</span>;",
+                "href": "#Events and communities", "target": ""},
+
+                {"bigtext": "Learn how to play <span class='underline text-agrf-strike'>WipEout HD</span>.",
+                "smalltext": "<span class='text-agrf-strike'>WipEout HD</span>;",
+                "href": "#WipEout%20HD", "target": ""},
+
+                {"bigtext": "Configure your console for <span class='underline text-agrf-strike'>WipEout 2048</span>.",
+                "smalltext": "<span class='text-agrf-strike'>WipEout 2048</span>;",
+                "href": "#WipEout%202048", "target": ""},
+
+                {"bigtext": "Get started with <span class='underline text-agrf-strike'>WipEout Pulse and MotorStorm: Arctic Edge</span>.",
+                "smalltext": "<span class='text-agrf-strike'>WipEout Pulse and MotorStorm: Arctic Edge</span>;",
+                "href": "#WipEout Pulse", "target": ""},
+
+                {"bigtext": "Set up our Ad-Hoc emulation, enhanced for <span class='underline text-agrf-strike'>WipEout Pure</span>.",
+                "smalltext": "<span class='text-agrf-strike'>WipEout Pure</span>.",
+                "href": "#WipEout%20Pure", "target": ""}
             ] %}
+
             <ul class="text-sm md:text-base space-y-4 leading-tight mt-4">
-              {% for event in events %}
+              {% for game in games %}
               <li class="flex items-start">
                 <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}"
                     alt="" class="h-2 mt-1.5 mr-2 ml-1 select-none" />
-                <span>
-                    {{ event | safe }}
-                </span>
+                <a class="hover:underline" target="{{ game.target }}" href="{{ game.href }}">
+                    <span class="md:inline-block hidden">{{ game.bigtext | safe }}</span>
+                    <span class="md:hidden">{{game.smalltext | safe }}</span>
+                </a>
               </li>
               {% endfor %}
             </ul>
+
         </article>
-        <figure class="flex-col items-start ml-5 hidden xl:flex">
+        <figure class="flex-col items-start ml-5 mt-2 hidden xl:flex">
             {{ ui.box_title('Image by @s.erein12') }}
             <div class="flex relative">
                 <a href="{{ url_for('static', filename='images/2048_teatime.jpg') }}" target="_blank" aria-hidden="true">
-                    <img src="{{ url_for('static', filename='images/2048_teatime_small.webp') }}" alt="" class="max-h-[30rem] w-auto"/>
+                    <img src="{{ url_for('static', filename='images/2048_teatime_small.webp') }}" alt="" class="max-h-[28rem] w-auto"/>
                 </a>
                 <!-- not using the corners macro since here the right corners must be a different color -->
                 <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
@@ -77,18 +101,18 @@
 <div class="mx-6 lg:mx-10 text-center space-y-1">
     <h2 class="text-sm md:text-base">
         <!-- there's totally more elegant way to do this but i'm currently lazy  -->
-        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="ml-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="rotate-90 ml-3 mt-0.5 align-text-top select-none hidden sm:inline-block"/>
         CONFIG INSTRUCTIONS FOLLOW
-        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_blue.svg') }}" alt="" class="mr-3 mt-1 align-text-top select-none hidden sm:inline-block"/>
+        <img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="rotate-90 mr-3 mt-0.5 align-text-top select-none hidden sm:inline-block"/>
     </h2>
-    <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
-    <span class="text-hd-blue">WIPEOUT® HD</span>
+    <a name="WipEout HD"></a>
+    <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50" />
+    <span class="text-agrf-statement text-lg">PS3/RPCS3</span>
 </div>
 
 <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-30 left-11 hidden lg:block select-none"/>
 <img src="{{ url_for('static', filename='images/body_ornament_blue_lines.svg') }}" alt="" class="w-7 absolute top-30 right-10 hidden lg:block select-none"/>
 <section class="space-y-6 my-6">
-    <a name="WipEout HD"></a>
     <article class="items-start w-screen px-6 lg:px-28">
         {{ ui.box_title('Warning') }}
         <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between shadow-[0_0px_20px_0px_rgba(255,219,8,0.2)]">
@@ -157,12 +181,12 @@
         <!-- ha o mukidashite pa-ppa-ppa -->
     </article>
 
+    <a name="WipEout 2048"></a>
     <div class="mx-6 lg:mx-10 text-center space-y-1">
-        <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
-        <span class="text-game-2048">WIPEOUT® 2048</span>
+        <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50" />
+        <span class="text-agrf-statement text-lg">PS VITA®</span>
     </div>
 
-    <a name="WipEout 2048"></a>
     <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-15 pb-4 px-6 lg:px-28">
         <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
@@ -193,25 +217,25 @@
             {% endcall %}
         </div>
         <!-- right side -->
-        <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[30%]">
+        <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
             {{ ui.box_title('Warning') }}
             <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between shadow-[0_0px_20px_0px_rgba(255,219,8,0.2)]">
                 {{ ui.corners() }}
                 <div class="text-sm md:text-base text-nc-grey">
                     NOTICE: If you had previously played WipEout HD online using the RPCS3 emulator and would like to use the
-                    same username on WipEout 2048, you must request account whitelisting by Direct Messaging @chacheechoo on Discord.
+                    same username on WipEout 2048, you must request account whitelisting by Direct Messaging @chacheechoo on Discord.<br><br>
+                    Vita3k does not have PSN emulation support, therefore it cannot be used to play WipEout 2048 online.
                 </div>
             </div>
         </div>
     </article>
 
     <div class="mx-6 lg:mx-10 text-center space-y-1">
-        <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
-        <span class="text-pulse-green">WIPEOUT® PULSE</span>/<span class="text-game-ae">MOTORSTORM® ARCTIC EDGE</span>
+        <a name="WipEout Pulse"></a>
+        <a name="MotorStorm Arctic Edge"></a>
+        <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50" />
+        <span class="text-agrf-statement">PSP®/PPSSPP</span>
     </div>
-
-    <a name="WipEout Pulse"></a>
-    <a name="MotorStorm Arctic Edge"></a>
     <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 pb-4 px-6 lg:px-28">
         <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
@@ -269,6 +293,14 @@
         <!-- right side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
             {% call ui.guide_article(
+                box_title='PS Vita® Reference',
+                guide_title='Using a PS Vita® system',
+                accent_color='33,147,152') %}
+
+                If you wish to use a PS Vita® system for PSP® emulation, <a href="#WipEout 2048" class="hover:underline" style="color: rgba(33,147,152,1)">consult the PS Vita® guide.</a>
+
+            {% endcall %}
+            {% call ui.guide_article(
                 box_title='WipEout Pulse Custom Skin Guide',
                 guide_title='Making a WipEout Pulse custom skin',
                 accent_color='33,147,152') %}
@@ -304,11 +336,11 @@
     </article>
 
     <div class="mx-6 lg:mx-10 text-center space-y-1">
-        <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey" />
-        <span class="text-game-pure">WIPEOUT® PURE</span>
+        <a name="WipEout Pure"></a>
+        <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50" />
+        <span class="text-agrf-statement">ADHOC</span>
     </div>
 
-    <a name="WipEout Pure"></a>
     <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-between space-x-15 pb-4 px-6 lg:px-28">
         <!-- left side -->
         <div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[50%]">
@@ -381,7 +413,64 @@
 </section>
 
 <div class="mx-6 lg:mx-10">
-    <hr class="w-full border-t-4 sm:border-t-6 border-nc-light-grey"/>
+    <a name="Events and communities">
+    <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50"/>
+</div>
+
+<section class="items-start w-screen px-6 lg:px-28 py-10">
+    {{ ui.box_title('Events and Communities') }}
+    <div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+        {{ ui.corners() }}
+        <h3 class="text-lg md:text-lg leading-tight text-agrf-statement">
+            Join the fun
+        </h3>
+        <hr class="w-full border-t-4 mt-2 mb-1 border-nc-light-grey"/>
+        <div class="text-sm md:text-base">
+            We host many weekly events, so you know exactly when to hop on to get into a full lobby.<br><br>
+
+            <ul class="list-inside list-[square]">
+
+                <li><span class="text-agrf-statement">WipEout HD Weekly Lobby</span>,
+                    a time to simply play with others, is held
+                    <span class="text-agrf-statement">every Saturday at 19:00 UTC</span>.
+                </li>
+
+                <br class="md:hidden">
+
+                <li><span class="text-agrf-statement">WipEout HD Mode Shuffle</span>,
+                    an appreciation of often neglected ways to enjoy the game, starts
+                    <span class="text-agrf-statement">every Sunday at 19:00 UTC.</span>
+                </li>
+
+                <br class="md:hidden">
+
+                <li><span class="text-agrf-statement">WipEout Pulse Portable Rush</span>,
+                    its version of Weekly Lobby, is held
+                    <span class="text-agrf-statement">every Thursday at 19:00 UTC</span>.
+                </li>
+
+                <br class="md:hidden">
+
+                <li><span class="text-agrf-statement">WipEout 2048 Campaign Tuesday</span>
+                    - the prime time to make progress in the Online Campaign - happens
+                    <span class="text-agrf-statement">every Tuesday at 19:00 UTC.
+                </li>
+
+                <br>
+                <hr class="border-t-4 border-nc-light-grey md:hidden">
+                <br class="md:hidden">
+
+                <li><a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline text-agrf-strike">Our Discord server</a> is the biggest WipEout Discord server in existence*.</li>
+                <br class="md:hidden">
+                <li><a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline text-agrf-strike">The MS World Online Discord</a> holds MotorStorm: Arctic Edge events.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="mx-6 lg:mx-10">
+    <a name="About Us">
+    <hr class="w-full border-t-4 sm:border-t-6 border-nc-grey opacity-50"/>
 </div>
 
 <section class="items-start w-screen px-6 lg:px-28 py-10">
