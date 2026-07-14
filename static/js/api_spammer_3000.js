@@ -427,17 +427,28 @@ function renderLobbies(lobbies) {
 
         switch(lobby["AppId"]) {
             case "23360":
-                lobbyName = lobby["HostName"];
-                speedClass = getSpeedClass(lobby["PlayerSkillLevel"], lobby["AppId"]);
-                gameMode = getGameMode(lobby["RuleSet"], lobby["AppId"]);
+                if(lobby["IsOC"] == "true") {
+                    lobbyName = "Online Campaign Session";
+                    lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]})`;
 
-                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}) // ${speedClass} ${gameMode}`;
+                    gameName = "WipEout 2048";
+                    gameNameColor = "game-2048";
 
-                gameName = "WipEout HD";
-                gameNameColor = "game-hd";
+                    bgPath = "/static/images/lobby_card_2048.svg"
+                    break;
+                } else {
+                    lobbyName = lobby["HostName"];
+                    speedClass = getSpeedClass(lobby["PlayerSkillLevel"], lobby["AppId"]);
+                    gameMode = getGameMode(lobby["RuleSet"], lobby["AppId"]);
 
-                bgPath = "/static/images/lobby_card_hd.svg"
-                break;
+                    lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}) // ${speedClass} ${gameMode}`;
+
+                    gameName = "WipEout HD";
+                    gameNameColor = "game-hd";
+
+                    bgPath = "/static/images/lobby_card_hd.svg"
+                    break;
+                }
 
             case "20794":
                 lobbyName = lobby["GameName"];
@@ -540,6 +551,7 @@ function fetchLobbies() {
             const lobbyItems = Array.from(xmlParsed.getElementsByTagName("Lobby"))
             .map(el => ({
                 AppId: el.getAttribute("AppId"),
+                IsOC: el.getAttribute("IsOC"),
                 MaxPlayers: el.getAttribute("MaxPlayers"),
                 PlayerCount: el.getAttribute("PlayerCount"),
                 PlayerList: el.getAttribute("PlayerListCurrent"),
