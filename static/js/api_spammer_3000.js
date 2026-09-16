@@ -72,6 +72,10 @@ function getGameName(appId, username) {
             }
             break;
 
+        case "20084":
+            gameName = 'Unrevealed project'
+            break;
+
         default:
             gameName = 'Unknown';
             break;
@@ -242,6 +246,7 @@ function getPlatform(appId, username) {
     var platform = "";
 
     switch(appId) {
+
         case "20794":
             if(username.includes("(PPSSPP)")) {
                 platform = 'PPSSPP';
@@ -281,6 +286,14 @@ function getPlatform(appId, username) {
                 platform = 'PS VITA';
             } else {
                 platform = 'UNK';
+            }
+            break;
+
+        case "20084":
+            if(username.includes("RPCS3")) {
+                platform = 'RPCS3'
+            } else {
+                platform = 'PS3'
             }
             break;
 
@@ -477,6 +490,18 @@ function renderLobbies(lobbies) {
                 gameNameColor = "game-ae";
 
                 bgPath = "/static/images/lobby_card_ae.svg"
+                break;
+
+            case "20084":
+                lobbyName = lobby["GameName"].split("~")[0];
+                AIDriversMarker = lobby["RuleSet"] === "1" ? "*" : "";
+
+                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}${AIDriversMarker})`
+
+                gameName = "Unrevealed project";
+                gameNameColor = "nc-fault";
+
+                bgPath = "/static/images/lobby_card_blank.svg";
                 break;
 
             default:
