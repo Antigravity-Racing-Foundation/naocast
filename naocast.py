@@ -143,6 +143,10 @@ def github():
 def medals():
     return make_response(redirect('https://docs.google.com/spreadsheets/d/1lGnkajZ974fSgC_DMnf8X2mABWz-xYYnVmexDE7e_Ug', code=301))
 
+@app.route("/wiki")
+def wiki():
+    return make_response(redirect('https://wipeout.wiki', code=301))
+
 @app.route("/free_psp")
 def psp_easter_egg():
     return render_template("easter_egg_video.html")
