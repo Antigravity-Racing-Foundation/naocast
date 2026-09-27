@@ -3,6 +3,24 @@
 {% block title %}Latest News{% endblock %}
 {% block label %}Subdirectory view / News{% endblock %}
 
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="AGRF RSS feed" href="https://svo.agracingfoundation.org/external/assets/naocast.rss">
+
+    <meta name="description" content="Latest news related to the AGRF"/>
+    <meta name="keywords" content="WipEout, HD, 2048, Pulse, MotorStorm, Arctic Edge, Raging Ice, Server, Revival, Multiplayer, Emulator, Online, AGRF, AG Racing Foundation">
+    <meta name="author" content="Antigravity Racing Foundation"/>
+    <meta name="robots" content="index"/>
+
+    <meta name="og:site_name" content="AG Racing Foundation // AGRF"/>
+    <meta property="og:title" content="Latest news"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="Check out AGRF's latest happenings!"/>
+    <meta property="og:url" content="https://agracingfoundation.org/news/"/>
+    <meta property="og:image" content="https://agracingfoundation.org/static/images/news_embed.webp"/>
+    <meta property="og:image:alt" content="A pretty graphic in the style of the website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+{% endblock %}
+
 {% block content %}
 <template id="news-panel-template">
     <div class="panel flex flex-row justify-between items-center gap-x-3 min-w-62 px-4 z-30">

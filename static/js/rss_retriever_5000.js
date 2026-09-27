@@ -15,7 +15,7 @@ function renderFeedItems(rss) {
         if (index % 2 === 0) panel.classList.add("bg-white");
 
         const nameEl = clone.querySelector(".news-name");
-        nameEl.textContent = item.title;
+        nameEl.innerHTML = item.content;
 
         clone.querySelector(".description").textContent = item.desc;
 
