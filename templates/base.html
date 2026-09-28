@@ -68,7 +68,8 @@
 
             {% set buttons_active =
             {"Status": "status",
-            "EULA": "eula"} %}
+            "EULA": "eula",
+            "Wiki": "wiki"} %}
 
             {% set buttons_inactive =
             {"News": "news",
@@ -91,6 +92,8 @@
                     <a href="{{ url_for(endpoint) }}" class="text-agrf-strike hover:underline focus:underline text-sm sm:text-base">{{ label }}</a>
                     {% if not loop.last %}
                     <span class="text-nc-grey text-base sm:text-lg min-[350px]:before:content-['·'] sm:before:content-['//']"></span>
+                    {% else %}
+                    <span class="text-nc-grey text-base sm:text-lg"></span>
                     {% endif %}
                 </li>
 

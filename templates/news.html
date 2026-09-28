@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Latest News{% endblock %}
+{% block label %}Subdirectory view / News{% endblock %}
+
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" title="AGRF RSS feed" href="https://svo.agracingfoundation.org/external/assets/naocast.rss">
+
+    <meta name="description" content="Latest news related to the AGRF"/>
+    <meta name="keywords" content="WipEout, HD, 2048, Pulse, MotorStorm, Arctic Edge, Raging Ice, Server, Revival, Multiplayer, Emulator, Online, AGRF, AG Racing Foundation">
+    <meta name="author" content="Antigravity Racing Foundation"/>
+    <meta name="robots" content="index"/>
+
+    <meta name="og:site_name" content="AG Racing Foundation // AGRF"/>
+    <meta property="og:title" content="Latest news"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="Check out AGRF's latest happenings!"/>
+    <meta property="og:url" content="https://agracingfoundation.org/news/"/>
+    <meta property="og:image" content="https://agracingfoundation.org/static/images/news_embed.webp"/>
+    <meta property="og:image:alt" content="A pretty graphic in the style of the website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+{% endblock %}
+
+{% block content %}
+<template id="news-panel-template">
+    <div class="panel flex flex-row items-center gap-x-3 w-full px-4 z-30">
+		<img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="selection ml-3 hidden 2xl:block" style="opacity: 0" role="presentation"/>
+        <a class="news-name text-agrf-strike hover:underline focus:underline text-sm sm:text-base"></a>
+    </div>
+</template>
+
+<template id="news-article-template">
+    <div class="panel flex flex-row gap-x-3 w-full px-4 z-30">
+        <div class="content text-sm md:text-xl 2xl:text-lg py-3"></div>
+    </div>
+</template>
+
+<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-15 pb-4 px-6 lg:px-28">
+  	<!-- left side -->
+  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%]">
+    	{{ ui.box_title('Entry Picker') }}
+    	<div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+        	{{ ui.corners() }}
+        	<div class="text-sm md:text-base text-nc-grey w-full">
+            	<article class="flex relative flex-col max-h-116 w-full" id="news_list">
+            	  	{% for _ in range(0,3) %}
+            	  	<div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
+            	  	{% endfor %}
+            	  	{% for _ in range(0,6) %}
+            	  	<div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 1 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30 2xl:block hidden"></div>
+            	  	{% endfor %}
+            	  	<div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
+            	  	    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-nc-light-grey" style="opacity: 0">RETRIEVING NEWS...</p>
+            	  	</div>
+            	</article>
+          	</div>
+      	</div>
+  	</div>
+  	<!-- right side -->
+  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[65%]">
+      	{{ ui.box_title('Article Viewport') }}
+      	<div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+          	{{ ui.corners() }}
+          	<div class="text-sm md:text-base text-nc-grey w-full">
+            	<article class="flex relative flex-col max-h-116 w-full" id="news_article">
+					<div class="panel flex flex-row justify-between items-center gap-x-3 w-full px-4 z-30">
+    				    <div class="content text-sm md:text-xl 2xl:text-lg py-3">
+							<h2>Select an article to view...</h2>
+						</div>
+    				</div>
+            	</article>
+          	</div>
+      	</div>
+  	</div>
+</article>
+<script src="/static/js/rss_retriever_5000.js"></script>
+{% endblock %}
