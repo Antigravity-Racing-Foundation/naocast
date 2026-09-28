@@ -6,3 +6,5 @@ Dockerfile
 gunicorn_config.py
 *.tar
 build/
+node_modules/
+package*.json

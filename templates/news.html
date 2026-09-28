@@ -23,8 +23,8 @@
 
 {% block content %}
 <template id="news-panel-template">
-    <div class="panel flex flex-row items-center gap-x-3 w-full px-4 z-30">
-		<img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="selection ml-3 hidden 2xl:block" style="opacity: 0" role="presentation"/>
+    <div class="panel flex flex-row items-center gap-x-3 w-full px-4 py-4 z-30">
+		<img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="selection hidden 2xl:block" style="opacity: 0" role="presentation"/>
         <a class="news-name text-agrf-strike hover:underline focus:underline text-sm sm:text-base"></a>
     </div>
 </template>
@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-15 pb-4 px-6 lg:px-28">
+<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-6 lg:px-28">
   	<!-- left side -->
   	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%]">
     	{{ ui.box_title('Entry Picker') }}
@@ -62,7 +62,7 @@
       	<div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
           	{{ ui.corners() }}
           	<div class="text-sm md:text-base text-nc-grey w-full">
-            	<article class="flex relative flex-col max-h-116 w-full" id="news_article">
+            	<article class="flex relative flex-col w-full" id="news_article">
 					<div class="panel flex flex-row justify-between items-center gap-x-3 w-full px-4 z-30">
     				    <div class="content text-sm md:text-xl 2xl:text-lg py-3">
 							<h2>Select an article to view...</h2>

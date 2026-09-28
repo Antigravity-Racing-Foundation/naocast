@@ -12,9 +12,9 @@
   </h2>
 {%- endmacro -%}
 
-{%- macro highlight(content, accent_color='0,0,0') -%}
+{%- macro highlight(content, accent_color='0,0,0', accent_opacity='0.2', text_color='100,100,100') -%}
 <span class="border border-t-sm font-helvetica inline-block px-1 rounded-md"
-      style="background-color: rgba({{ accent_color }}, 0.2); user-select: text;">
+      style="background-color: rgba({{ accent_color }}, {{ accent_opacity }}); color: rgba({{ text_color }}); user-select: text;">
 {{ content|safe }}
 </span>
 {%- endmacro -%}
