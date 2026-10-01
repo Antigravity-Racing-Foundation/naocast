@@ -23,26 +23,26 @@
 
 {% block content %}
 <template id="news-panel-template">
-    <div class="panel flex flex-row items-center gap-x-3 w-full px-4 py-4 z-30">
-		<img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow.svg') }}" alt="" class="selection hidden 2xl:block" style="opacity: 0" role="presentation"/>
-        <a class="news-name text-agrf-strike hover:underline focus:underline text-sm sm:text-base"></a>
+    <div class="panel flex flex-row items-center gap-x-1 w-full px-2 py-2 z-30">
+		<img src="{{ url_for('static', filename='images/text_ornament_tiny_arrow_purple.svg') }}" alt="" class="selection hidden rotate-270" role="presentation"/> 
+        <a class="news-name text-agrf-statement hover:text-agrf-strike hover:underline focus:underline text-sm sm:text-base"></a>
     </div>
 </template>
 
 <template id="news-article-template">
     <div class="panel flex flex-row gap-x-3 w-full px-4 z-30">
-        <div class="content text-sm md:text-xl 2xl:text-lg py-3"></div>
+        <div class="content text-sm w-full py-3"></div>
     </div>
 </template>
 
-<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-6 lg:px-28">
+<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-2 sm:px-6 lg:px-28">
   	<!-- left side -->
-  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%]">
+  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%] xl:block" id="news_picker">
     	{{ ui.box_title('Entry Picker') }}
-    	<div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+    	<div class="relative p-4 w-full bg-nc-bg flex flex-col items-start justify-between">
         	{{ ui.corners() }}
         	<div class="text-sm md:text-base text-nc-grey w-full">
-            	<article class="flex relative flex-col max-h-116 w-full" id="news_list">
+            	<article class="flex relative flex-col xl:h-114 overflow-scroll w-full" id="news_list">
             	  	{% for _ in range(0,3) %}
             	  	<div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
             	  	{% endfor %}
@@ -57,18 +57,34 @@
       	</div>
   	</div>
   	<!-- right side -->
-  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[65%]">
+  	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[65%] xl:block hidden" id="news_viewer">
       	{{ ui.box_title('Article Viewport') }}
-      	<div class="relative p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
+      	<div class="relative p-1 sm:p-6 w-full bg-nc-bg flex flex-col items-start justify-between">
           	{{ ui.corners() }}
           	<div class="text-sm md:text-base text-nc-grey w-full">
+
+				<div class="text-agrf-strike m-3 text-lg xl:hidden block">
+					<a href="/news" class="ml-3"> 
+						< Back
+					</a>
+					<hr class="border-t-4 mt-3 border-nc-light-grey">
+				</div>
+				
             	<article class="flex relative flex-col w-full" id="news_article">
 					<div class="panel flex flex-row justify-between items-center gap-x-3 w-full px-4 z-30">
-    				    <div class="content text-sm md:text-xl 2xl:text-lg py-3">
-							<h2>Select an article to view...</h2>
+    				    <div class="content text-sm py-3">
+							<h3>RETRIEVING ARTICLE...</h3>
 						</div>
     				</div>
             	</article>
+
+				<div class="text-agrf-strike m-3 text-lg xl:hidden block">
+					<hr class="border-t-4 mb-3 border-nc-light-grey">
+					<a href="/news" class="ml-3">
+						< Back
+					</a>
+				</div>
+
           	</div>
       	</div>
   	</div>
