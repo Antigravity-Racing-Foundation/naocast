@@ -16,7 +16,6 @@ function renderFeedItems(rss, id) {
     items.forEach((item, index) => {
         const clone = template_news.content.cloneNode(true);
         const panel = clone.querySelector(".panel");
-        if (index % 2 === 0) panel.classList.add("bg-white");
 
         //write article name
         const nameEl = clone.querySelector(".news-name");
@@ -26,10 +25,12 @@ function renderFeedItems(rss, id) {
         //highlight selected article
         const indicator = clone.querySelector(".selection");
         if(index == realId) {
-            indicator.style.opacity = 1;
+            indicator.classList.replace("hidden", "block");
+            nameEl.classList.replace("text-agrf-statement", "text-agrf-strike")
         }
 
         list.appendChild(clone);
+        if (index < items.length - 1) list.insertAdjacentHTML("beforeend", '<hr class="border-t-3 border-nc-light-grey">');
     });
 }
 
