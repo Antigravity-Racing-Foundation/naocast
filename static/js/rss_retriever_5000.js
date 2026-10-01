@@ -49,6 +49,12 @@ function renderArticle(rss, id) {
     nameEl.innerHTML = items[realId].content;
 
     list.appendChild(clone);
+
+    //hide news picker and show news reader
+    const picker = document.getElementById("news_picker");
+    const reader = document.getElementById("news_viewer");
+    picker.classList.add("hidden");
+    reader.classList.replace("hidden", "block");
 }
 
 function fetchRssFeed() {
