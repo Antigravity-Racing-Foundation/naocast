@@ -56,3 +56,35 @@
             </div>
         </article>
 {%- endmacro -%}
+
+{%- macro javascript_error() -%}
+<section class="flex justify-center items-center mt-8 mb-8 2xl:mt-14 2xl:mb-10 mx-6 block" id="javascript_error">
+    <div class="flex flex-col items-start xl:max-w-[50%]">
+          <h2 class="flex mb-1 text-xs">
+            <img src="{{ url_for('static', filename='images/text_ornament_tiny_square.svg') }}" alt="" aria-hidden="true" class="w-2 mr-1 ml-0.5 select-none"/>
+            Error Flyout
+          </h2>
+        <div class="relative flex flex-col sm:flex-row gap-y-6 gap-x-10 px-14 py-14 items-center bg-nc-bg">
+
+              <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none top-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+              <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none rotate-90 top-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+              <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none rotate-270 bottom-0 left-0 w-2.5 h-2.5" aria-hidden="true"/>
+              <img src="{{ url_for('static', filename='images/corner.svg') }}" class="absolute select-none rotate-180 bottom-0 right-0 w-2.5 h-2.5" aria-hidden="true"/>
+
+			<img src="{{ url_for('static', filename='images/Nep....webp') }}" alt="" class="w-56 select-none"/>
+
+            <article class="flex flex-col justify-start text-lg">
+				<h2 class="text-2xl text-game-hd mb-6">coffee...</h2>
+				<div>
+                Unfortunately, this part of the website requires 
+				<span class="text-game-hd">JavaScript</span>
+				to work properly.<br><br>
+				Please enable
+				<span class="text-game-hd">JavaScript</span>
+				in your browser, or use a browser that supports it to view this page.
+				</div>
+            </article>
+        </div>
+    </div>
+</section>
+{%- endmacro -%}

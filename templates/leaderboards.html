@@ -20,7 +20,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="flex 2xl:flex-row flex-col flex-1 justify-between gap-x-14 px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
+
+{{ ui.javascript_error() }}
+
+<div class="flex 2xl:flex-row flex-col flex-1 justify-between gap-x-14 px-6 lg:px-28 pt-4 pb-10 lg:pt-12 hidden" id="page"/>
     <section class="items-start flex-2">
         {{ ui.box_title('Board Picker') }}
         <nav class="relative py-10 px-10 w-full bg-nc-bg flex flex-col">
@@ -272,5 +275,12 @@
     </section> -->
 </div>
 
+<script>
+	page = document.getElementById("page");
+	error = document.getElementById("javascript_error");
+
+	page.classList.replace("hidden", "block");
+	error.classList.replace("block", "hidden");
+</script>
 <script src="/static/js/leaderboard_getter_4000.js"></script>
 {% endblock %}

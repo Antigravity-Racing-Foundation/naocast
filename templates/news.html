@@ -35,7 +35,9 @@
     </div>
 </template>
 
-<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-2 sm:px-6 lg:px-28">
+{{ ui.javascript_error() }}
+
+<article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-2 sm:px-6 lg:px-28 hidden" id="page">
   	<!-- left side -->
   	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%] xl:block" id="news_picker">
     	{{ ui.box_title('Entry Picker') }}
@@ -89,5 +91,12 @@
       	</div>
   	</div>
 </article>
+<script>
+	page = document.getElementById("page");
+	error = document.getElementById("javascript_error");
+
+	page.classList.replace("hidden", "block");
+	error.classList.replace("block", "hidden");
+</script>
 <script src="/static/js/rss_retriever_5000.js"></script>
 {% endblock %}

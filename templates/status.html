@@ -131,9 +131,11 @@
     {% endfor %}
 </template>
 
+{{ ui.javascript_error() }}
+
 <!-- Page markup -->
 
-<div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12">
+<div class="items-start w-screen px-6 lg:px-28 pt-4 pb-10 lg:pt-12 hidden" id="page">
     {{ ui.box_title('External Utility') }}
     <div class="relative pb-4 pt-12 px-4 lg:pt-14 lg:py-16 lg:px-14 w-full bg-nc-bg flex flex-col 2xl:flex-row gap-y-6 justify-between gap-x-12">
         <img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-5 absolute top-12 -left-17 hidden lg:block select-none"/>
@@ -356,5 +358,12 @@
         <a href="https://adhoc.agracingfoundation.org/" class="text-agrf-strike">Ad Hoc status is listed <span class="underline">separately</span>.</a>
     </div>
 </div>
+<script>
+	page = document.getElementById("page");
+	error = document.getElementById("javascript_error");
+
+	page.classList.replace("hidden", "block");
+	error.classList.replace("block", "hidden");
+</script>
 <script src="/static/js/api_spammer_3000.js"></script>
 {% endblock %}
