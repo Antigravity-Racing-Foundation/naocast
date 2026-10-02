@@ -39,6 +39,7 @@
 
 <article class="flex flex-col xl:flex-row space-y-6 xl:space-y-0 justify-center space-x-5 pt-4 pb-10 lg:pt-12 px-2 sm:px-6 lg:px-28 hidden" id="page">
   	<!-- left side -->
+	<img src="{{ url_for('static', filename='images/body_ornament_bold_line.svg') }}" alt="" class="w-4.5 absolute left-18 mt-10 hidden lg:block select-none"/>
   	<div class="w-screen flex-col space-y-6 max-w-[100%] xl:max-w-[35%] xl:block" id="news_picker">
     	{{ ui.box_title('Entry Picker') }}
     	<div class="relative p-4 w-full bg-nc-bg flex flex-col items-start justify-between">
@@ -74,8 +75,36 @@
 				
             	<article class="flex relative flex-col w-full" id="news_article">
 					<div class="panel flex flex-row justify-between items-center gap-x-3 w-full px-4 z-30">
-    				    <div class="content text-sm py-3">
-							<h3>RETRIEVING ARTICLE...</h3>
+    				    <div class="content text-base py-3 w-full">
+							<div class="flex items-center">
+								<img src="{{ url_for('static', filename='images/agrf.svg') }}" alt="" aria-hidden="true" class="w-12 h-12 mr-1 ml-0.5 mr-2 select-none">
+								<div class="flex flex-col">
+									<span>System Message</span>
+									<span id="system_message_date">Today</span>
+								</div>
+							</div>
+							<hr class="border-t-4" style="margin-block: 0.6rem">
+								<h4 class="text-2xl my-4" style="margin-top: 1rem;margin-bottom: 0.35rem;">
+									Welcome to News!
+								</h4>
+								This tool enables you to view announcements posted on 
+								<a href="https://discord.gg/E3MqdVPdxf" target="_blank" class="underline text-agrf-strike">our Discord server</a>.
+								<br>
+								To get started, pick an article from the Entry Picker panel.
+								<br><br>
+								<div class="text-nc-light-grey text-[0.45rem] leading-tight">
+									NAOCAST RSS RETRIEVER 5000
+									<br>
+									BUILD A9E89A0
+									<br>
+									Copyleft 2206 The Antigravity Racing Foundation.
+									This software is licensed under the AGPL license.
+									<br>
+									Your client reference number is:
+									[e6101465b5394077d4d41f7e1f4032f5]
+									<br>
+									This is flavor text.
+								</div>
 						</div>
     				</div>
             	</article>
@@ -97,6 +126,28 @@
 
 	page.classList.replace("hidden", "block");
 	error.classList.replace("block", "hidden");
+
+	function getCurrentDate() {
+		const date = new Date();
+
+		const day = date.getDate();
+		const month = date.toLocaleString('en-US', { month: 'long' });
+		const year = date.getFullYear();
+
+		const suffix =
+    		day % 100 >= 11 && day % 100 <= 13
+    			? 'th'
+    				: day % 10 === 1
+        				? 'st'
+        					: day % 10 === 2
+          						? 'nd'
+          							: day % 10 === 3
+            							? 'rd'
+            								: 'th';
+
+  		return `${day}${suffix} of ${month}, ${year}`;
+	}
+	document.getElementById("system_message_date").innerHTML = getCurrentDate();
 </script>
 <script src="/static/js/rss_retriever_5000.js"></script>
 {% endblock %}
