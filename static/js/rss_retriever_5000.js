@@ -51,6 +51,10 @@ function renderArticle(rss, id) {
 
     list.appendChild(clone);
 
+    if(list.innerText.includes("16th of June, 2025")) {
+        list.innerHTML = list.innerHTML.replaceAll("ThatOneBonk", "ThatOneBonk [AGRF]");
+    }
+
     //hide news picker and show news reader
     const picker = document.getElementById("news_picker");
     const reader = document.getElementById("news_viewer");
