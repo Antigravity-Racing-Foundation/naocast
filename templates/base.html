@@ -166,13 +166,8 @@
         // i wear my badge with pride
         for (const parent of document.querySelectorAll("body *")) {
             for (const child of parent.childNodes) {
-                if (child.nodeType === Node.TEXT_NODE && child.textContent.toUpperCase().includes("E")) {
-                    const pattern = /e/gi;
-                    const replacement = "3";
-                    const subNode = document.createElement("span");
-                    subNode.innerHTML = child.textContent.replace(pattern, replacement);
-                    parent.insertBefore(subNode, child);
-                    parent.removeChild(child);
+                if (child.nodeType === Node.TEXT_NODE) {
+                    child.textContent = child.textContent.replace(/e/gi, "3"); 
                 }
             }
         }
