@@ -45,15 +45,11 @@
     	<div class="relative p-4 w-full bg-nc-bg flex flex-col items-start justify-between">
         	{{ ui.corners() }}
         	<div class="text-sm md:text-base text-nc-grey w-full">
-            	<article class="flex relative flex-col xl:h-114 overflow-scroll w-full" id="news_list">
-            	  	{% for _ in range(0,3) %}
-            	  	<div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 0 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30"></div>
-            	  	{% endfor %}
-            	  	{% for _ in range(0,6) %}
-            	  	<div class="flex flex-row {{ 'bg-white' if loop.index0 % 2 == 1 }} justify-between items-center 2xl:min-w-90 px-8 md:py-6.5 py-5.5 z-30 2xl:block hidden"></div>
-            	  	{% endfor %}
-            	  	<div class="absolute flex flex-row justify-center items-center w-full h-full z-30">
-            	  	    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 mt-1 text-nc-light-grey" style="opacity: 0">RETRIEVING NEWS...</p>
+            	<article class="flex relative flex-col min-h-30 xl:h-114 overflow-scroll w-full" id="news_list">
+            	  	<div class="initial-text absolute flex flex-col justify-center w-full h-full z-30" style="opacity: 0">
+						<!-- <hr class="border-t-3 border-nc-light-grey"> -->
+            	  	    <p class="initial-text text-base 2xl:text-lg py-3 text-center px-2 my-2 text-nc-light-grey">RETRIEVING DATA...</p>
+						<!-- <hr class="border-t-3 border-nc-light-grey"> -->
             	  	</div>
             	</article>
           	</div>

@@ -38,6 +38,10 @@ function renderArticle(rss, id) {
     const items = rss[0].items;
     let realId = items.length-id;
 
+    //hide news picker and show news reader
+    document.getElementById("news_picker").classList.add("hidden");
+    document.getElementById("news_viewer").classList.replace("hidden", "block");
+
     const list = document.getElementById("news_article");
     list.innerHTML = "";
 
@@ -54,12 +58,6 @@ function renderArticle(rss, id) {
     if(list.innerText.includes("16th of June, 2025")) {
         list.innerHTML = list.innerHTML.replaceAll("ThatOneBonk", "ThatOneBonk [AGRF]");
     }
-
-    //hide news picker and show news reader
-    const picker = document.getElementById("news_picker");
-    const reader = document.getElementById("news_viewer");
-    picker.classList.add("hidden");
-    reader.classList.replace("hidden", "block");
 }
 
 function fetchRssFeed() {
