@@ -32,6 +32,8 @@ function renderFeedItems(rss, id) {
         list.appendChild(clone);
         if (index < items.length - 1) list.insertAdjacentHTML("beforeend", '<hr class="border-t-3 border-nc-light-grey">');
     });
+
+    list.scrollTo(0, localStorage.getItem("scrollPos"));
 }
 
 function renderArticle(rss, id) {
@@ -100,6 +102,11 @@ function fetchRssFeed() {
             console.error("API fetch failed:", err);
         });
 }
+
+news_list.addEventListener("scroll", (event) => {
+    localStorage.setItem("scrollPos", news_list.scrollTop);
+})
+
 
 fetchRssFeed();
 
