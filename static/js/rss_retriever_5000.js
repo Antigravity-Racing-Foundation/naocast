@@ -1,4 +1,4 @@
-const RSS_URL = "https://svo.agracingfoundation.org/external/assets/naocast.rss";
+const RSS_URL = "https://agracingfoundation.org/static/rss/naocast.rss";
 let initialListFlashInterval = null;
 
 //absolute piss, good luck bonk - ChaCheeseMonger
@@ -106,7 +106,6 @@ function fetchRssFeed() {
 news_list.addEventListener("scroll", (event) => {
     localStorage.setItem("scrollPos", news_list.scrollTop);
 })
-
 
 fetchRssFeed();
 
