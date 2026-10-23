@@ -425,7 +425,9 @@ function renderLobbies(lobbies) {
     list.innerHTML = "";
 
     const template_lobby = document.getElementById("lobby-card-template");
+    const template_small_lobby = document.getElementById("small-lobby-card-template");
     const template_filler = document.getElementById("filler-card-template");
+    const template_small_filler = document.getElementById("small-filler-card-template");
 
     lobbies.forEach((lobby) => {
 
@@ -435,8 +437,7 @@ function renderLobbies(lobbies) {
         let gameMode = "";
         let bgPath = "";
 
-        const clone = template_lobby.content.cloneNode(true);
-        const card = clone.querySelector(".card");
+        let clone = template_lobby.content.cloneNode(true);
 
         switch(lobby["AppId"]) {
             case "23360":
@@ -493,15 +494,16 @@ function renderLobbies(lobbies) {
                 break;
 
             case "20084":
+                clone = template_small_lobby.content.cloneNode(true);
                 lobbyName = lobby["GameName"].split("~")[0];
                 AIDriversMarker = lobby["RuleSet"] === "1" ? "*" : "";
 
-                lobbyData = `${lobbyName} (${lobby["PlayerCount"]}/${lobby["MaxPlayers"]}${AIDriversMarker})`
+                lobbyData = `${lobbyName} (Up to ${lobby["MaxPlayers"]}${AIDriversMarker} players)`
 
-                gameName = "Unrevealed project";
+                gameName = "F1 Championship Edition";
                 gameNameColor = "nc-fault";
 
-                bgPath = "/static/images/lobby_card_blank.svg";
+                bgPath = "/static/images/lobby_card_small.svg";
                 break;
 
             default:
@@ -534,6 +536,9 @@ function renderLobbies(lobbies) {
     })
 
     if(lobbies.length === 1) {
+        if (lobbies.some(x => x.AppId === "20084")) {
+            list.appendChild(template_small_filler.content.cloneNode(true));
+        }
         list.appendChild(template_filler.content.cloneNode(true));
         list.appendChild(document.getElementById("lobbies-eol").content.cloneNode(true));
     }
