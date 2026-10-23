@@ -22,6 +22,7 @@ EULA_URLS = {
     "2048":             f"{_BASE_EULA_URL}/2048/Global/eula_PEGI.txt",
     "motorstorm/ae":    f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
     "msae":             f"{_BASE_EULA_URL}/AE/Global/eula_PEGI.txt",
+    "f1ce":             f"{_BASE_EULA_URL}/F1CE/eula_full.txt",
     "naocast":          f"/static/license/agpl.txt",
     "site":             f"/static/license/agpl.txt",
     "":                 f"{_BASE_EULA_URL}/HD/Global/eula_PEGI.txt",  # default
