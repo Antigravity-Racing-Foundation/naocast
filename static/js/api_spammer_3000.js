@@ -73,7 +73,7 @@ function getGameName(appId, username) {
             break;
 
         case "20084":
-            gameName = 'Unrevealed project'
+            gameName = 'F1 Championship Edition'
             break;
 
         default:
@@ -633,6 +633,7 @@ function fetchStats() {
             const reg_2048 = accounts.getElementsByTagName('wo2048')[0].textContent;
             const reg_pulse = accounts.getElementsByTagName('woPulse')[0].textContent;
             const reg_msae = accounts.getElementsByTagName('MSAE')[0].textContent;
+            const reg_f1ce = accounts.getElementsByTagName('F1CE')[0].textContent;
             const logins_day = x.getElementsByTagName('LoginsPastDay')[0].textContent;
             const logins_week = x.getElementsByTagName('LoginsPastWeek')[0].textContent;
             const peak_players = x.getElementsByTagName('PeakPlayerCount')[0].textContent;
@@ -646,6 +647,7 @@ function fetchStats() {
                 document.getElementById("reg2048").textContent = reg_2048;
                 document.getElementById("regPulse").textContent = reg_pulse;
                 document.getElementById("regMSAE").textContent = reg_msae;
+                document.getElementById("regF1CE").textContent = reg_f1ce;
             }
         })
         .catch(error => {
